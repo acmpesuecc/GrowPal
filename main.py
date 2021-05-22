@@ -66,17 +66,17 @@ class login_page(QMainWindow):
         if self.lineEdit_username.text() == "" or self.lineEdit_password.text() == "": 
             print("empty")
         else:
-            if self.lineEdit_username.text() in loginpage_details.keys():     
-                if self.lineEdit_password.text() == loginpage_details[self.lineEdit_username.text()]:     
-                    login_page.logged_in_username = self.lineEdit_username.text()           #it works. don't touch
+            if self.lineEdit_username.text() in loginpage_details.keys():                           
+                if self.lineEdit_password.text() == loginpage_details[self.lineEdit_username.text()]:
+                    login_page.logged_in_username = self.lineEdit_username.text()           
                     login_page.logged_in_password = self.lineEdit_password.text()
                     self.lineEdit_username.setText("")
                     self.lineEdit_password.setText("")
                     error_dialog = QtWidgets.QErrorMessage(self)
                     error_dialog.setWindowTitle('Welcome')
                     error_dialog.showMessage(f"Welcome back {login_page.logged_in_username}!")
-                    print(login_page.logged_in_username)
-                    print(login_page.logged_in_password)
+                    # print(login_page.logged_in_username)
+                    # print(login_page.logged_in_password)
                     widget.setCurrentIndex(3)
                 else: 
                     error_dialog = QtWidgets.QErrorMessage(self)
@@ -186,8 +186,8 @@ class buy_page(QMainWindow):
         self.pushButton_sell.clicked.connect(self.gotoSellPage)
     def logout(self):
         widget.setCurrentIndex(0)
-        print(login_page.logged_in_username)
-        print(login_page.logged_in_password)
+        # print(login_page.logged_in_username)
+        # print(login_page.logged_in_password)
     def gotoSellPage(self):
         widget.setCurrentIndex(4)
 
@@ -219,7 +219,7 @@ class sellPage(QMainWindow):
             sellPage.given_upi_id = self.lineEdit_upi_id.text()
             error_dialog = QtWidgets.QErrorMessage(self)
             listedItems.update({sellPage.given_prod_name:sellPage.given_price})
-            print(listedItems)
+            # print(listedItems)
             error_dialog.setWindowTitle('Sell') 
             error_dialog.showMessage(f"Your product {sellPage.given_prod_name} is now listed for {sellPage.given_price} rupees")
             widget.setCurrentIndex(3)
