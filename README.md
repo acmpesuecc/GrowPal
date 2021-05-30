@@ -18,6 +18,8 @@ scroll widget for sell and buy page - N/A
 
 Sell Page - Done
 
+Upload Images - N/A
+
 screen for checkout and transaction - N/A
 
 SQL integration - N/A
