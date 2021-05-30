@@ -10,7 +10,7 @@ from validate_email import validate_email
 
 # -------------------------------------------------------Variables------------------------------------------------------- #
 global loginpage_details
-loginpage_details = {'admin': 'admin@password'}
+loginpage_details = {'admin': 'admin@password'}     # ['admin': 'password',  'anurag', 'ramya']
 global register_page_email
 global register_page_password
 global listedItems
@@ -65,11 +65,15 @@ class login_page(QMainWindow):
     def login_button_pressed(self):
         if self.lineEdit_username.text() == "" or self.lineEdit_password.text() == "": 
             print("empty")
+
+            error_dialog = QtWidgets.QErrorMessage(self)
+            error_dialog.setWindowTitle('Empty Fields')
+            error_dialog.showMessage("Please fill all the fields")
         else:
             if self.lineEdit_username.text() in loginpage_details.keys():                           
                 if self.lineEdit_password.text() == loginpage_details[self.lineEdit_username.text()]:
                     login_page.logged_in_username = self.lineEdit_username.text()           
-                    login_page.logged_in_password = self.lineEdit_password.text()
+                    login_page.logged_in_password = self.lineEdit_password.text() 
                     self.lineEdit_username.setText("")
                     self.lineEdit_password.setText("")
                     error_dialog = QtWidgets.QErrorMessage(self)
@@ -77,7 +81,7 @@ class login_page(QMainWindow):
                     error_dialog.showMessage(f"Welcome back {login_page.logged_in_username}!")
                     # print(login_page.logged_in_username)
                     # print(login_page.logged_in_password)
-                    widget.setCurrentIndex(3)
+                    widget.setCurrentIndex(3)                          
                 else: 
                     error_dialog = QtWidgets.QErrorMessage(self)
                     error_dialog.setWindowTitle('Password')
@@ -133,12 +137,23 @@ class register_page(QMainWindow):
 
         if self.lineEdit_username.text() == "" or self.lineEdit_email.text() == "" or self.lineEdit_phnumber.text() == "" or self.lineEdit_password.text() == "" or self.lineEdit_repeatpassword.text() == "":
             print("empty")  
-
+            error_dialog = QtWidgets.QErrorMessage(self)
+            error_dialog.setWindowTitle('Empty Fields')
+            error_dialog.showMessage("Please fill all the fields")
         elif len(self.lineEdit_phnumber.text()) != 10:
             error_dialog = QtWidgets.QErrorMessage(self)
             error_dialog.setWindowTitle('Phone Number')
             error_dialog.showMessage('Please enter a valid phone number')
             self.lineEdit_phnumber.setText("")
+            
+            
+        elif self.lineEdit_password.text() != self.lineEdit_repeatpassword.text(): 
+            error_dialog = QtWidgets.QErrorMessage(self)
+            error_dialog.setWindowTitle('Password') 
+            error_dialog.showMessage('Your passwords do not match. Try again.') 
+            self.lineEdit_password.setText("")
+            self.lineEdit_repeatpassword.setText("")
+
 
         elif self.lineEdit_password.text() == self.lineEdit_repeatpassword.text(): 
             if validate_email(self.lineEdit_email.text()):
@@ -166,13 +181,7 @@ class register_page(QMainWindow):
 
 
 
-        elif self.lineEdit_password.text() != self.lineEdit_repeatpassword.text(): 
-            error_dialog = QtWidgets.QErrorMessage(self)
-            error_dialog.setWindowTitle('Password') 
-            error_dialog.showMessage('Your passwords do not match. Try again.') 
-            self.lineEdit_password.setText("")
-            self.lineEdit_repeatpassword.setText("")
-
+        
 
 
 # -------------------------------------------------------buy_page------------------------------------------------------- #
@@ -207,7 +216,9 @@ class sellPage(QMainWindow):
     def sell(self):
         if self.lineEdit_prod_name.text() == "" or self.lineEdit_price.text() == "" or self.lineEdit_description.text() == "" or self.lineEdit_name.text == "" or self.lineEdit_cont_num.text() == "" or self.lineEdit_email.text() == "" or self.lineEdit_address.text() == "" or self.lineEdit_upi_id == "":
             print("empty")
-            
+            error_dialog = QtWidgets.QErrorMessage(self)
+            error_dialog.setWindowTitle('Empty Fields')
+            error_dialog.showMessage("Please fill all the fields")
         else: 
             sellPage.given_prod_name = self.lineEdit_prod_name.text()
             sellPage.given_price = self.lineEdit_price.text()
