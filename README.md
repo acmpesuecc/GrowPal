@@ -2,7 +2,7 @@
 This is a repository for managing code for the GrowPal project. 
 
 ## Installation
-run 'main.py' after cloning the entire repository as this code has a few dependencies. 
+make sure the required libraries are installed and run main.py
 
 ## Libraries required:
 pip install PyQt5
