@@ -211,8 +211,9 @@ class sellPage(QMainWindow):
         
     def getback(self):
         widget.setCurrentIndex(3)
-    def upload(self):
-        widget.setCurrentIndex(5)
+    def upload(self):  
+        sellPage.file = QFileDialog.getOpenFileName(self, 'browse', '/home/anurag', 'photos(*.png, *.jpg, *.xmp)' )
+        self.label_browse.setText(sellPage.file[0])
     def sell(self):
         if self.lineEdit_prod_name.text() == "" or self.lineEdit_price.text() == "" or self.lineEdit_description.text() == "" or self.lineEdit_name.text == "" or self.lineEdit_cont_num.text() == "" or self.lineEdit_email.text() == "" or self.lineEdit_address.text() == "" or self.lineEdit_upi_id == "":
             print("empty")
@@ -237,23 +238,7 @@ class sellPage(QMainWindow):
         
         
         
-# -------------------------------------------------------upload------------------------------------------------------- #
-class upload(QWidget):
-    def __init__(self) -> None:
-        super(upload, self).__init__()
-        loadUi("upload.ui", self)
-        self.pushButton_browse.clicked.connect(self.browse)
 
-
-
-    def browse(self):
-        upload.file = QFileDialog.getOpenFileName(self, 'browse', '/home/anurag')
-        self.lineEdit_browse.setText(upload.file[0])
-
-        
-        
-        
-        
         
     # End of class declaration
 
@@ -268,14 +253,12 @@ loginpage = login_page()
 buypage = buy_page()
 registerpage = register_page()
 sellpage = sellPage()
-upload = upload()
 # Indexing for all the stacked pages. indexes are appointed in the order they are added.
 widget.addWidget(login_register_page) # 0
 widget.addWidget(loginpage)   # 1
 widget.addWidget(registerpage) # 2
 widget.addWidget(buypage)     # 3
 widget.addWidget(sellpage)      #4
-widget.addWidget(upload)        #5
 # End of indexing for stacked widgets
 
 
