@@ -2,12 +2,16 @@
 This is a repository for managing code for the GrowPal project. 
 
 ## Installation
-make sure the required libraries are installed and run main.py
+make sure the required libraries are installed and run ```main.py```
 
 ## Libraries required:
+```
 pip install PyQt5
+```
 
+```
 pip install validate_email
+```
 
 ## Progress
 Make UI pages - 70%
