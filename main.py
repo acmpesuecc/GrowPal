@@ -212,7 +212,7 @@ class sellPage(QMainWindow):
     def getback(self):
         widget.setCurrentIndex(3)
     def upload(self):  
-        sellPage.file = QFileDialog.getOpenFileName(self, 'browse', '/home/anurag', 'photos(*.png, *.jpg, *.xmp)' )
+        sellPage.file = QFileDialog.getOpenFileName(self, 'Browse' )
         self.label_browse.setText(sellPage.file[0])
     def sell(self):
         if self.lineEdit_prod_name.text() == "" or self.lineEdit_price.text() == "" or self.lineEdit_description.text() == "" or self.lineEdit_name.text == "" or self.lineEdit_cont_num.text() == "" or self.lineEdit_email.text() == "" or self.lineEdit_address.text() == "" or self.lineEdit_upi_id == "":
