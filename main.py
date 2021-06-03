@@ -4,7 +4,8 @@ import sys
 from PyQt5.uic import loadUi 
 from PyQt5 import QtWidgets
 from PyQt5 import QtGui  
-from PyQt5.QtWidgets import QDialog, QApplication, QMainWindow, QLineEdit, QWidget, QFileDialog
+from PyQt5.QtWidgets import QDialog, QApplication, QMainWindow, QLineEdit, QWidget, QFileDialog, QLabel
+from PyQt5.QtGui import QIcon, QPixmap
 from validate_email import validate_email
 #pip install validate_email
 
@@ -193,6 +194,7 @@ class buy_page(QMainWindow):
         menubar.setNativeMenuBar(False)
         self.pushButton_logout.clicked.connect(self.logout)
         self.pushButton_sell.clicked.connect(self.gotoSellPage)
+
     def logout(self):
         widget.setCurrentIndex(0)
         # print(login_page.logged_in_username)
@@ -214,6 +216,8 @@ class sellPage(QMainWindow):
     def upload(self):  
         sellPage.file = QFileDialog.getOpenFileName(self, 'Browse' )
         self.label_browse.setText(sellPage.file[0])
+
+
     def sell(self):
         if self.lineEdit_prod_name.text() == "" or self.lineEdit_price.text() == "" or self.lineEdit_description.text() == "" or self.lineEdit_name.text == "" or self.lineEdit_cont_num.text() == "" or self.lineEdit_email.text() == "" or self.lineEdit_address.text() == "" or self.lineEdit_upi_id == "":
             print("empty")
