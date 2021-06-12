@@ -1,56 +1,79 @@
 # -------------------------------------------------------Import statements------------------------------------------------------- #
-import sys  
-#pip install PyQt5
-from PyQt5.uic import loadUi 
+import sys
+# pip install PyQt5
+from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
-from PyQt5 import QtGui  
+from PyQt5 import QtGui
 from PyQt5.QtWidgets import QDialog, QApplication, QMainWindow, QLineEdit, QWidget, QFileDialog, QLabel
 from PyQt5.QtGui import QIcon, QPixmap
 from validate_email import validate_email
-#pip install validate_email
-
+# pip install validate_email
+import mysql.connector 
+from pandas.core.common import flatten 
 # -------------------------------------------------------Variables------------------------------------------------------- #
 global loginpage_details
-loginpage_details = {'admin': 'admin@password'}     # ['admin': 'password',  'anurag', 'ramya']
+# ['admin': 'password',  'anurag', 'ramya']
+loginpage_details = []
 global register_page_email
 global register_page_password
 global listedItems
 listedItems = {}
 #global logged_in_username
-#logged_in_username = "" 
+#logged_in_username = ""
 #global logged_in_password
 #logged_in_password = ""
 
+global givenFile
+givenFile = 'product_cake1.jpeg'
+global db 
+db = mysql.connector.connect(host='localhost', user = 'root', passwd = 'Anurag2004!', database = 'GrowPal')
+if(db):
+    print('sql connection successful')
+else:
+    print('sql messed up') 
 
 
+global curs 
+curs = db.cursor()
+
+def getLoginDetails():
+    global loginpage_details
+    curs.execute('select username, password from login_details') 
+    loginpage_details = curs.fetchall()
+    loginpage_details = list(flatten(loginpage_details)) 
+
+getLoginDetails()
 # -------------------------------------------------------Class declaration for all pages------------------------------------------------------- #
 # -------------------------------------------------------loginregisterpage------------------------------------------------------- #
+
+
 class loginregisterpage(QMainWindow):
     def __init__(self):
         super(loginregisterpage, self).__init__()
-        loadUi("loginRegisterPage.ui",self) 
+        loadUi("loginRegisterPage.ui", self)
         self.setWindowTitle("GrowPal")
-        self.login_button.clicked.connect(self.gotologin_page) 
-        self.register_button.clicked.connect(self.gotoregister_page) 
+        self.login_button.clicked.connect(self.gotologin_page)
+        self.register_button.clicked.connect(self.gotoregister_page)
         #self.iconName = "logo.jpg"
+
     def gotologin_page(self):
-        widget.setCurrentIndex(1) 
+        widget.setCurrentIndex(1)
+
     def gotoregister_page(self):
         widget.setCurrentIndex(2)
-
 
 
 # -------------------------------------------------------login_page------------------------------------------------------- #
 class login_page(QMainWindow):
     def __init__(self):
-        super(login_page,self).__init__() 
-        loadUi("loginPage.ui",self) 
+        super(login_page, self).__init__()
+        loadUi("loginPage.ui", self)
         #global logged_in_username
-        logged_in_username = "" 
+        logged_in_username = ""
         #global logged_in_password
         logged_in_password = ""
         self.pushButton_back.clicked.connect(self.back_button_pressed)
-        self.pushbutton_login.clicked.connect(self.login_button_pressed) 
+        self.pushbutton_login.clicked.connect(self.login_button_pressed)
         self.password_view.clicked.connect(self.pass_view_clicked)
 
     def pass_view_clicked(self):
@@ -62,57 +85,52 @@ class login_page(QMainWindow):
     def back_button_pressed(self):
         widget.setCurrentIndex(0)
 
-
     def login_button_pressed(self):
-        if self.lineEdit_username.text() == "" or self.lineEdit_password.text() == "": 
+        getLoginDetails()
+        if self.lineEdit_username.text() == "" or self.lineEdit_password.text() == "":
             print("empty")
 
             error_dialog = QtWidgets.QErrorMessage(self)
             error_dialog.setWindowTitle('Empty Fields')
             error_dialog.showMessage("Please fill all the fields")
         else:
-            if self.lineEdit_username.text() in loginpage_details.keys():                           
-                if self.lineEdit_password.text() == loginpage_details[self.lineEdit_username.text()]:
-                    login_page.logged_in_username = self.lineEdit_username.text()           
-                    login_page.logged_in_password = self.lineEdit_password.text() 
+            if self.lineEdit_username.text() in loginpage_details:
+                if self.lineEdit_password.text() == loginpage_details[loginpage_details.index(self.lineEdit_username.text()) + 1]:
+                    login_page.logged_in_username = self.lineEdit_username.text()
+                    login_page.logged_in_password = self.lineEdit_password.text()
                     self.lineEdit_username.setText("")
                     self.lineEdit_password.setText("")
                     error_dialog = QtWidgets.QErrorMessage(self)
                     error_dialog.setWindowTitle('Welcome')
-                    error_dialog.showMessage(f"Welcome back {login_page.logged_in_username}!")
+                    error_dialog.showMessage(
+                        f"Welcome back {login_page.logged_in_username}!")
                     # print(login_page.logged_in_username)
                     # print(login_page.logged_in_password)
-                    widget.setCurrentIndex(3)                          
-                else: 
+                    widget.setCurrentIndex(3)
+                else:
                     error_dialog = QtWidgets.QErrorMessage(self)
                     error_dialog.setWindowTitle('Password')
-                    error_dialog.showMessage('Incorrect password, please try again')
+                    error_dialog.showMessage(
+                        'Incorrect password, please try again')
                     self.lineEdit_password.setText("")
             else:
                 error_dialog = QtWidgets.QErrorMessage(self)
                 error_dialog.setWindowTitle('Account')
-                error_dialog.showMessage('Please create an account')                  
+                error_dialog.showMessage('Please create an account')
                 self.lineEdit_username.setText("")
                 self.lineEdit_password.setText("")
                 widget.setCurrentIndex(2)
-
-
-
 
 
 # -------------------------------------------------------register_page------------------------------------------------------- #
 class register_page(QMainWindow):
     def __init__(self):
         super(register_page, self).__init__()
-        loadUi("registerPage.ui", self) 
+        loadUi("registerPage.ui", self)
         self.pushButton_back.clicked.connect(self.back_button_clicked)
-        self.pushbutton_register.clicked.connect(self.register_button_clicked) 
+        self.pushbutton_register.clicked.connect(self.register_button_clicked)
         self.sp_view.clicked.connect(self.sp_view_clicked)
         self.cp_view.clicked.connect(self.cp_view_clicked)
-       
-        
-
-
 
     def sp_view_clicked(self):
         if self.sp_view.isChecked():
@@ -120,24 +138,19 @@ class register_page(QMainWindow):
         else:
             self.lineEdit_password.setEchoMode(QLineEdit.Password)
 
-
-
     def cp_view_clicked(self):
         if self.cp_view.isChecked():
             self.lineEdit_repeatpassword.setEchoMode(QLineEdit.Normal)
         else:
             self.lineEdit_repeatpassword.setEchoMode(QLineEdit.Password)
 
-
     def back_button_clicked(self):
         widget.setCurrentIndex(0)
 
-
     def register_button_clicked(self):
-       
 
         if self.lineEdit_username.text() == "" or self.lineEdit_email.text() == "" or self.lineEdit_phnumber.text() == "" or self.lineEdit_password.text() == "" or self.lineEdit_repeatpassword.text() == "":
-            print("empty")  
+            print("empty")
             error_dialog = QtWidgets.QErrorMessage(self)
             error_dialog.setWindowTitle('Empty Fields')
             error_dialog.showMessage("Please fill all the fields")
@@ -146,34 +159,35 @@ class register_page(QMainWindow):
             error_dialog.setWindowTitle('Phone Number')
             error_dialog.showMessage('Please enter a valid phone number')
             self.lineEdit_phnumber.setText("")
-            
-            
-        elif self.lineEdit_password.text() != self.lineEdit_repeatpassword.text(): 
+
+        elif self.lineEdit_password.text() != self.lineEdit_repeatpassword.text():
             error_dialog = QtWidgets.QErrorMessage(self)
-            error_dialog.setWindowTitle('Password') 
-            error_dialog.showMessage('Your passwords do not match. Try again.') 
+            error_dialog.setWindowTitle('Password')
+            error_dialog.showMessage('Your passwords do not match. Try again.')
             self.lineEdit_password.setText("")
             self.lineEdit_repeatpassword.setText("")
 
-
-        elif self.lineEdit_password.text() == self.lineEdit_repeatpassword.text(): 
+        elif self.lineEdit_password.text() == self.lineEdit_repeatpassword.text():
             if validate_email(self.lineEdit_email.text()):
-                if self.lineEdit_username.text() not in loginpage_details.keys():
-                    register_page_username = self.lineEdit_username.text()
-                    register_page_password = self.lineEdit_password.text()
-                    loginpage_details.update({register_page_username:register_page_password})
+                if self.lineEdit_username.text() not in loginpage_details:
+
+                    curs.execute(f"insert into login_details values('{self.lineEdit_username.text()}', '{self.lineEdit_password.text()}', '{self.lineEdit_email.text()}', '{self.lineEdit_phnumber.text()}')")  
+                    db.commit()
+                    getLoginDetails()  
                     self.lineEdit_password.setText("")
                     self.lineEdit_repeatpassword.setText("")
                     error_dialog = QtWidgets.QErrorMessage(self)
                     error_dialog.setWindowTitle('Thanks!')
-                    error_dialog.showMessage('Thanks for creating an account with us! Please login with the same credentials')
+                    error_dialog.showMessage(
+                        'Thanks for creating an account with us! Please login with the same credentials')
                     widget.setCurrentIndex(1)
                 else:
                     error_dialog = QtWidgets.QErrorMessage(self)
                     error_dialog.setWindowTitle('Account')
-                    error_dialog.showMessage('You are already registered, please login.')
+                    error_dialog.showMessage(
+                        'You are already registered, please login.')
                     widget.setCurrentIndex(1)
-                    
+
             else:
                 error_dialog = QtWidgets.QErrorMessage(self)
                 error_dialog.setWindowTitle('Email')
@@ -181,12 +195,12 @@ class register_page(QMainWindow):
                 self.lineEdit_email.setText("")
 
 
-
-        
-
-
 # -------------------------------------------------------buy_page------------------------------------------------------- #
 class buy_page(QMainWindow):
+
+    # try:
+
+    # except Exception: pass
     def __init__(self) -> None:
         super(buy_page, self).__init__()
         loadUi("buy_page.ui", self)
@@ -194,29 +208,53 @@ class buy_page(QMainWindow):
         menubar.setNativeMenuBar(False)
         self.pushButton_logout.clicked.connect(self.logout)
         self.pushButton_sell.clicked.connect(self.gotoSellPage)
+        print(givenFile)
+        self.pixmap = QPixmap(givenFile)
+        self.label_prod_img2.setPixmap(self.pixmap)
 
+        #global givenFile
+        #givenFile = ''
+        #self.givenFile_buypage = givenFile
+
+
+    def setImage(self):
+
+        print(givenFile)
+        self.pixmap = QPixmap(givenFile)
+        self.pixmap = self.pixmap.scaled(236, 235)
+        self.label_prod_img2.setPixmap(self.pixmap)
     def logout(self):
         widget.setCurrentIndex(0)
         # print(login_page.logged_in_username)
         # print(login_page.logged_in_password)
+
     def gotoSellPage(self):
+
+        # self.label_prod_img2.setPixmap(self.pixmap)
         widget.setCurrentIndex(4)
+
 
 # -------------------------------------------------------sellPage------------------------------------------------------- #
 class sellPage(QMainWindow):
     def __init__(self) -> None:
         super(sellPage, self).__init__()
-        loadUi("sellPage.ui",self)
+        loadUi("sellPage.ui", self)
         self.pushButton_back.clicked.connect(self.getback)
         self.pushButton_UploadImages.clicked.connect(self.upload)
         self.pushButton_Sell.clicked.connect(self.sell)
-        
+
     def getback(self):
         widget.setCurrentIndex(3)
-    def upload(self):  
-        sellPage.file = QFileDialog.getOpenFileName(self, 'Browse' )
+
+    def upload(self):
+        sellPage.file = QFileDialog.getOpenFileName(self, 'Browse')
         self.label_browse.setText(sellPage.file[0])
 
+        global givenFile
+        givenFile = sellPage.file[0]
+        print(givenFile)
+        buypage.setImage()
+        #sellPage.givenFile = pixmapClass()
 
     def sell(self):
         if self.lineEdit_prod_name.text() == "" or self.lineEdit_price.text() == "" or self.lineEdit_description.text() == "" or self.lineEdit_name.text == "" or self.lineEdit_cont_num.text() == "" or self.lineEdit_email.text() == "" or self.lineEdit_address.text() == "" or self.lineEdit_upi_id == "":
@@ -224,7 +262,7 @@ class sellPage(QMainWindow):
             error_dialog = QtWidgets.QErrorMessage(self)
             error_dialog.setWindowTitle('Empty Fields')
             error_dialog.showMessage("Please fill all the fields")
-        else: 
+        else:
             sellPage.given_prod_name = self.lineEdit_prod_name.text()
             sellPage.given_price = self.lineEdit_price.text()
             sellPage.given_description = self.lineEdit_description.text()
@@ -234,35 +272,33 @@ class sellPage(QMainWindow):
             sellPage.given_address = self.lineEdit_address.text()
             sellPage.given_upi_id = self.lineEdit_upi_id.text()
             error_dialog = QtWidgets.QErrorMessage(self)
-            listedItems.update({sellPage.given_prod_name:sellPage.given_price})
-            # print(listedItems)
-            error_dialog.setWindowTitle('Sell') 
-            error_dialog.showMessage(f"Your product {sellPage.given_prod_name} is now listed for {sellPage.given_price} rupees")
+            listedItems.update(
+                {sellPage.given_prod_name: sellPage.given_price})
+
+            sellPage.pixmap = QPixmap(givenFile)
+            error_dialog.setWindowTitle('Sell')
+            error_dialog.showMessage(
+                f"Your product {sellPage.given_prod_name} is now listed for {sellPage.given_price} rupees")
             widget.setCurrentIndex(3)
-        
-        
-        
 
-        
+
     # End of class declaration
-
-
 # -------------------------------------------------------Indexing for stacked widget------------------------------------------------------- #
 app = QApplication(sys.argv)
-widget = QtWidgets.QStackedWidget() 
+widget = QtWidgets.QStackedWidget()
 
 
-login_register_page = loginregisterpage() 
-loginpage = login_page() 
+login_register_page = loginregisterpage()
+loginpage = login_page()
 buypage = buy_page()
 registerpage = register_page()
 sellpage = sellPage()
 # Indexing for all the stacked pages. indexes are appointed in the order they are added.
-widget.addWidget(login_register_page) # 0
+widget.addWidget(login_register_page)  # 0
 widget.addWidget(loginpage)   # 1
-widget.addWidget(registerpage) # 2
+widget.addWidget(registerpage)  # 2
 widget.addWidget(buypage)     # 3
-widget.addWidget(sellpage)      #4
+widget.addWidget(sellpage)  # 4
 # End of indexing for stacked widgets
 
 
@@ -270,13 +306,10 @@ widget.addWidget(sellpage)      #4
 widget.show()
 
 
-# Exit 
+# Exit
 
 try:
     sys.exit(app.exec_())
 
 except:
     print("Exiting")
-    
-
-
