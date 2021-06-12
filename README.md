@@ -2,7 +2,7 @@
 This is a repository for managing code for the GrowPal project. 
 
 ## Installation
-make sure the required libraries are installed and run ```main.py```
+make sure the required libraries are installed. SQL Script for initialisation will be pushed soon. Run ```main.py``` to execute. 
 
 ## Libraries required:
 ```
@@ -13,20 +13,24 @@ pip install PyQt5
 pip install validate_email
 ```
 
+```
+pip install pandas
+```
+
 ## Progress
 Make UI pages - 70%
 
 Login page and logic for username and password - Done
 
-scroll widget for sell and buy page - N/A
+scroll widget for buy page - N/A
 
 Sell Page - Done
 
-Upload Images - N/A
+Upload Images - Done 
 
 screen for checkout and transaction - N/A
 
-SQL integration - N/A
+SQL integration - Done 
 
 Testing - N/A
 
