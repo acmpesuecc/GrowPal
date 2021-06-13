@@ -10,7 +10,7 @@ from validate_email import validate_email
 # pip install validate_email
 import mysql.connector 
 from pandas.core.common import flatten 
-# -------------------------------------------------------Variables------------------------------------------------------- #
+# -------------------------------------------------------Variables and Misc.------------------------------------------------------- #
 global loginpage_details
 # ['admin': 'password',  'anurag', 'ramya']
 loginpage_details = []
@@ -26,7 +26,7 @@ listedItems = {}
 global givenFile
 givenFile = 'product_cake1.jpeg'
 global db 
-db = mysql.connector.connect(host='localhost', user = 'root', passwd = 'Anurag2004!', database = 'GrowPal')
+db = mysql.connector.connect(host='localhost', user = 'admin_GrowPal', passwd = 'admin@password@GrowPal', database = 'GrowPal')
 if(db):
     print('sql connection successful')
 else:
