@@ -2,7 +2,7 @@
 This is a repository for managing code for the GrowPal project. 
 
 ## Installation
-make sure the required libraries are installed. SQL Script for initialization will be pushed soon. Run ```main.py``` to execute. 
+make sure the required libraries are installed. Run the SQL Script ```InitServer.sql``` once before running the code for the first time. Run ```main.py``` to execute. 
 
 ## Libraries required:
 ```
