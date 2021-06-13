@@ -208,7 +208,7 @@ class buy_page(QMainWindow):
         menubar.setNativeMenuBar(False)
         self.pushButton_logout.clicked.connect(self.logout)
         self.pushButton_sell.clicked.connect(self.gotoSellPage)
-        print(givenFile)
+        #print(givenFile)
         self.pixmap = QPixmap(givenFile)
         self.label_prod_img2.setPixmap(self.pixmap)
 
@@ -219,7 +219,7 @@ class buy_page(QMainWindow):
 
     def setImage(self):
 
-        print(givenFile)
+        #print(givenFile)
         self.pixmap = QPixmap(givenFile)
         self.pixmap = self.pixmap.scaled(236, 235)
         self.label_prod_img2.setPixmap(self.pixmap)
@@ -252,7 +252,7 @@ class sellPage(QMainWindow):
 
         global givenFile
         givenFile = sellPage.file[0]
-        print(givenFile)
+        #print(givenFile)
         buypage.setImage()
         #sellPage.givenFile = pixmapClass()
 
