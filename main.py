@@ -9,6 +9,8 @@ from PyQt5.QtGui import QIcon, QPixmap
 from validate_email import validate_email
 # pip install validate_email
 import mysql.connector 
+# pip install mysql-connector 
+# pip install pandas 
 from pandas.core.common import flatten 
 # -------------------------------------------------------Variables and Misc.------------------------------------------------------- #
 global loginpage_details
