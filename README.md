@@ -17,6 +17,10 @@ pip install validate_email
 pip install pandas
 ```
 
+```
+pip install mysql-connector 
+```
+
 ## Progress
 Make UI pages - 70%
 
