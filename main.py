@@ -14,16 +14,11 @@ import mysql.connector
 from pandas.core.common import flatten 
 # -------------------------------------------------------Variables and Misc.------------------------------------------------------- #
 global loginpage_details
-# ['admin': 'password',  'anurag', 'ramya']
 loginpage_details = []
 global register_page_email
 global register_page_password
 global listedItems
 listedItems = {}
-#global logged_in_username
-#logged_in_username = ""
-#global logged_in_password
-#logged_in_password = ""
 
 global givenFile
 givenFile = 'product_cake1.jpeg'
@@ -70,9 +65,7 @@ class login_page(QMainWindow):
     def __init__(self):
         super(login_page, self).__init__()
         loadUi("loginPage.ui", self)
-        #global logged_in_username
         logged_in_username = ""
-        #global logged_in_password
         logged_in_password = ""
         self.pushButton_back.clicked.connect(self.back_button_pressed)
         self.pushbutton_login.clicked.connect(self.login_button_pressed)
@@ -106,8 +99,6 @@ class login_page(QMainWindow):
                     error_dialog.setWindowTitle('Welcome')
                     error_dialog.showMessage(
                         f"Welcome back {login_page.logged_in_username}!")
-                    # print(login_page.logged_in_username)
-                    # print(login_page.logged_in_password)
                     widget.setCurrentIndex(3)
                 else:
                     error_dialog = QtWidgets.QErrorMessage(self)
@@ -200,9 +191,6 @@ class register_page(QMainWindow):
 # -------------------------------------------------------buy_page------------------------------------------------------- #
 class buy_page(QMainWindow):
 
-    # try:
-
-    # except Exception: pass
     def __init__(self) -> None:
         super(buy_page, self).__init__()
         loadUi("buy_page.ui", self)
@@ -214,21 +202,15 @@ class buy_page(QMainWindow):
         self.pixmap = QPixmap(givenFile)
         self.label_prod_img2.setPixmap(self.pixmap)
 
-        #global givenFile
-        #givenFile = ''
-        #self.givenFile_buypage = givenFile
 
 
     def setImage(self):
 
-        #print(givenFile)
         self.pixmap = QPixmap(givenFile)
         self.pixmap = self.pixmap.scaled(236, 235)
         self.label_prod_img2.setPixmap(self.pixmap)
     def logout(self):
         widget.setCurrentIndex(0)
-        # print(login_page.logged_in_username)
-        # print(login_page.logged_in_password)
 
     def gotoSellPage(self):
 
@@ -254,9 +236,7 @@ class sellPage(QMainWindow):
 
         global givenFile
         givenFile = sellPage.file[0]
-        #print(givenFile)
         buypage.setImage()
-        #sellPage.givenFile = pixmapClass()
 
     def sell(self):
         if self.lineEdit_prod_name.text() == "" or self.lineEdit_price.text() == "" or self.lineEdit_description.text() == "" or self.lineEdit_name.text == "" or self.lineEdit_cont_num.text() == "" or self.lineEdit_email.text() == "" or self.lineEdit_address.text() == "" or self.lineEdit_upi_id == "":
