@@ -10,8 +10,9 @@ from validate_email import validate_email
 # pip install validate_email
 import mysql.connector 
 # pip install mysql-connector 
-# pip install pandas 
+
 from pandas.core.common import flatten 
+# pip install pandas 
 # -------------------------------------------------------Variables and Misc.------------------------------------------------------- #
 global loginpage_details
 loginpage_details = []
