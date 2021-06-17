@@ -37,8 +37,9 @@ curs = db.cursor()
 def getLoginDetails():
     global loginpage_details
     curs.execute('select username, password from login_details') 
-    loginpage_details = curs.fetchall()
+    loginpage_details = curs.fetchall()     
     loginpage_details = list(flatten(loginpage_details)) 
+    print(loginpage_details) 
 
 getLoginDetails()
 # -------------------------------------------------------Class declaration for all pages------------------------------------------------------- #
