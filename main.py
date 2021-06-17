@@ -10,9 +10,8 @@ from validate_email import validate_email
 # pip install validate_email
 import mysql.connector 
 # pip install mysql-connector 
-
-from pandas.core.common import flatten 
 # pip install pandas 
+from pandas.core.common import flatten 
 # -------------------------------------------------------Variables and Misc.------------------------------------------------------- #
 global loginpage_details
 loginpage_details = []
@@ -20,7 +19,8 @@ global register_page_email
 global register_page_password
 global listedItems
 listedItems = {}
-
+global price 
+price = 0
 global givenFile
 givenFile = 'product_cake1.jpeg'
 global db 
@@ -92,6 +92,7 @@ class login_page(QMainWindow):
         else:
             if self.lineEdit_username.text() in loginpage_details:
                 if self.lineEdit_password.text() == loginpage_details[loginpage_details.index(self.lineEdit_username.text()) + 1]:
+                    login_page.logged_in_username = self.lineEdit_username.text()
                     login_page.logged_in_username = self.lineEdit_username.text()
                     login_page.logged_in_password = self.lineEdit_password.text()
                     self.lineEdit_username.setText("")
@@ -202,8 +203,36 @@ class buy_page(QMainWindow):
         #print(givenFile)
         self.pixmap = QPixmap(givenFile)
         self.label_prod_img2.setPixmap(self.pixmap)
+        self.pushButton_buy_womens_outfit.clicked.connect(self.buy_womens_outfit)
+        self.pushButton_buy_cakes.clicked.connect(self.buy_cake)
+        self.pushButton_buy_mens_outfit.clicked.connect(self.buy_mens_outfit)
+        self.pushButton_buy_tupperware.clicked.connect(self.buy_tupperware)
+        global price 
+
+    def buy_womens_outfit(self):
+        global price 
+        price = 999
+        widget.setCurrentIndex(5)
+        transactionPage.setPrice()
 
 
+    def buy_cake(self):
+        global price 
+        price = 300
+        widget.setCurrentIndex(5)
+        transactionPage.setPrice()
+
+    def buy_mens_outfit(self):
+        global price 
+        price = 1199
+        widget.setCurrentIndex(5)
+        transactionPage.setPrice()
+
+    def buy_tupperware(self):
+        global price 
+        price = 199
+        widget.setCurrentIndex(5)
+        transactionPage.setPrice()
 
     def setImage(self):
 
@@ -252,7 +281,6 @@ class sellPage(QMainWindow):
             sellPage.given_name = self.lineEdit_name.text()
             sellPage.given_cont_num = self.lineEdit_cont_num.text()
             sellPage.given_email = self.lineEdit_email.text()
-            sellPage.given_address = self.lineEdit_address.text()
             sellPage.given_upi_id = self.lineEdit_upi_id.text()
             error_dialog = QtWidgets.QErrorMessage(self)
             listedItems.update(
@@ -265,7 +293,78 @@ class sellPage(QMainWindow):
             widget.setCurrentIndex(3)
 
 
-    # End of class declaration
+# -------------------------------------------------------Transaction Page------------------------------------------------------- #
+
+
+class transactionPage(QMainWindow):
+    def __init__(self) -> None:
+        super(transactionPage, self).__init__()
+        loadUi("transaction.ui", self)
+        global price 
+        self.pushButton_cc.clicked.connect(self.creditcard)
+        self.pushButton_back.clicked.connect(self.go_back) 
+        self.pushButton_dc.clicked.connect(self.debitcard)
+
+        self.pushButton_upi.clicked.connect(self.upi)
+
+
+        self.pushButton_netbank.clicked.connect(self.netbank)
+
+    def go_back(self):
+        widget.setCurrentIndex(3) 
+
+    def creditcard(self):
+        widget.setCurrentIndex(6)
+
+    def debitcard(self):
+        widget.setCurrentIndex(7)
+
+    def upi(self):
+        widget.setCurrentIndex(8)
+
+    def netbank(self):
+        widget.setCurrentIndex(9)
+
+    def setPrice(self):
+        self.label_ammount.setText(f"Ammount: {price}") 
+
+
+
+
+# -------------------------------------------------------Transaction - Credit Card------------------------------------------------------- #
+
+class creditCard(QMainWindow):
+    def __init__(self) -> None:
+        super(creditCard, self).__init__()
+        loadUi("transaction_cc.ui", self)
+        self.pushButton_cancel.clicked.connect(transactionPage.go_back)
+
+
+
+# -------------------------------------------------------Transaction - Debit Card------------------------------------------------------- #
+
+class debitCard(QMainWindow):
+    def __init__(self) -> None:
+        super(debitCard, self).__init__()
+        loadUi("transaction_dc.ui", self)
+        self.pushButton_cancel.clicked.connect(transactionPage.go_back)
+# -------------------------------------------------------Transaction - UPI------------------------------------------------------- #
+
+class upi(QMainWindow):
+    def __init__(self) -> None:
+        super(upi, self).__init__()
+        loadUi("transaction_upi.ui", self)
+        self.pushButton_cancel.clicked.connect(transactionPage.go_back)
+# -------------------------------------------------------Transaction - NetBanking------------------------------------------------------- #
+
+class netBank(QMainWindow):
+    def __init__(self) -> None:
+        super(netBank, self).__init__()
+        loadUi("transaction_netbank.ui", self)
+        self.pushButton_cancel.clicked.connect(transactionPage.go_back)
+
+
+ # End of class declaration
 # -------------------------------------------------------Indexing for stacked widget------------------------------------------------------- #
 app = QApplication(sys.argv)
 widget = QtWidgets.QStackedWidget()
@@ -276,12 +375,23 @@ loginpage = login_page()
 buypage = buy_page()
 registerpage = register_page()
 sellpage = sellPage()
+transactionPage = transactionPage()
+creditCard = creditCard()
+debitCard = debitCard()
+upi = upi()
+netBank = netBank()
 # Indexing for all the stacked pages. indexes are appointed in the order they are added.
 widget.addWidget(login_register_page)  # 0
 widget.addWidget(loginpage)   # 1
 widget.addWidget(registerpage)  # 2
 widget.addWidget(buypage)     # 3
 widget.addWidget(sellpage)  # 4
+widget.addWidget(transactionPage)  # 5
+widget.addWidget(creditCard)  # 6
+widget.addWidget(debitCard)  # 7
+widget.addWidget(upi)  # 8
+widget.addWidget(netBank)  # 9
+
 # End of indexing for stacked widgets
 
 
