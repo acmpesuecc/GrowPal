@@ -94,7 +94,6 @@ class login_page(QMainWindow):
             if self.lineEdit_username.text() in loginpage_details:
                 if self.lineEdit_password.text() == loginpage_details[loginpage_details.index(self.lineEdit_username.text()) + 1]:
                     login_page.logged_in_username = self.lineEdit_username.text()
-                    login_page.logged_in_username = self.lineEdit_username.text()
                     login_page.logged_in_password = self.lineEdit_password.text()
                     self.lineEdit_username.setText("")
                     self.lineEdit_password.setText("")
@@ -339,6 +338,19 @@ class creditCard(QMainWindow):
         super(creditCard, self).__init__()
         loadUi("transaction_cc.ui", self)
         self.pushButton_cancel.clicked.connect(transactionPage.go_back)
+        self.pushButton_pay.clicked.connect(self.pay) 
+        
+    def pay(self):
+        global price
+        curs.execute(f"insert into credit_card_transactions values('{loginpage.logged_in_username}','{price}', '{self.lineEdit_cnum.text()}', '{self.lineEdit_cvv.text()}', '{self.lineEdit_del_add.text()}')")
+        db.commit()
+        error_dialog = QtWidgets.QErrorMessage(self)
+        error_dialog.setWindowTitle('Order')
+        error_dialog.showMessage('Your order has been placed.') 
+        transactionPage.go_back() 
+
+
+
 
 
 
@@ -349,6 +361,23 @@ class debitCard(QMainWindow):
         super(debitCard, self).__init__()
         loadUi("transaction_dc.ui", self)
         self.pushButton_cancel.clicked.connect(transactionPage.go_back)
+        self.pushButton_pay.clicked.connect(self.pay) 
+        
+    def pay(self):
+        global price
+        curs.execute(f"insert into debit_card_transactions values('{loginpage.logged_in_username}', '{price}', '{self.lineEdit_cnum.text()}', '{self.lineEdit_cvv.text()}', '{self.lineEdit_del_add.text()}')")
+        db.commit()
+        error_dialog = QtWidgets.QErrorMessage(self)
+        error_dialog.setWindowTitle('Order')
+        error_dialog.showMessage('Your order has been placed.')
+
+        transactionPage.go_back() 
+
+
+
+
+
+
 # -------------------------------------------------------Transaction - UPI------------------------------------------------------- #
 
 class upi(QMainWindow):
@@ -356,6 +385,18 @@ class upi(QMainWindow):
         super(upi, self).__init__()
         loadUi("transaction_upi.ui", self)
         self.pushButton_cancel.clicked.connect(transactionPage.go_back)
+        self.pushButton_pay.clicked.connect(self.pay) 
+        
+    def pay(self):
+        global price
+        curs.execute(f"insert into upi_transactions values('{loginpage.logged_in_username}', '{price}', '{self.lineEdit_upinum.text()}', '{self.lineEdit_del_add.text()}')")
+        db.commit()
+        error_dialog = QtWidgets.QErrorMessage(self)
+        error_dialog.setWindowTitle('Order')
+        error_dialog.showMessage('Your order has been placed.')
+
+        transactionPage.go_back() 
+
 # -------------------------------------------------------Transaction - NetBanking------------------------------------------------------- #
 
 class netBank(QMainWindow):
@@ -363,6 +404,18 @@ class netBank(QMainWindow):
         super(netBank, self).__init__()
         loadUi("transaction_netbank.ui", self)
         self.pushButton_cancel.clicked.connect(transactionPage.go_back)
+        self.pushButton_pay.clicked.connect(self.pay) 
+        
+    def pay(self):
+        global price 
+        curs.execute(f"insert into net_bank_transactions values('{loginpage.logged_in_username}', '{price}', '{self.lineEdit_acnum.text()}', '{self.lineEdit_cifnum.text()}', '{self.lineEdit_branch_code.text()}', '{self.lineEdit_del_add.text()}')")
+        db.commit()
+        error_dialog = QtWidgets.QErrorMessage(self)
+        error_dialog.setWindowTitle('Order')
+        error_dialog.showMessage('Your order has been placed.')
+
+        transactionPage.go_back() 
+
 
 
  # End of class declaration
