@@ -69,7 +69,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Flat Number: </string>
+         <string>Delivery Address:</string>
         </property>
        </widget>
       </item>
