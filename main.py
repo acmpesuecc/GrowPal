@@ -208,6 +208,12 @@ class buy_page(QMainWindow):
         self.pushButton_buy_mens_outfit.clicked.connect(self.buy_mens_outfit)
         self.pushButton_buy_tupperware.clicked.connect(self.buy_tupperware)
         global price 
+        global item 
+        self.pushButton_orders.clicked.connect(self.go_to_orders)
+
+
+    def go_to_orders(self):
+        widget.setCurrentIndex(10) 
 
     def buy_womens_outfit(self):
         global price 
@@ -417,6 +423,23 @@ class netBank(QMainWindow):
         transactionPage.go_back() 
 
 
+# -------------------------------------------------------Orders------------------------------------------------------- #
+
+class orders(QMainWindow):
+    def __init__(self) -> None:
+        super(orders, self).__init__()
+        loadUi("orders.ui", self)
+        self.tableWidget.setColumnWidth(0, 250)
+        self.tableWidget.setColumnWidth(1, 200)
+        self.tableWidget.setColumnWidth(2, 332) 
+        self.loadData()
+        self.pushButton_back.clicked.connect(self.go_back)
+
+    def go_back(self):
+        widget.setCurrentIndex(3)
+
+    def loadData(self):
+        pass  
 
  # End of class declaration
 # -------------------------------------------------------Indexing for stacked widget------------------------------------------------------- #
@@ -434,6 +457,7 @@ creditCard = creditCard()
 debitCard = debitCard()
 upi = upi()
 netBank = netBank()
+orders = orders()
 # Indexing for all the stacked pages. indexes are appointed in the order they are added.
 widget.addWidget(login_register_page)  # 0
 widget.addWidget(loginpage)   # 1
@@ -445,7 +469,7 @@ widget.addWidget(creditCard)  # 6
 widget.addWidget(debitCard)  # 7
 widget.addWidget(upi)  # 8
 widget.addWidget(netBank)  # 9
-
+widget.addWidget(orders)    #10
 # End of indexing for stacked widgets
 
 

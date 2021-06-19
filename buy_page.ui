@@ -27,69 +27,15 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="6" column="1">
-     <widget class="QPushButton" name="pushButton_buy_mens_outfit">
-      <property name="font">
-       <font>
-        <pointsize>18</pointsize>
-        <weight>75</weight>
-        <italic>true</italic>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font-size:18pt;</string>
-      </property>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_9">
       <property name="text">
-       <string>BUY!</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:28pt; font-weight:600; text-decoration: underline;&quot;&gt;TRENDING         &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </item>
-    <item row="3" column="3" colspan="2">
-     <widget class="QPushButton" name="pushButton_buy_cakes">
-      <property name="font">
-       <font>
-        <pointsize>18</pointsize>
-        <weight>75</weight>
-        <italic>true</italic>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font-size:18pt;</string>
-      </property>
-      <property name="text">
-       <string>BUY!</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Women's Outfit &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-    </item>
-    <item row="6" column="3" colspan="2">
-     <widget class="QPushButton" name="pushButton_buy_tupperware">
-      <property name="font">
-       <font>
-        <pointsize>18</pointsize>
-        <weight>75</weight>
-        <italic>true</italic>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font-size:18pt;</string>
-      </property>
-      <property name="text">
-       <string>BUY!</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="4">
-     <widget class="QPushButton" name="pushButton_logout">
+    <item row="0" column="2">
+     <widget class="QPushButton" name="pushButton_selling_items">
       <property name="font">
        <font>
         <pointsize>12</pointsize>
@@ -99,42 +45,26 @@
        </font>
       </property>
       <property name="text">
-       <string>Logout</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="1">
-     <widget class="QLabel" name="label_2">
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt; font-weight:600;&quot;&gt;999 onwards!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0" colspan="3">
-     <widget class="QLabel" name="label_9">
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:28pt; font-weight:600; text-decoration: underline;&quot;&gt;TRENDING         &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="0" rowspan="3">
-     <widget class="QLabel" name="label_image_product_outfit1_3">
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap>product_outfit2.jpeg</pixmap>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="3" colspan="2">
-     <widget class="QLabel" name="label_8">
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt; font-weight:600;&quot;&gt;199 onwards!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>Your Items</string>
       </property>
      </widget>
     </item>
     <item row="0" column="3">
+     <widget class="QPushButton" name="pushButton_orders">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <italic>false</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Orders</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="4">
      <widget class="QPushButton" name="pushButton_sell">
       <property name="font">
        <font>
@@ -149,28 +79,39 @@
       </property>
      </widget>
     </item>
-    <item row="4" column="1">
-     <widget class="QLabel" name="label_5">
+    <item row="0" column="5">
+     <widget class="QPushButton" name="pushButton_logout">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <italic>false</italic>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Men's Outfit &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>Logout</string>
       </property>
      </widget>
     </item>
-    <item row="4" column="3" colspan="2">
-     <widget class="QLabel" name="label_7">
+    <item row="1" column="0" rowspan="3">
+     <widget class="QLabel" name="label_image_product_outfit1">
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Tupperware Bottles&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>product_outfit1.jpeg</pixmap>
       </property>
      </widget>
     </item>
-    <item row="5" column="1">
-     <widget class="QLabel" name="label_6">
+    <item row="1" column="1">
+     <widget class="QLabel" name="label">
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt; font-weight:600;&quot;&gt;1199 onwards!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Women's Outfit &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </item>
-    <item row="1" column="2" rowspan="3">
+    <item row="1" column="2" rowspan="3" colspan="2">
      <widget class="QLabel" name="label_prod_img2">
       <property name="text">
        <string/>
@@ -183,27 +124,24 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="3" colspan="2">
-     <widget class="QLabel" name="label_4">
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt; font-weight:600;&quot;&gt;300 onwards!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="3" colspan="2">
+    <item row="1" column="4">
      <widget class="QLabel" name="label_3">
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Cakes&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </item>
-    <item row="4" column="2" rowspan="3">
-     <widget class="QLabel" name="label_image_product_outfit1_4">
+    <item row="2" column="1">
+     <widget class="QLabel" name="label_2">
       <property name="text">
-       <string/>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt; font-weight:600;&quot;&gt;999 onwards!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
-      <property name="pixmap">
-       <pixmap>product_tupperware1.jpeg</pixmap>
+     </widget>
+    </item>
+    <item row="2" column="4" colspan="2">
+     <widget class="QLabel" name="label_4">
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt; font-weight:600;&quot;&gt;300 onwards!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </item>
@@ -225,121 +163,111 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="0" rowspan="3">
-     <widget class="QLabel" name="label_image_product_outfit1">
+    <item row="3" column="4" colspan="2">
+     <widget class="QPushButton" name="pushButton_buy_cakes">
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+        <weight>75</weight>
+        <italic>true</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-size:18pt;</string>
+      </property>
+      <property name="text">
+       <string>BUY!</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0" rowspan="3">
+     <widget class="QLabel" name="label_image_product_outfit1_3">
       <property name="text">
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>product_outfit1.jpeg</pixmap>
+       <pixmap>product_outfit2.jpeg</pixmap>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLabel" name="label_5">
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Men's Outfit &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="2" rowspan="3" colspan="2">
+     <widget class="QLabel" name="label_image_product_outfit1_4">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>product_tupperware1.jpeg</pixmap>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="4" colspan="2">
+     <widget class="QLabel" name="label_7">
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Tupperware Bottles&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QLabel" name="label_6">
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt; font-weight:600;&quot;&gt;1199 onwards!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="4" colspan="2">
+     <widget class="QLabel" name="label_8">
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt; font-weight:600;&quot;&gt;199 onwards!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QPushButton" name="pushButton_buy_mens_outfit">
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+        <weight>75</weight>
+        <italic>true</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-size:18pt;</string>
+      </property>
+      <property name="text">
+       <string>BUY!</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="4" colspan="2">
+     <widget class="QPushButton" name="pushButton_buy_tupperware">
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+        <weight>75</weight>
+        <italic>true</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-size:18pt;</string>
+      </property>
+      <property name="text">
+       <string>BUY!</string>
       </property>
      </widget>
     </item>
    </layout>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>853</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuCatogories">
-    <property name="title">
-     <string>Categories</string>
-    </property>
-    <widget class="QMenu" name="menuApparel">
-     <property name="title">
-      <string>Apparel</string>
-     </property>
-     <widget class="QMenu" name="menuFootwear">
-      <property name="title">
-       <string>Footwear</string>
-      </property>
-      <addaction name="actionShoes"/>
-      <addaction name="actionFlip_FLops"/>
-      <addaction name="actionBoots"/>
-      <addaction name="actionSneakers"/>
-      <addaction name="actionHeels"/>
-     </widget>
-     <addaction name="actionCasials_2"/>
-     <addaction name="actionMen_s_clothing_2"/>
-     <addaction name="actionTrowsers"/>
-     <addaction name="actionShirts_Tops"/>
-     <addaction name="actionSarees"/>
-     <addaction name="actionKurtis"/>
-     <addaction name="actionWinterwear"/>
-     <addaction name="menuFootwear"/>
-     <addaction name="actionCasials"/>
-    </widget>
-    <widget class="QMenu" name="menuAccessories">
-     <property name="title">
-      <string>Accessories</string>
-     </property>
-     <addaction name="actionRings"/>
-     <addaction name="actionNecklaces"/>
-     <addaction name="actionEar_rings"/>
-     <addaction name="actionBelts"/>
-     <addaction name="actionBags"/>
-     <addaction name="actionKeycgains"/>
-    </widget>
-    <widget class="QMenu" name="menuHome_Decor">
-     <property name="title">
-      <string>Home Decor</string>
-     </property>
-     <addaction name="actionPaintings"/>
-     <addaction name="actionCots"/>
-     <addaction name="actionWall_Hangings"/>
-     <addaction name="actionCarpets"/>
-     <addaction name="actionTaperstires"/>
-     <addaction name="actionWind_Chimes"/>
-    </widget>
-    <widget class="QMenu" name="menuFood">
-     <property name="title">
-      <string>Food</string>
-     </property>
-     <addaction name="actionServices"/>
-     <addaction name="actionSnacks"/>
-     <addaction name="actionDeserts"/>
-     <addaction name="actionChinese"/>
-     <addaction name="actionNorth_Indian"/>
-     <addaction name="actionSouth_Indian"/>
-    </widget>
-    <widget class="QMenu" name="menuCosmetics">
-     <property name="title">
-      <string>Cosmetics</string>
-     </property>
-     <addaction name="actionSkin_care"/>
-     <addaction name="actionEye_makeup"/>
-    </widget>
-    <widget class="QMenu" name="menuOthers">
-     <property name="title">
-      <string>Others</string>
-     </property>
-     <addaction name="actionTupperware"/>
-     <addaction name="actionHandmade"/>
-     <addaction name="actionElectronics"/>
-     <addaction name="actionMiscelaneous"/>
-    </widget>
-    <addaction name="menuFood"/>
-    <addaction name="menuCosmetics"/>
-    <addaction name="menuApparel"/>
-    <addaction name="menuAccessories"/>
-    <addaction name="menuHome_Decor"/>
-    <addaction name="actionStationary"/>
-    <addaction name="menuOthers"/>
-   </widget>
-   <widget class="QMenu" name="menuTrack_Package">
-    <property name="title">
-     <string>Your orders</string>
-    </property>
-   </widget>
-   <addaction name="menuCatogories"/>
-   <addaction name="menuTrack_Package"/>
-  </widget>
   <action name="actionMen_s_clothing">
    <property name="text">
     <string>Men's clothing</string>
