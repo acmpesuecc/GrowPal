@@ -8,38 +8,42 @@ from PyQt5.QtWidgets import QDialog, QApplication, QMainWindow, QLineEdit, QWidg
 from PyQt5.QtGui import QIcon, QPixmap
 from validate_email import validate_email
 # pip install validate_email
-import mysql.connector 
-# pip install mysql-connector 
-# pip install pandas 
-from pandas.core.common import flatten 
+import mysql.connector
+# pip install mysql-connector
+# pip install pandas
+from pandas.core.common import flatten
 # -------------------------------------------------------Variables and Misc.------------------------------------------------------- #
 global loginpage_details
 loginpage_details = []
 global register_page_email
 global register_page_password
 global listedItems
+global logged_in_username
+logged_in_username = ''
+global logged_in_password
+logged_in_password = ''
 listedItems = {}
-global price 
+global price
 price = 0
 global givenFile
 givenFile = 'product_cake1.jpeg'
-global db 
+global db
 db = mysql.connector.connect(host='localhost', user = 'admin_GrowPal', passwd = 'admin@password@GrowPal', database = 'GrowPal')
 if(db):
     print('sql connection successful')
 else:
-    print('sql messed up') 
+    print('sql messed up')
 
 
-global curs 
+global curs
 curs = db.cursor()
 
 def getLoginDetails():
     global loginpage_details
-    curs.execute('select username, password from login_details') 
-    loginpage_details = curs.fetchall()    
-    loginpage_details = list(flatten(loginpage_details)) 
-    print(loginpage_details) 
+    curs.execute('select username, password from login_details')
+    loginpage_details = curs.fetchall()
+    loginpage_details = list(flatten(loginpage_details))
+    print(loginpage_details)
 
 getLoginDetails()
 # -------------------------------------------------------Class declaration for all pages------------------------------------------------------- #
@@ -67,12 +71,15 @@ class login_page(QMainWindow):
     def __init__(self):
         super(login_page, self).__init__()
         loadUi("loginPage.ui", self)
-        logged_in_username = ""
-        logged_in_password = ""
+        #logged_in_username = ""
+        #logged_in_password = ""
         self.pushButton_back.clicked.connect(self.back_button_pressed)
         self.pushbutton_login.clicked.connect(self.login_button_pressed)
         self.password_view.clicked.connect(self.pass_view_clicked)
-
+        global logged_in_username
+        global logged_in_password
+        logged_in_username = ''
+        logged_in_password = ''
     def pass_view_clicked(self):
         if self.password_view.isChecked():
             self.lineEdit_password.setEchoMode(QLineEdit.Normal)
@@ -93,14 +100,16 @@ class login_page(QMainWindow):
         else:
             if self.lineEdit_username.text() in loginpage_details:
                 if self.lineEdit_password.text() == loginpage_details[loginpage_details.index(self.lineEdit_username.text()) + 1]:
-                    login_page.logged_in_username = self.lineEdit_username.text()
-                    login_page.logged_in_password = self.lineEdit_password.text()
+                    global logged_in_username
+                    global logged_in_password
+                    logged_in_username = self.lineEdit_username.text()
+                    loggin_in_password = self.lineEdit_password.text()
                     self.lineEdit_username.setText("")
                     self.lineEdit_password.setText("")
                     error_dialog = QtWidgets.QErrorMessage(self)
                     error_dialog.setWindowTitle('Welcome')
                     error_dialog.showMessage(
-                        f"Welcome back {login_page.logged_in_username}!")
+                        f"Welcome back {logged_in_username}!")
                     widget.setCurrentIndex(3)
                 else:
                     error_dialog = QtWidgets.QErrorMessage(self)
@@ -166,9 +175,9 @@ class register_page(QMainWindow):
             if validate_email(self.lineEdit_email.text()):
                 if self.lineEdit_username.text() not in loginpage_details:
 
-                    curs.execute(f"insert into login_details values('{self.lineEdit_username.text()}', '{self.lineEdit_password.text()}', '{self.lineEdit_email.text()}', '{self.lineEdit_phnumber.text()}')")  
+                    curs.execute(f"insert into login_details values('{self.lineEdit_username.text()}', '{self.lineEdit_password.text()}', '{self.lineEdit_email.text()}', '{self.lineEdit_phnumber.text()}')")
                     db.commit()
-                    getLoginDetails()  
+                    getLoginDetails()
                     self.lineEdit_password.setText("")
                     self.lineEdit_repeatpassword.setText("")
                     error_dialog = QtWidgets.QErrorMessage(self)
@@ -207,38 +216,46 @@ class buy_page(QMainWindow):
         self.pushButton_buy_cakes.clicked.connect(self.buy_cake)
         self.pushButton_buy_mens_outfit.clicked.connect(self.buy_mens_outfit)
         self.pushButton_buy_tupperware.clicked.connect(self.buy_tupperware)
-        global price 
-        global item 
+        global price
+        global item
         self.pushButton_orders.clicked.connect(self.go_to_orders)
 
 
     def go_to_orders(self):
-        widget.setCurrentIndex(10) 
+        widget.setCurrentIndex(10)
+        orders.loadData()
 
     def buy_womens_outfit(self):
-        global price 
+        global price
+        global item
         price = 999
         widget.setCurrentIndex(5)
         transactionPage.setPrice()
-
+        item = "womens outfit"
 
     def buy_cake(self):
-        global price 
+        global price
+        global item
         price = 300
         widget.setCurrentIndex(5)
         transactionPage.setPrice()
+        item = "cake"
 
     def buy_mens_outfit(self):
-        global price 
+        global price
+        global item
         price = 1199
         widget.setCurrentIndex(5)
         transactionPage.setPrice()
+        item = "mens outfit"
 
     def buy_tupperware(self):
-        global price 
+        global price
+        global item
         price = 199
         widget.setCurrentIndex(5)
         transactionPage.setPrice()
+        item = "tupperware"
 
     def setImage(self):
 
@@ -288,6 +305,14 @@ class sellPage(QMainWindow):
             sellPage.given_cont_num = self.lineEdit_cont_num.text()
             sellPage.given_email = self.lineEdit_email.text()
             sellPage.given_upi_id = self.lineEdit_upi_id.text()
+            self.lineEdit_prod_name.setText('')
+            self.lineEdit_price.setText('')
+            self.lineEdit_description.setText('')
+            self.lineEdit_name.setText('')
+            self.lineEdit_cont_num.setText('')
+            self.lineEdit_email.setText('')
+            self.lineEdit_upi_id.setText('')
+
             error_dialog = QtWidgets.QErrorMessage(self)
             listedItems.update(
                 {sellPage.given_prod_name: sellPage.given_price})
@@ -306,9 +331,9 @@ class transactionPage(QMainWindow):
     def __init__(self) -> None:
         super(transactionPage, self).__init__()
         loadUi("transaction.ui", self)
-        global price 
+        global price
         self.pushButton_cc.clicked.connect(self.creditcard)
-        self.pushButton_back.clicked.connect(self.go_back) 
+        self.pushButton_back.clicked.connect(self.go_back)
         self.pushButton_dc.clicked.connect(self.debitcard)
 
         self.pushButton_upi.clicked.connect(self.upi)
@@ -317,7 +342,7 @@ class transactionPage(QMainWindow):
         self.pushButton_netbank.clicked.connect(self.netbank)
 
     def go_back(self):
-        widget.setCurrentIndex(3) 
+        widget.setCurrentIndex(3)
 
     def creditcard(self):
         widget.setCurrentIndex(6)
@@ -332,7 +357,7 @@ class transactionPage(QMainWindow):
         widget.setCurrentIndex(9)
 
     def setPrice(self):
-        self.label_ammount.setText(f"Ammount: {price}") 
+        self.label_ammount.setText(f"Ammount: {price}")
 
 
 
@@ -344,16 +369,18 @@ class creditCard(QMainWindow):
         super(creditCard, self).__init__()
         loadUi("transaction_cc.ui", self)
         self.pushButton_cancel.clicked.connect(transactionPage.go_back)
-        self.pushButton_pay.clicked.connect(self.pay) 
-        
+        self.pushButton_pay.clicked.connect(self.pay)
+
     def pay(self):
         global price
-        curs.execute(f"insert into credit_card_transactions values('{loginpage.logged_in_username}','{price}', '{self.lineEdit_cnum.text()}', '{self.lineEdit_cvv.text()}', '{self.lineEdit_del_add.text()}')")
+        global item
+        global logged_in_username
+        curs.execute(f"insert into credit_card_transactions values('{logged_in_username}','{item}', '{price}', '{self.lineEdit_cnum.text()}', '{self.lineEdit_cvv.text()}', '{self.lineEdit_del_add.text()}')")
         db.commit()
         error_dialog = QtWidgets.QErrorMessage(self)
         error_dialog.setWindowTitle('Order')
-        error_dialog.showMessage('Your order has been placed.') 
-        transactionPage.go_back() 
+        error_dialog.showMessage('Your order has been placed.')
+        transactionPage.go_back()
 
 
 
@@ -367,17 +394,19 @@ class debitCard(QMainWindow):
         super(debitCard, self).__init__()
         loadUi("transaction_dc.ui", self)
         self.pushButton_cancel.clicked.connect(transactionPage.go_back)
-        self.pushButton_pay.clicked.connect(self.pay) 
-        
+        self.pushButton_pay.clicked.connect(self.pay)
+
     def pay(self):
         global price
-        curs.execute(f"insert into debit_card_transactions values('{loginpage.logged_in_username}', '{price}', '{self.lineEdit_cnum.text()}', '{self.lineEdit_cvv.text()}', '{self.lineEdit_del_add.text()}')")
+        global item
+        global logged_in_username
+        curs.execute(f"insert into debit_card_transactions values('{logged_in_username}', '{item}', '{price}','{self.lineEdit_cnum.text()}', '{self.lineEdit_cvv.text()}', '{self.lineEdit_del_add.text()}')")
         db.commit()
         error_dialog = QtWidgets.QErrorMessage(self)
         error_dialog.setWindowTitle('Order')
         error_dialog.showMessage('Your order has been placed.')
 
-        transactionPage.go_back() 
+        transactionPage.go_back()
 
 
 
@@ -391,17 +420,19 @@ class upi(QMainWindow):
         super(upi, self).__init__()
         loadUi("transaction_upi.ui", self)
         self.pushButton_cancel.clicked.connect(transactionPage.go_back)
-        self.pushButton_pay.clicked.connect(self.pay) 
-        
+        self.pushButton_pay.clicked.connect(self.pay)
+
     def pay(self):
         global price
-        curs.execute(f"insert into upi_transactions values('{loginpage.logged_in_username}', '{price}', '{self.lineEdit_upinum.text()}', '{self.lineEdit_del_add.text()}')")
+        global item
+        global logged_in_username
+        curs.execute(f"insert into upi_transactions values('{logged_in_username}', '{item}', '{price}', '{self.lineEdit_upinum.text()}', '{self.lineEdit_del_add.text()}')")
         db.commit()
         error_dialog = QtWidgets.QErrorMessage(self)
         error_dialog.setWindowTitle('Order')
         error_dialog.showMessage('Your order has been placed.')
 
-        transactionPage.go_back() 
+        transactionPage.go_back()
 
 # -------------------------------------------------------Transaction - NetBanking------------------------------------------------------- #
 
@@ -410,17 +441,19 @@ class netBank(QMainWindow):
         super(netBank, self).__init__()
         loadUi("transaction_netbank.ui", self)
         self.pushButton_cancel.clicked.connect(transactionPage.go_back)
-        self.pushButton_pay.clicked.connect(self.pay) 
-        
+        self.pushButton_pay.clicked.connect(self.pay)
+
     def pay(self):
-        global price 
-        curs.execute(f"insert into net_bank_transactions values('{loginpage.logged_in_username}', '{price}', '{self.lineEdit_acnum.text()}', '{self.lineEdit_cifnum.text()}', '{self.lineEdit_branch_code.text()}', '{self.lineEdit_del_add.text()}')")
+        global price
+        global item
+        global logged_in_username
+        curs.execute(f"insert into net_bank_transactions values('{logged_in_username}', '{item}', '{price}','{self.lineEdit_acnum.text()}', '{self.lineEdit_cifnum.text()}', '{self.lineEdit_branch_code.text()}', '{self.lineEdit_del_add.text()}')")
         db.commit()
         error_dialog = QtWidgets.QErrorMessage(self)
         error_dialog.setWindowTitle('Order')
         error_dialog.showMessage('Your order has been placed.')
 
-        transactionPage.go_back() 
+        transactionPage.go_back()
 
 
 # -------------------------------------------------------Orders------------------------------------------------------- #
@@ -431,7 +464,7 @@ class orders(QMainWindow):
         loadUi("orders.ui", self)
         self.tableWidget.setColumnWidth(0, 250)
         self.tableWidget.setColumnWidth(1, 200)
-        self.tableWidget.setColumnWidth(2, 332) 
+        self.tableWidget.setColumnWidth(2, 332)
         self.loadData()
         self.pushButton_back.clicked.connect(self.go_back)
 
@@ -439,7 +472,21 @@ class orders(QMainWindow):
         widget.setCurrentIndex(3)
 
     def loadData(self):
-        pass  
+        global logged_in_username
+
+        print(logged_in_username)
+
+        curs.execute(f"select item, price, flat_number from credit_card_transactions where username = '{logged_in_username}' union select item, price, flat_number from debit_card_transactions where username = '{logged_in_username}' union select item, price, flat_number from upi_transactions where username = '{logged_in_username}' union select item, price, flat_number from net_bank_transactions where username = '{logged_in_username}';")
+
+        order_list = curs.fetchall()
+        print(order_list)
+        row = 0
+        self.tableWidget.setRowCount(len(order_list))
+        for order in order_list:
+            self.tableWidget.setItem(row, 0, QtWidgets.QTableWidgetItem(order[0]))
+            self.tableWidget.setItem(row, 1, QtWidgets.QTableWidgetItem(order[1]))
+            self.tableWidget.setItem(row, 2, QtWidgets.QTableWidgetItem(order[2]))
+            row = row + 1
 
  # End of class declaration
 # -------------------------------------------------------Indexing for stacked widget------------------------------------------------------- #

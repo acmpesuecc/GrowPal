@@ -1,4 +1,5 @@
 CREATE USER 'admin_GrowPal'@'localhost' IDENTIFIED BY 'admin@password@GrowPal';
+DROP DATABASE IF EXISTS GrowPal;
 CREATE DATABASE GrowPal;
 GRANT ALL PRIVILEGES ON GrowPal.* TO 'admin_GrowPal'@'localhost';
 FLUSH PRIVILEGES;
