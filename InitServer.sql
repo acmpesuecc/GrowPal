@@ -45,3 +45,15 @@ account_number VARCHAR(50),
 CIF_num VARCHAR(50),
 branch_code VARCHAR(50),
 flat_number VARCHAR(400));
+
+
+CREATE TABLE listed_items(
+product_name VARCHAR(50),
+product_price VARCHAR(50),
+product_description VARCHAR(1000),
+seller_name VARCHAR(50),
+seller_phone_number VARCHAR(10),
+seller_email VARCHAR(50),
+selleer_upi_ID VARCHAR(50));
+
+
