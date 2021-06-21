@@ -28,7 +28,7 @@ price = 0
 global givenFile
 givenFile = 'product_cake1.jpeg'
 global db
-db = mysql.connector.connect(host='localhost', user = 'admin_GrowPal', passwd = 'admin@password@GrowPal', database = 'GrowPal')
+db = mysql.connector.connect(host='localhost', user = 'admin_GrowPal', passwd = 'admin@password@GrowPal', database = 'GrowPal_dev')
 if(db):
     print('sql connection successful')
 else:
@@ -111,6 +111,7 @@ class login_page(QMainWindow):
                     error_dialog.showMessage(
                         f"Welcome back {logged_in_username}!")
                     widget.setCurrentIndex(3)
+                    buy_page.loadData()
                 else:
                     error_dialog = QtWidgets.QErrorMessage(self)
                     error_dialog.setWindowTitle('Password')
@@ -178,6 +179,9 @@ class register_page(QMainWindow):
                     curs.execute(f"insert into login_details values('{self.lineEdit_username.text()}', '{self.lineEdit_password.text()}', '{self.lineEdit_email.text()}', '{self.lineEdit_phnumber.text()}')")
                     db.commit()
                     getLoginDetails()
+                    self.lineEdit_username.setText('')
+                    self.lineEdit_email.setText('')
+                    self.lineEdit_phnumber.setText('') 
                     self.lineEdit_password.setText("")
                     self.lineEdit_repeatpassword.setText("")
                     error_dialog = QtWidgets.QErrorMessage(self)
@@ -205,63 +209,49 @@ class buy_page(QMainWindow):
     def __init__(self) -> None:
         super(buy_page, self).__init__()
         loadUi("buy_page.ui", self)
-        menubar = self.menuBar()
-        menubar.setNativeMenuBar(False)
         self.pushButton_logout.clicked.connect(self.logout)
         self.pushButton_sell.clicked.connect(self.gotoSellPage)
-        #print(givenFile)
-        self.pixmap = QPixmap(givenFile)
-        self.label_prod_img2.setPixmap(self.pixmap)
-        self.pushButton_buy_womens_outfit.clicked.connect(self.buy_womens_outfit)
-        self.pushButton_buy_cakes.clicked.connect(self.buy_cake)
-        self.pushButton_buy_mens_outfit.clicked.connect(self.buy_mens_outfit)
-        self.pushButton_buy_tupperware.clicked.connect(self.buy_tupperware)
         global price
         global item
         self.pushButton_orders.clicked.connect(self.go_to_orders)
+        self.pushButton_selling_items.clicked.connect(self.go_to_items)
+        self.tableWidget.setColumnWidth(0, 250)
+        self.tableWidget.setColumnWidth(1, 200)
+        self.loadData()
+        self.tableWidget.selectionModel().selectionChanged.connect(self.selection)
+
+
+    def selection(self, selected):
+        for ix in selected.indexes():
+            global row 
+            global column 
+            row = ix.row()
+            column = ix.column()
+            global price 
+            global item
+            global picture
+            picture = self.tableWidget.item(row, 0).widget() 
+            price = self.tableWidget.item(row, 2).text()
+            item = self.tableWidget.item(row, 1).text()
+            print(item, price)
+            transactionPage.setPrice()
+            self.go_to_transactions()
+
+    def go_to_transactions(self):
+        widget.setCurrentIndex(5)
+
+
+    def go_to_items(self):
+        widget.setCurrentIndex(11)
+        Items.loadData()
+
+
 
 
     def go_to_orders(self):
         widget.setCurrentIndex(10)
         orders.loadData()
 
-    def buy_womens_outfit(self):
-        global price
-        global item
-        price = 999
-        widget.setCurrentIndex(5)
-        transactionPage.setPrice()
-        item = "womens outfit"
-
-    def buy_cake(self):
-        global price
-        global item
-        price = 300
-        widget.setCurrentIndex(5)
-        transactionPage.setPrice()
-        item = "cake"
-
-    def buy_mens_outfit(self):
-        global price
-        global item
-        price = 1199
-        widget.setCurrentIndex(5)
-        transactionPage.setPrice()
-        item = "mens outfit"
-
-    def buy_tupperware(self):
-        global price
-        global item
-        price = 199
-        widget.setCurrentIndex(5)
-        transactionPage.setPrice()
-        item = "tupperware"
-
-    def setImage(self):
-
-        self.pixmap = QPixmap(givenFile)
-        self.pixmap = self.pixmap.scaled(236, 235)
-        self.label_prod_img2.setPixmap(self.pixmap)
     def logout(self):
         widget.setCurrentIndex(0)
 
@@ -269,6 +259,35 @@ class buy_page(QMainWindow):
 
         # self.label_prod_img2.setPixmap(self.pixmap)
         widget.setCurrentIndex(4)
+    
+
+
+
+    def loadData(self):
+
+        global logged_in_username 
+        curs.execute(f"select product_name, product_price, product_description, product_image_address from listed_items;")
+        listed_items = curs.fetchall()
+    
+        row = 0
+        self.tableWidget.setRowCount(len(listed_items))
+        for item in listed_items:
+            self.tableWidget.setItem(row, 1, QtWidgets.QTableWidgetItem(item[0]))
+            self.tableWidget.setItem(row, 2, QtWidgets.QTableWidgetItem(item[1]))
+            self.tableWidget.setItem(row, 3, QtWidgets.QTableWidgetItem(item[2]))
+            row = row + 1
+
+
+            self.image = QtWidgets.QLabel(self.centralwidget)
+            self.image.setText('')
+            self.image.setScaledContents(True)
+            self.pixmap = QPixmap(item[3])
+            self.pixmap = self.pixmap.scaled(200, 250)
+            self.image.setPixmap(self.pixmap)
+            self.tableWidget.setCellWidget(row, 0, self.image)
+            self.image.setHidden(True)
+            self.tableWidget.verticalHeader().setDefaultSectionSize(200)
+
 
 
 # -------------------------------------------------------sellPage------------------------------------------------------- #
@@ -279,6 +298,8 @@ class sellPage(QMainWindow):
         self.pushButton_back.clicked.connect(self.getback)
         self.pushButton_UploadImages.clicked.connect(self.upload)
         self.pushButton_Sell.clicked.connect(self.sell)
+        global logged_in_username
+        print('logged_in_username: ',logged_in_username)
 
     def getback(self):
         widget.setCurrentIndex(3)
@@ -289,7 +310,6 @@ class sellPage(QMainWindow):
 
         global givenFile
         givenFile = sellPage.file[0]
-        buypage.setImage()
 
     def sell(self):
         if self.lineEdit_prod_name.text() == "" or self.lineEdit_price.text() == "" or self.lineEdit_description.text() == "" or self.lineEdit_name.text == "" or self.lineEdit_cont_num.text() == "" or self.lineEdit_email.text() == "" or self.lineEdit_address.text() == "" or self.lineEdit_upi_id == "":
@@ -304,6 +324,7 @@ class sellPage(QMainWindow):
             sellPage.given_name = self.lineEdit_name.text()
             sellPage.given_cont_num = self.lineEdit_cont_num.text()
             sellPage.given_email = self.lineEdit_email.text()
+            sellPage.given_address = self.lineEdit_address.text()
             sellPage.given_upi_id = self.lineEdit_upi_id.text()
             self.lineEdit_prod_name.setText('')
             self.lineEdit_price.setText('')
@@ -311,17 +332,22 @@ class sellPage(QMainWindow):
             self.lineEdit_name.setText('')
             self.lineEdit_cont_num.setText('')
             self.lineEdit_email.setText('')
+            self.lineEdit_address.setText('')
             self.lineEdit_upi_id.setText('')
-
+            self.label_browse.setText('')
+            global logged_in_username
+            print(logged_in_username)
+            curs.execute(f"insert into listed_items values('{sellPage.given_prod_name}', '{sellPage.given_price}', '{sellPage.given_description}', '{logged_in_username}', '{sellPage.given_name}', '{sellPage.given_cont_num}', '{sellPage.given_email}','{sellPage.given_address}', '{sellPage.given_upi_id}', '{givenFile}');")      
+            db.commit()
             error_dialog = QtWidgets.QErrorMessage(self)
-            listedItems.update(
-                {sellPage.given_prod_name: sellPage.given_price})
 
-            sellPage.pixmap = QPixmap(givenFile)
+
             error_dialog.setWindowTitle('Sell')
             error_dialog.showMessage(
                 f"Your product {sellPage.given_prod_name} is now listed for {sellPage.given_price} rupees")
             widget.setCurrentIndex(3)
+            buy_page.loadData()
+
 
 
 # -------------------------------------------------------Transaction Page------------------------------------------------------- #
@@ -332,6 +358,7 @@ class transactionPage(QMainWindow):
         super(transactionPage, self).__init__()
         loadUi("transaction.ui", self)
         global price
+        global item
         self.pushButton_cc.clicked.connect(self.creditcard)
         self.pushButton_back.clicked.connect(self.go_back)
         self.pushButton_dc.clicked.connect(self.debitcard)
@@ -357,7 +384,8 @@ class transactionPage(QMainWindow):
         widget.setCurrentIndex(9)
 
     def setPrice(self):
-        self.label_ammount.setText(f"Ammount: {price}")
+        self.label_ammount.setText(f'''Item: {item}
+Ammount: {price}''')
 
 
 
@@ -478,15 +506,50 @@ class orders(QMainWindow):
 
         curs.execute(f"select item, price, flat_number from credit_card_transactions where username = '{logged_in_username}' union select item, price, flat_number from debit_card_transactions where username = '{logged_in_username}' union select item, price, flat_number from upi_transactions where username = '{logged_in_username}' union select item, price, flat_number from net_bank_transactions where username = '{logged_in_username}';")
 
+
+
         order_list = curs.fetchall()
         print(order_list)
         row = 0
         self.tableWidget.setRowCount(len(order_list))
         for order in order_list:
-            self.tableWidget.setItem(row, 0, QtWidgets.QTableWidgetItem(order[0]))
-            self.tableWidget.setItem(row, 1, QtWidgets.QTableWidgetItem(order[1]))
-            self.tableWidget.setItem(row, 2, QtWidgets.QTableWidgetItem(order[2]))
+            self.tableWidget.setItem(row, 1, QtWidgets.QTableWidgetItem(order[0]))
+            self.tableWidget.setItem(row, 2, QtWidgets.QTableWidgetItem(order[1]))
+            self.tableWidget.setItem(row, 3, QtWidgets.QTableWidgetItem(order[2]))
             row = row + 1
+
+# -------------------------------------------------------Items------------------------------------------------------- #
+class Items(QMainWindow):
+    def __init__(self) -> None:
+        super(Items, self).__init__()
+        loadUi("sold_items.ui", self)
+        self.loadData()
+        self.pushButton_back.clicked.connect(orders.go_back)
+
+
+
+    def loadData(self):
+        global logged_in_username 
+        curs.execute(f"select product_name, product_price, product_description from listed_items where seller_username = '{logged_in_username}';")
+        listed_items = curs.fetchall()
+    
+        row = 0
+        self.tableWidget.setRowCount(len(listed_items))
+        for item in listed_items:
+            self.tableWidget.setItem(row, 1, QtWidgets.QTableWidgetItem(item[0]))
+            self.tableWidget.setItem(row, 2, QtWidgets.QTableWidgetItem(item[1]))
+            self.tableWidget.setItem(row, 3, QtWidgets.QTableWidgetItem(item[2]))
+            row = row + 1
+
+
+
+
+
+
+
+
+
+
 
  # End of class declaration
 # -------------------------------------------------------Indexing for stacked widget------------------------------------------------------- #
@@ -496,7 +559,7 @@ widget = QtWidgets.QStackedWidget()
 
 login_register_page = loginregisterpage()
 loginpage = login_page()
-buypage = buy_page()
+buy_page = buy_page()
 registerpage = register_page()
 sellpage = sellPage()
 transactionPage = transactionPage()
@@ -505,18 +568,20 @@ debitCard = debitCard()
 upi = upi()
 netBank = netBank()
 orders = orders()
+Items = Items()
 # Indexing for all the stacked pages. indexes are appointed in the order they are added.
-widget.addWidget(login_register_page)  # 0
-widget.addWidget(loginpage)   # 1
-widget.addWidget(registerpage)  # 2
-widget.addWidget(buypage)     # 3
-widget.addWidget(sellpage)  # 4
-widget.addWidget(transactionPage)  # 5
-widget.addWidget(creditCard)  # 6
-widget.addWidget(debitCard)  # 7
-widget.addWidget(upi)  # 8
-widget.addWidget(netBank)  # 9
-widget.addWidget(orders)    #10
+widget.addWidget(login_register_page)           # 0
+widget.addWidget(loginpage)                     # 1
+widget.addWidget(registerpage)                  # 2
+widget.addWidget(buy_page)                       # 3
+widget.addWidget(sellpage)                      # 4
+widget.addWidget(transactionPage)               # 5
+widget.addWidget(creditCard)                    # 6
+widget.addWidget(debitCard)                     # 7
+widget.addWidget(upi)                           # 8
+widget.addWidget(netBank)                       # 9
+widget.addWidget(orders)                        # 10
+widget.addWidget(Items)                         # 11
 # End of indexing for stacked widgets
 
 

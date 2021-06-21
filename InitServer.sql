@@ -1,11 +1,11 @@
 CREATE USER 'admin_GrowPal'@'localhost' IDENTIFIED BY 'admin@password@GrowPal';
-DROP DATABASE IF EXISTS GrowPal;
-CREATE DATABASE GrowPal;
-GRANT ALL PRIVILEGES ON GrowPal.* TO 'admin_GrowPal'@'localhost';
+DROP DATABASE IF EXISTS GrowPal_dev;
+CREATE DATABASE GrowPal_dev;
+GRANT ALL PRIVILEGES ON GrowPal_dev.* TO 'admin_GrowPal'@'localhost';
 FLUSH PRIVILEGES;
 
 
-USE GrowPal;
+USE GrowPal_dev;
 
 CREATE TABLE login_details(
 username VARCHAR(50),
@@ -51,9 +51,11 @@ CREATE TABLE listed_items(
 product_name VARCHAR(50),
 product_price VARCHAR(50),
 product_description VARCHAR(1000),
+seller_username VARCHAR(50),
 seller_name VARCHAR(50),
 seller_phone_number VARCHAR(10),
 seller_email VARCHAR(50),
-selleer_upi_ID VARCHAR(50));
-
+seller_address VARCHAR(500),
+selleer_upi_ID VARCHAR(50),
+product_image_address VARCHAR(500));
 
