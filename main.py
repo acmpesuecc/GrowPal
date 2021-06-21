@@ -229,8 +229,6 @@ class buy_page(QMainWindow):
             column = ix.column()
             global price 
             global item
-            global picture
-            picture = self.tableWidget.item(row, 0).widget() 
             price = self.tableWidget.item(row, 2).text()
             item = self.tableWidget.item(row, 1).text()
             print(item, price)
@@ -275,7 +273,7 @@ class buy_page(QMainWindow):
             self.tableWidget.setItem(row, 1, QtWidgets.QTableWidgetItem(item[0]))
             self.tableWidget.setItem(row, 2, QtWidgets.QTableWidgetItem(item[1]))
             self.tableWidget.setItem(row, 3, QtWidgets.QTableWidgetItem(item[2]))
-            row = row + 1
+
 
 
             self.image = QtWidgets.QLabel(self.centralwidget)
@@ -289,6 +287,7 @@ class buy_page(QMainWindow):
             self.tableWidget.verticalHeader().setDefaultSectionSize(200)
 
 
+            row = row + 1
 
 # -------------------------------------------------------sellPage------------------------------------------------------- #
 class sellPage(QMainWindow):
