@@ -229,9 +229,15 @@ class buy_page(QMainWindow):
             column = ix.column()
             global price 
             global item
+            global picture 
+
             price = self.tableWidget.item(row, 2).text()
             item = self.tableWidget.item(row, 1).text()
-            print(item, price)
+            
+            curs.execute(f"select product_image_address from listed_items where product_name = '{item}';")
+            picture = curs.fetchone()
+            picture = list(picture)
+            picture = str(picture[0])
             transactionPage.setPrice()
             self.go_to_transactions()
 
@@ -383,6 +389,11 @@ class transactionPage(QMainWindow):
         widget.setCurrentIndex(9)
 
     def setPrice(self):
+        global picture
+        print(picture)
+        self.pixmap = QPixmap(picture)
+        self.pixmap = self.pixmap.scaled(256, 171)
+        self.label_picture.setPixmap(self.pixmap)
         self.label_ammount.setText(f'''Item: {item}
 Ammount: {price}''')
 
