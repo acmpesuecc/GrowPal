@@ -261,7 +261,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Address:</string>
+         <string>Flat Number: </string>
         </property>
        </widget>
       </item>

@@ -291,8 +291,7 @@ class buy_page(QMainWindow):
             self.tableWidget.setCellWidget(row, 0, self.image)
             self.image.setHidden(True)
             self.tableWidget.verticalHeader().setDefaultSectionSize(200)
-
-
+            
             row = row + 1
 
 # -------------------------------------------------------sellPage------------------------------------------------------- #
@@ -583,7 +582,7 @@ Items = Items()
 widget.addWidget(login_register_page)           # 0
 widget.addWidget(loginpage)                     # 1
 widget.addWidget(registerpage)                  # 2
-widget.addWidget(buy_page)                       # 3
+widget.addWidget(buy_page)                      # 3
 widget.addWidget(sellpage)                      # 4
 widget.addWidget(transactionPage)               # 5
 widget.addWidget(creditCard)                    # 6
