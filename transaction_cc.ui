@@ -24,6 +24,11 @@
         <bold>true</bold>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">
+                 color: white; 
+                 border-radius: 10px; border: 2px groove gray;</string>
+      </property>
       <property name="text">
        <string>Cancel </string>
       </property>
@@ -116,6 +121,11 @@
         <weight>75</weight>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+                 color: white; 
+                 border-radius: 10px; border: 2px groove gray;</string>
       </property>
       <property name="text">
        <string>Pay</string>

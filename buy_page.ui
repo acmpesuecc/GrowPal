@@ -44,6 +44,10 @@
         <bold>true</bold>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">  color: white; 
+                 border-radius: 10px; border: 2px groove gray;</string>
+      </property>
       <property name="text">
        <string>Your Items</string>
       </property>
@@ -58,6 +62,10 @@
         <italic>false</italic>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">  color: white; 
+                 border-radius: 10px; border: 2px groove gray;</string>
       </property>
       <property name="text">
        <string>Orders</string>
@@ -74,6 +82,10 @@
         <bold>true</bold>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">  color: white; 
+                 border-radius: 10px; border: 2px groove gray;</string>
+      </property>
       <property name="text">
        <string>Sell</string>
       </property>
@@ -89,6 +101,10 @@
         <bold>true</bold>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">  color: white; 
+                 border-radius: 10px; border: 2px groove gray;</string>
+      </property>
       <property name="text">
        <string>Logout</string>
       </property>
@@ -96,6 +112,10 @@
     </item>
     <item row="1" column="0" colspan="5">
      <widget class="QTableWidget" name="tableWidget">
+      <property name="styleSheet">
+       <string notr="true">  color: white; 
+                 border-radius: 10px; border: 2px groove gray;</string>
+      </property>
       <property name="sizeAdjustPolicy">
        <enum>QAbstractScrollArea::AdjustToContents</enum>
       </property>
@@ -108,10 +128,13 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>18</pointsize>
+         <pointsize>16</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="textAlignment">
+        <set>AlignHCenter|AlignTop</set>
        </property>
       </column>
       <column>
@@ -120,10 +143,13 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>18</pointsize>
+         <pointsize>16</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="textAlignment">
+        <set>AlignHCenter|AlignTop</set>
        </property>
       </column>
       <column>
@@ -132,10 +158,13 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>18</pointsize>
+         <pointsize>16</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="textAlignment">
+        <set>AlignHCenter|AlignTop</set>
        </property>
       </column>
       <column>
@@ -144,10 +173,13 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>18</pointsize>
+         <pointsize>16</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="textAlignment">
+        <set>AlignHCenter|AlignTop</set>
        </property>
       </column>
      </widget>

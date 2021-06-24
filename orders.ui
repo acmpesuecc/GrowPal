@@ -24,8 +24,13 @@
         <bold>true</bold>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">
+                 color: white; 
+                 border-radius: 10px; border: 2px groove gray;</string>
+      </property>
       <property name="text">
-       <string>&lt;</string>
+       <string>      &lt;      </string>
       </property>
      </widget>
     </item>
@@ -58,6 +63,11 @@
     </item>
     <item row="1" column="0" colspan="2">
      <widget class="QTableWidget" name="tableWidget">
+      <property name="styleSheet">
+       <string notr="true">
+                 color: white; 
+                 border-radius: 10px; border: 2px groove gray;</string>
+      </property>
       <property name="sizeAdjustPolicy">
        <enum>QAbstractScrollArea::AdjustToContents</enum>
       </property>
@@ -81,6 +91,9 @@
          <bold>true</bold>
         </font>
        </property>
+       <property name="textAlignment">
+        <set>AlignHCenter|AlignTop</set>
+       </property>
       </column>
       <column>
        <property name="text">
@@ -92,6 +105,9 @@
          <weight>75</weight>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="textAlignment">
+        <set>AlignHCenter|AlignTop</set>
        </property>
       </column>
       <column>
@@ -105,6 +121,9 @@
          <bold>true</bold>
         </font>
        </property>
+       <property name="textAlignment">
+        <set>AlignHCenter|AlignTop</set>
+       </property>
       </column>
       <column>
        <property name="text">
@@ -116,6 +135,9 @@
          <weight>75</weight>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="textAlignment">
+        <set>AlignHCenter|AlignTop</set>
        </property>
       </column>
      </widget>

@@ -33,8 +33,13 @@
           <bold>true</bold>
          </font>
         </property>
+        <property name="styleSheet">
+         <string notr="true">
+                 color: white; 
+                 border-radius: 10px; border: 2px groove gray;</string>
+        </property>
         <property name="text">
-         <string>&lt;</string>
+         <string>      &lt;      </string>
         </property>
        </widget>
       </item>
@@ -63,6 +68,9 @@
         <bold>true</bold>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
       <property name="text">
        <string>Ammount: </string>
       </property>
@@ -79,6 +87,11 @@
           <bold>true</bold>
          </font>
         </property>
+        <property name="styleSheet">
+         <string notr="true">
+                 color: white; 
+                 border-radius: 10px; border: 2px groove gray;</string>
+        </property>
         <property name="text">
          <string>Debit Card</string>
         </property>
@@ -92,6 +105,11 @@
           <weight>75</weight>
           <bold>true</bold>
          </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+                 color: white; 
+                 border-radius: 10px; border: 2px groove gray;</string>
         </property>
         <property name="text">
          <string>Credit Card</string>
@@ -107,6 +125,11 @@
           <bold>true</bold>
          </font>
         </property>
+        <property name="styleSheet">
+         <string notr="true">
+                 color: white; 
+                 border-radius: 10px; border: 2px groove gray;</string>
+        </property>
         <property name="text">
          <string>UPI </string>
         </property>
@@ -120,6 +143,11 @@
           <weight>75</weight>
           <bold>true</bold>
          </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+                 color: white; 
+                 border-radius: 10px; border: 2px groove gray;</string>
         </property>
         <property name="text">
          <string>Net Banking</string>
@@ -145,6 +173,9 @@
     </item>
     <item row="0" column="1">
      <widget class="QLabel" name="label_picture">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
       <property name="text">
        <string/>
       </property>

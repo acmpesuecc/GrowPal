@@ -18,7 +18,7 @@
     <normaloff>logo.jpg</normaloff>logo.jpg</iconset>
   </property>
   <property name="windowOpacity">
-   <double>0.500000000000000</double>
+   <double>1.000000000000000</double>
   </property>
   <property name="autoFillBackground">
    <bool>false</bool>
@@ -36,6 +36,12 @@
         <underline>false</underline>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">
+                 color: white; 
+                 border-radius: 10px; border: 2px groove gray;
+           </string>
+      </property>
       <property name="text">
        <string>Register</string>
       </property>
@@ -49,6 +55,11 @@
         <weight>75</weight>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+                 color: white; 
+                 border-radius: 10px; border: 2px groove gray;</string>
       </property>
       <property name="text">
        <string>Login</string>
