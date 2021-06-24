@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>837</width>
-    <height>623</height>
+    <width>869</width>
+    <height>635</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -45,9 +45,7 @@
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">
-                 color: white; 
-                 border-radius: 10px; border: 2px groove gray;</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string>&lt;</string>
@@ -70,9 +68,7 @@
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">
-                 color: white; 
-                 border-radius: 10px; border: 2px groove gray;</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string>Sell</string>
@@ -542,7 +538,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>837</width>
+     <width>869</width>
      <height>30</height>
     </rect>
    </property>

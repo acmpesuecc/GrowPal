@@ -53,8 +53,7 @@
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">  color: white; 
-                 border-radius: 10px; border: 2px groove gray;</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string>Your Items </string>
@@ -72,8 +71,7 @@
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">  color: white; 
-                 border-radius: 10px; border: 2px groove gray;</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string>Orders  </string>
@@ -91,8 +89,7 @@
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">  color: white; 
-                 border-radius: 10px; border: 2px groove gray;</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string>Sell </string>
@@ -110,8 +107,7 @@
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">  color: white; 
-                 border-radius: 10px; border: 2px groove gray;</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string>Logout  </string>
@@ -121,8 +117,7 @@
     <item row="1" column="0" colspan="5">
      <widget class="QTableWidget" name="tableWidget">
       <property name="styleSheet">
-       <string notr="true">  color: white; 
-                 border-radius: 10px; border: 2px groove gray;</string>
+       <string notr="true"/>
       </property>
       <property name="sizeAdjustPolicy">
        <enum>QAbstractScrollArea::AdjustToContents</enum>

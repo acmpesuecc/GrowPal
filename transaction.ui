@@ -34,9 +34,7 @@
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">
-                 color: white; 
-                 border-radius: 10px; border: 2px groove gray;</string>
+         <string notr="true"/>
         </property>
         <property name="text">
          <string>      &lt;      </string>
@@ -78,6 +76,23 @@
     </item>
     <item row="1" column="0" colspan="3">
      <layout class="QGridLayout" name="gridLayout">
+      <item row="1" column="0">
+       <widget class="QPushButton" name="pushButton_upi">
+        <property name="font">
+         <font>
+          <pointsize>28</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>UPI  </string>
+        </property>
+       </widget>
+      </item>
       <item row="0" column="1">
        <widget class="QPushButton" name="pushButton_dc">
         <property name="font">
@@ -89,8 +104,7 @@
         </property>
         <property name="styleSheet">
          <string notr="true">
-                 color: white; 
-                 border-radius: 10px; border: 2px groove gray;</string>
+</string>
         </property>
         <property name="text">
          <string>Debit Card  </string>
@@ -107,31 +121,10 @@
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">
-                 color: white; 
-                 border-radius: 10px; border: 2px groove gray;</string>
+         <string notr="true"/>
         </property>
         <property name="text">
          <string>Credit Card  </string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QPushButton" name="pushButton_upi">
-        <property name="font">
-         <font>
-          <pointsize>28</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">
-                 color: white; 
-                 border-radius: 10px; border: 2px groove gray;</string>
-        </property>
-        <property name="text">
-         <string>UPI  </string>
         </property>
        </widget>
       </item>
@@ -145,9 +138,7 @@
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">
-                 color: white; 
-                 border-radius: 10px; border: 2px groove gray;</string>
+         <string notr="true"/>
         </property>
         <property name="text">
          <string>Net Banking  </string>

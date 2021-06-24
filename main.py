@@ -5,6 +5,7 @@ from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 from PyQt5 import QtGui
 from PyQt5.QtWidgets import QDialog, QApplication, QMainWindow, QLineEdit, QWidget, QFileDialog, QLabel
+from PyQt5.QtCore import QFile, QTextStream
 from PyQt5.QtGui import QIcon, QPixmap
 from validate_email import validate_email
 # pip install validate_email
@@ -563,6 +564,10 @@ class Items(QMainWindow):
  # End of class declaration
 # -------------------------------------------------------Indexing for stacked widget------------------------------------------------------- #
 app = QApplication(sys.argv)
+file = QFile("amoled.qss")
+file.open(QFile.ReadOnly | QFile.Text)
+stream = QTextStream(file)
+app.setStyleSheet(stream.readAll())
 widget = QtWidgets.QStackedWidget()
 
 
