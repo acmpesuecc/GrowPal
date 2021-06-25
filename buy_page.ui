@@ -25,6 +25,9 @@
    <iconset>
     <normaloff>logo.jpg</normaloff>logo.jpg</iconset>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: black;</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
@@ -117,13 +120,19 @@
     <item row="1" column="0" colspan="5">
      <widget class="QTableWidget" name="tableWidget">
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">background-color: black;</string>
       </property>
       <property name="sizeAdjustPolicy">
        <enum>QAbstractScrollArea::AdjustToContents</enum>
       </property>
+      <attribute name="horizontalHeaderMinimumSectionSize">
+       <number>23</number>
+      </attribute>
       <attribute name="horizontalHeaderStretchLastSection">
        <bool>true</bool>
+      </attribute>
+      <attribute name="verticalHeaderMinimumSectionSize">
+       <number>23</number>
       </attribute>
       <column>
        <property name="text">
@@ -138,6 +147,10 @@
        </property>
        <property name="textAlignment">
         <set>AlignHCenter|AlignTop</set>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>.</normaloff>.</iconset>
        </property>
       </column>
       <column>

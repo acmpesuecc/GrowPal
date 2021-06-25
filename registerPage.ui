@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>745</height>
+    <height>757</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,6 +16,12 @@
   <property name="windowIcon">
    <iconset>
     <normaloff>logo.jpg</normaloff>logo.jpg</iconset>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: black;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -139,9 +145,7 @@
        <bool>false</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true">
-
-</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string>Register</string>

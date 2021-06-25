@@ -20,6 +20,9 @@
   <property name="windowOpacity">
    <double>1.000000000000000</double>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: black;</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_2">
     <item row="2" column="0" colspan="3">
@@ -103,8 +106,7 @@
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">
-</string>
+         <string notr="true"/>
         </property>
         <property name="text">
          <string>Debit Card  </string>

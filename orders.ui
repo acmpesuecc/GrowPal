@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: black;</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="2" column="0">
@@ -25,8 +28,7 @@
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">
-</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string>      &lt;      </string>
@@ -63,7 +65,7 @@
     <item row="1" column="0" colspan="2">
      <widget class="QTableWidget" name="tableWidget">
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">background-color: black;</string>
       </property>
       <property name="sizeAdjustPolicy">
        <enum>QAbstractScrollArea::AdjustToContents</enum>
