@@ -126,7 +126,7 @@
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: black;
-font-color: white; 
+color: white; 
 </string>
       </property>
       <property name="sizeAdjustPolicy">

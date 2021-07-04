@@ -68,7 +68,8 @@
        <bool>false</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: black;</string>
+       <string notr="true">background-color: black;
+color: white; </string>
       </property>
       <attribute name="horizontalHeaderCascadingSectionResizes">
        <bool>false</bool>
