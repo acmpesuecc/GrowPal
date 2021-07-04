@@ -119,8 +119,15 @@
     </item>
     <item row="1" column="0" colspan="5">
      <widget class="QTableWidget" name="tableWidget">
+      <property name="font">
+       <font>
+        <italic>true</italic>
+       </font>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background-color: black;</string>
+       <string notr="true">background-color: black;
+font-color: white; 
+</string>
       </property>
       <property name="sizeAdjustPolicy">
        <enum>QAbstractScrollArea::AdjustToContents</enum>
