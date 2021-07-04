@@ -84,8 +84,11 @@ class login_page(QMainWindow):
     def pass_view_clicked(self):
         if self.password_view.isChecked():
             self.lineEdit_password.setEchoMode(QLineEdit.Normal)
+            self.password_view.setText('      ')
         else:
             self.lineEdit_password.setEchoMode(QLineEdit.Password)
+            self.password_view.setText('      ')
+
 
     def back_button_pressed(self):
         widget.setCurrentIndex(0)
@@ -141,14 +144,18 @@ class register_page(QMainWindow):
     def sp_view_clicked(self):
         if self.sp_view.isChecked():
             self.lineEdit_password.setEchoMode(QLineEdit.Normal)
+            self.sp_view.setText('      ')
         else:
             self.lineEdit_password.setEchoMode(QLineEdit.Password)
+            self.sp_view.setText('      ')
 
     def cp_view_clicked(self):
         if self.cp_view.isChecked():
             self.lineEdit_repeatpassword.setEchoMode(QLineEdit.Normal)
+            self.cp_view.setText('      ')
         else:
             self.lineEdit_repeatpassword.setEchoMode(QLineEdit.Password)
+            self.cp_view.setText('      ')
 
     def back_button_clicked(self):
         widget.setCurrentIndex(0)

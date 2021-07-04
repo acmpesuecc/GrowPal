@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>757</height>
+    <height>761</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -34,12 +34,15 @@
     </item>
     <item row="4" column="3">
      <widget class="QPushButton" name="sp_view">
-      <property name="text">
-       <string/>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
-      <property name="icon">
-       <iconset>
-        <normaloff>View.png</normaloff>View.png</iconset>
+      <property name="text">
+       <string>      </string>
       </property>
       <property name="iconSize">
        <size>
@@ -67,12 +70,15 @@
     </item>
     <item row="5" column="3">
      <widget class="QPushButton" name="cp_view">
-      <property name="text">
-       <string/>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
-      <property name="icon">
-       <iconset>
-        <normaloff>View.png</normaloff>View.png</iconset>
+      <property name="text">
+       <string>      </string>
       </property>
       <property name="iconSize">
        <size>
