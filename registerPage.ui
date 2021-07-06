@@ -42,12 +42,16 @@
        </font>
       </property>
       <property name="text">
-       <string>      </string>
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>visiblity.svg</normaloff>visiblity.svg</iconset>
       </property>
       <property name="iconSize">
        <size>
-        <width>24</width>
-        <height>24</height>
+        <width>30</width>
+        <height>30</height>
        </size>
       </property>
       <property name="checkable">
@@ -78,12 +82,16 @@
        </font>
       </property>
       <property name="text">
-       <string>      </string>
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>visiblity.svg</normaloff>visiblity.svg</iconset>
       </property>
       <property name="iconSize">
        <size>
-        <width>24</width>
-        <height>24</height>
+        <width>30</width>
+        <height>30</height>
        </size>
       </property>
       <property name="checkable">
@@ -178,7 +186,17 @@
        <string notr="true"/>
       </property>
       <property name="text">
-       <string>&lt;</string>
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>back.svg</normaloff>back.svg</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>36</width>
+        <height>36</height>
+       </size>
       </property>
      </widget>
     </item>

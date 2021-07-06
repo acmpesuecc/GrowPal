@@ -73,7 +73,7 @@
        <string notr="true"/>
       </property>
       <property name="text">
-       <string>Ammount: </string>
+       <string>Amount: </string>
       </property>
      </widget>
     </item>

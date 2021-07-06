@@ -43,7 +43,17 @@
        <string notr="true"/>
       </property>
       <property name="text">
-       <string>Register</string>
+       <string> Register</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>register.svg</normaloff>register.svg</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>35</width>
+        <height>35</height>
+       </size>
       </property>
      </widget>
     </item>
@@ -60,7 +70,17 @@
        <string notr="true"/>
       </property>
       <property name="text">
-       <string>Login</string>
+       <string> Login</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>login.svg</normaloff>login.svg</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>35</width>
+        <height>35</height>
+       </size>
       </property>
      </widget>
     </item>
