@@ -5,7 +5,7 @@ from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 from PyQt5 import QtGui
 from PyQt5.QtWidgets import QDialog, QApplication, QMainWindow, QLineEdit, QWidget, QFileDialog, QLabel
-from PyQt5.QtCore import QFile, QTextStream
+from PyQt5.QtCore import QFile, QTextStream, QSize
 from PyQt5.QtGui import QIcon, QPixmap
 from validate_email import validate_email
 # pip install validate_email
@@ -81,13 +81,22 @@ class login_page(QMainWindow):
         global logged_in_password
         logged_in_username = ''
         logged_in_password = ''
+        self.iicon = QIcon('visiblity.svg')
+        self.password_view.setIcon(self.iicon)
     def pass_view_clicked(self):
         if self.password_view.isChecked():
             self.lineEdit_password.setEchoMode(QLineEdit.Normal)
-            self.password_view.setText('      ')
+
+            self.icon = QIcon('visiblity_off.svg')
+            self.password_view.setIcon(self.icon)
+
         else:
             self.lineEdit_password.setEchoMode(QLineEdit.Password)
-            self.password_view.setText('      ')
+            
+            self.icon = QIcon('visiblity.svg')
+            self.password_view.setIcon(self.icon)
+
+
 
 
     def back_button_pressed(self):
@@ -141,21 +150,30 @@ class register_page(QMainWindow):
         self.sp_view.clicked.connect(self.sp_view_clicked)
         self.cp_view.clicked.connect(self.cp_view_clicked)
 
+        self.ispicon = QIcon('visiblity.svg')
+        self.sp_view.setIcon(self.ispicon)
+        self.icpicon = QIcon('visiblity.svg')
+        self.cp_view.setIcon(self.icpicon)
     def sp_view_clicked(self):
         if self.sp_view.isChecked():
             self.lineEdit_password.setEchoMode(QLineEdit.Normal)
-            self.sp_view.setText('      ')
+            self.iconsp = QIcon('visiblity_off.svg')
+            self.sp_view.setIcon(self.iconsp)
         else:
             self.lineEdit_password.setEchoMode(QLineEdit.Password)
-            self.sp_view.setText('      ')
+            self.iconsp = QIcon('visiblity.svg')
+            self.sp_view.setIcon(self.iconsp)
 
     def cp_view_clicked(self):
         if self.cp_view.isChecked():
             self.lineEdit_repeatpassword.setEchoMode(QLineEdit.Normal)
-            self.cp_view.setText('      ')
+
+            self.iconcp = QIcon('visiblity_off.svg')
+            self.cp_view.setIcon(self.iconcp)
         else:
             self.lineEdit_repeatpassword.setEchoMode(QLineEdit.Password)
-            self.cp_view.setText('      ')
+            self.iconcp = QIcon('visiblity.svg')
+            self.cp_view.setIcon(self.iconcp)
 
     def back_button_clicked(self):
         widget.setCurrentIndex(0)
@@ -227,7 +245,9 @@ class buy_page(QMainWindow):
         self.tableWidget.setColumnWidth(1, 200)
         self.loadData()
         self.tableWidget.selectionModel().selectionChanged.connect(self.selection)
-
+        stylesheet = '''QHeaderView::section{Background-color:rgb(190,1,1);
+                                   border-radius:14px;}'''
+        self.tableWidget.setStyleSheet(stylesheet)
 
     def selection(self, selected):
         for ix in selected.indexes():
@@ -512,6 +532,9 @@ class orders(QMainWindow):
         self.tableWidget.setColumnWidth(2, 332)
         self.loadData()
         self.pushButton_back.clicked.connect(self.go_back)
+        stylesheet = '''QHeaderView::section{Background-color:rgb(190,1,1);
+                                   border-radius:14px;}'''
+        self.tableWidget.setStyleSheet(stylesheet)
 
     def go_back(self):
         widget.setCurrentIndex(3)
@@ -542,6 +565,9 @@ class Items(QMainWindow):
         loadUi("sold_items.ui", self)
         self.loadData()
         self.pushButton_back.clicked.connect(orders.go_back)
+        stylesheet = '''QHeaderView::section{Background-color:rgb(190,1,1);
+                                   border-radius:14px;}'''
+        self.tableWidget.setStyleSheet(stylesheet)
 
 
 
