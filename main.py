@@ -29,7 +29,7 @@ price = 0
 global givenFile
 givenFile = 'product_cake1.jpeg'
 global db
-db = mysql.connector.connect(host='localhost', user = 'admin_GrowPal', passwd = 'admin@password@GrowPal', database = 'GrowPal_dev')
+db = mysql.connector.connect(host='sql6.freemysqlhosting.net', user = 'sql6424083', passwd = 'D2acFG7MzS', database = 'sql6424083')
 if(db):
     print('sql connection successful')
 else:
@@ -44,7 +44,6 @@ def getLoginDetails():
     curs.execute('select username, password from login_details')
     loginpage_details = curs.fetchall()
     loginpage_details = list(flatten(loginpage_details))
-    print(loginpage_details)
 
 getLoginDetails()
 # -------------------------------------------------------Class declaration for all pages------------------------------------------------------- #
@@ -58,7 +57,6 @@ class loginregisterpage(QMainWindow):
         self.setWindowTitle("GrowPal")
         self.login_button.clicked.connect(self.gotologin_page)
         self.register_button.clicked.connect(self.gotoregister_page)
-        #self.iconName = "logo.jpg"
 
     def gotologin_page(self):
         widget.setCurrentIndex(1)
@@ -105,7 +103,6 @@ class login_page(QMainWindow):
     def login_button_pressed(self):
         getLoginDetails()
         if self.lineEdit_username.text() == "" or self.lineEdit_password.text() == "":
-            print("empty")
 
             error_dialog = QtWidgets.QErrorMessage(self)
             error_dialog.setWindowTitle('Empty Fields')
@@ -181,7 +178,6 @@ class register_page(QMainWindow):
     def register_button_clicked(self):
 
         if self.lineEdit_username.text() == "" or self.lineEdit_email.text() == "" or self.lineEdit_phnumber.text() == "" or self.lineEdit_password.text() == "" or self.lineEdit_repeatpassword.text() == "":
-            print("empty")
             error_dialog = QtWidgets.QErrorMessage(self)
             error_dialog.setWindowTitle('Empty Fields')
             error_dialog.showMessage("Please fill all the fields")
@@ -328,7 +324,6 @@ class sellPage(QMainWindow):
         self.pushButton_UploadImages.clicked.connect(self.upload)
         self.pushButton_Sell.clicked.connect(self.sell)
         global logged_in_username
-        print('logged_in_username: ',logged_in_username)
 
     def getback(self):
         widget.setCurrentIndex(3)
@@ -342,7 +337,6 @@ class sellPage(QMainWindow):
 
     def sell(self):
         if self.lineEdit_prod_name.text() == "" or self.lineEdit_price.text() == "" or self.lineEdit_description.text() == "" or self.lineEdit_name.text == "" or self.lineEdit_cont_num.text() == "" or self.lineEdit_email.text() == "" or self.lineEdit_address.text() == "" or self.lineEdit_upi_id == "":
-            print("empty")
             error_dialog = QtWidgets.QErrorMessage(self)
             error_dialog.setWindowTitle('Empty Fields')
             error_dialog.showMessage("Please fill all the fields")
@@ -365,7 +359,6 @@ class sellPage(QMainWindow):
             self.lineEdit_upi_id.setText('')
             self.label_browse.setText('')
             global logged_in_username
-            print(logged_in_username)
             curs.execute(f"insert into listed_items values('{sellPage.given_prod_name}', '{sellPage.given_price}', '{sellPage.given_description}', '{logged_in_username}', '{sellPage.given_name}', '{sellPage.given_cont_num}', '{sellPage.given_email}','{sellPage.given_address}', '{sellPage.given_upi_id}', '{givenFile}');")      
             db.commit()
             error_dialog = QtWidgets.QErrorMessage(self)
@@ -414,7 +407,6 @@ class transactionPage(QMainWindow):
 
     def setPrice(self):
         global picture
-        print(picture)
         self.pixmap = QPixmap(picture)
         self.pixmap = self.pixmap.scaled(256, 171)
         self.label_picture.setPixmap(self.pixmap)
@@ -536,14 +528,12 @@ class orders(QMainWindow):
     def loadData(self):
         global logged_in_username
 
-        print(logged_in_username)
 
         curs.execute(f"select item, price, flat_number from credit_card_transactions where username = '{logged_in_username}' union select item, price, flat_number from debit_card_transactions where username = '{logged_in_username}' union select item, price, flat_number from upi_transactions where username = '{logged_in_username}' union select item, price, flat_number from net_bank_transactions where username = '{logged_in_username}';")
 
 
 
         order_list = curs.fetchall()
-        print(order_list)
         row = 0
         self.tableWidget.setRowCount(len(order_list))
         for order in order_list:
