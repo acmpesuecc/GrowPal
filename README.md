@@ -2,11 +2,7 @@
 This is a repository for managing code for the GrowPal project. 
 
 ## Installation
-Make sure the required libraries are installed. Run the SQL Script ```InitServer.sql``` once before running the code for the first time:
-```
--- run in sql shell
-source path-to-GrowPal-directory/InitServer.sql
-```
+Make sure the required libraries are installed. 
 
 Run ```main.py``` to execute. 
 
@@ -32,7 +28,7 @@ Make UI pages - 90%
 
 Login page and logic for username and password - Done
 
-scroll widget for buy page - N/A
+scroll widget for buy page - Done
 
 Sell Page - Done
 
