@@ -13,6 +13,10 @@ import mysql.connector
 # pip install mysql-connector
 # pip install pandas
 from pandas.core.common import flatten
+from imagekitio import ImageKit
+# pip install imagekitio
+from PIL import Image
+import urllib
 # -------------------------------------------------------Variables and Misc.------------------------------------------------------- #
 global loginpage_details
 loginpage_details = []
@@ -46,6 +50,16 @@ def getLoginDetails():
     loginpage_details = list(flatten(loginpage_details))
 
 getLoginDetails()
+
+imagekit = ImageKit(
+        private_key = 'private_UWuh0ACI8AKq5HVubqJ7K1gON6Q=',
+        public_key='public_9lTcdw6jQBz3nQTYfU1MXlsC/ZU=',
+        url_endpoint = 'https://ik.imagekit.io/bule8zjn18b'
+)
+
+
+
+
 # -------------------------------------------------------Class declaration for all pages------------------------------------------------------- #
 # -------------------------------------------------------loginregisterpage------------------------------------------------------- #
 
@@ -306,7 +320,9 @@ class buy_page(QMainWindow):
             self.image = QtWidgets.QLabel(self.centralwidget)
             self.image.setText('')
             self.image.setScaledContents(True)
-            self.pixmap = QPixmap(item[3])
+            self.data = urllib.request.urlopen(item[3]).read()
+            self.pixmap = QPixmap()
+            self.pixmap.loadFromData(self.data)
             self.pixmap = self.pixmap.scaled(200, 250)
             self.image.setPixmap(self.pixmap)
             self.tableWidget.setCellWidget(row, 0, self.image)
@@ -334,7 +350,24 @@ class sellPage(QMainWindow):
 
         global givenFile
         givenFile = sellPage.file[0]
-
+        curs.execute("select product_name from listed_items")
+        num = curs.fetchall()
+        num = len(list(num))
+        num = num  + 1 
+        num = str(num)
+        givenFile = Image.open(givenFile)
+        givenFile.save(num + ".jpeg")
+        upload = imagekit.upload(
+                file= open(num+".jpeg", "rb"), 
+                file_name= num+".jpeg", 
+                options = {"use_unique_file_name" : False }
+)       
+        global imagekit_url
+        imagekit_url = imagekit.url({
+            "path": num + ".jpeg",
+            "url_endpoint" : "https://ik.imagekit.io/bule8zjn18b/"
+        }
+)
     def sell(self):
         if self.lineEdit_prod_name.text() == "" or self.lineEdit_price.text() == "" or self.lineEdit_description.text() == "" or self.lineEdit_name.text == "" or self.lineEdit_cont_num.text() == "" or self.lineEdit_email.text() == "" or self.lineEdit_address.text() == "" or self.lineEdit_upi_id == "":
             error_dialog = QtWidgets.QErrorMessage(self)
@@ -359,7 +392,8 @@ class sellPage(QMainWindow):
             self.lineEdit_upi_id.setText('')
             self.label_browse.setText('')
             global logged_in_username
-            curs.execute(f"insert into listed_items values('{sellPage.given_prod_name}', '{sellPage.given_price}', '{sellPage.given_description}', '{logged_in_username}', '{sellPage.given_name}', '{sellPage.given_cont_num}', '{sellPage.given_email}','{sellPage.given_address}', '{sellPage.given_upi_id}', '{givenFile}');")      
+            global imagekit_url
+            curs.execute(f"insert into listed_items values('{sellPage.given_prod_name}', '{sellPage.given_price}', '{sellPage.given_description}', '{logged_in_username}', '{sellPage.given_name}', '{sellPage.given_cont_num}', '{sellPage.given_email}','{sellPage.given_address}', '{sellPage.given_upi_id}', '{str(imagekit_url)}');")      
             db.commit()
             error_dialog = QtWidgets.QErrorMessage(self)
 
@@ -567,7 +601,10 @@ class Items(QMainWindow):
             self.image = QtWidgets.QLabel(self.centralwidget)
             self.image.setText('')
             self.image.setScaledContents(True)
-            self.pixmap = QPixmap(item[0])
+
+            self.data = urllib.request.urlopen(item[0]).read()
+            self.pixmap = QPixmap()
+            self.pixmap.loadFromData(self.data)
             self.pixmap = self.pixmap.scaled(200, 250)
             self.image.setPixmap(self.pixmap)
             self.tableWidget.setCellWidget(row, 0, self.image)
