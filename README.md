@@ -23,6 +23,15 @@ pip install pandas
 pip install mysql-connector 
 ```
 
+```
+pip install pillow
+```
+
+```
+pip install imagekitio
+```
+
+
 ## Progress
 Make UI pages - 90%
 
