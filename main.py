@@ -245,10 +245,6 @@ class buy_page(QMainWindow):
         self.tableWidget.setColumnWidth(1, 200)
         self.loadData()
         self.tableWidget.selectionModel().selectionChanged.connect(self.selection)
-        stylesheet = '''QHeaderView::section{Background-color:black;
-                                   border-radius:14px;}'''
-        self.tableWidget.setStyleSheet(stylesheet)
-
     def selection(self, selected):
         for ix in selected.indexes():
             global row 
@@ -533,9 +529,6 @@ class orders(QMainWindow):
         self.tableWidget.setColumnWidth(2, 332)
         self.loadData()
         self.pushButton_back.clicked.connect(self.go_back)
-        stylesheet = '''QHeaderView::section{Background-color:black;
-                                  border-radius:14px;}'''
-        self.tableWidget.setStyleSheet(stylesheet)
 
     def go_back(self):
         widget.setCurrentIndex(3)
@@ -566,9 +559,6 @@ class Items(QMainWindow):
         loadUi("sold_items.ui", self)
         self.loadData()
         self.pushButton_back.clicked.connect(orders.go_back)
-        stylesheet = '''QHeaderView::section{Background-color:black;
-                                   border-radius:14px;}'''
-        self.tableWidget.setStyleSheet(stylesheet)
 
 
 

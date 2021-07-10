@@ -73,7 +73,9 @@
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: black;
-color: white;</string>
+color: white; 
+QHeaderView::section{Background-color:black ; border-radius:14px;}&quot;
+</string>
       </property>
       <property name="sizeAdjustPolicy">
        <enum>QAbstractScrollArea::AdjustToContents</enum>
