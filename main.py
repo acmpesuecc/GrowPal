@@ -16,6 +16,7 @@ from pandas.core.common import flatten
 from imagekitio import ImageKit
 # pip install imagekitio
 from PIL import Image
+# pip install pillow
 import urllib
 # -------------------------------------------------------Variables and Misc.------------------------------------------------------- #
 global loginpage_details
