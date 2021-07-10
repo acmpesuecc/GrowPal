@@ -245,7 +245,7 @@ class buy_page(QMainWindow):
         self.tableWidget.setColumnWidth(1, 200)
         self.loadData()
         self.tableWidget.selectionModel().selectionChanged.connect(self.selection)
-        stylesheet = '''QHeaderView::section{Background-color:rgb(190,1,1);
+        stylesheet = '''QHeaderView::section{Background-color:black;
                                    border-radius:14px;}'''
         self.tableWidget.setStyleSheet(stylesheet)
 
@@ -271,6 +271,7 @@ class buy_page(QMainWindow):
 
     def go_to_transactions(self):
         widget.setCurrentIndex(5)
+        self.tableWidget.clearSelection()
 
 
     def go_to_items(self):
@@ -532,8 +533,8 @@ class orders(QMainWindow):
         self.tableWidget.setColumnWidth(2, 332)
         self.loadData()
         self.pushButton_back.clicked.connect(self.go_back)
-        stylesheet = '''QHeaderView::section{Background-color:rgb(190,1,1);
-                                   border-radius:14px;}'''
+        stylesheet = '''QHeaderView::section{Background-color:black;
+                                  border-radius:14px;}'''
         self.tableWidget.setStyleSheet(stylesheet)
 
     def go_back(self):
@@ -565,7 +566,7 @@ class Items(QMainWindow):
         loadUi("sold_items.ui", self)
         self.loadData()
         self.pushButton_back.clicked.connect(orders.go_back)
-        stylesheet = '''QHeaderView::section{Background-color:rgb(190,1,1);
+        stylesheet = '''QHeaderView::section{Background-color:black;
                                    border-radius:14px;}'''
         self.tableWidget.setStyleSheet(stylesheet)
 
@@ -573,19 +574,29 @@ class Items(QMainWindow):
 
     def loadData(self):
         global logged_in_username 
-        curs.execute(f"select product_name, product_price, product_description from listed_items where seller_username = '{logged_in_username}';")
+        curs.execute(f"select product_image_address, product_name, product_price, product_description from listed_items where seller_username = '{logged_in_username}';")
         listed_items = curs.fetchall()
     
         row = 0
         self.tableWidget.setRowCount(len(listed_items))
         for item in listed_items:
-            self.tableWidget.setItem(row, 1, QtWidgets.QTableWidgetItem(item[0]))
-            self.tableWidget.setItem(row, 2, QtWidgets.QTableWidgetItem(item[1]))
-            self.tableWidget.setItem(row, 3, QtWidgets.QTableWidgetItem(item[2]))
+            self.tableWidget.setItem(row, 1, QtWidgets.QTableWidgetItem(item[1]))
+            self.tableWidget.setItem(row, 2, QtWidgets.QTableWidgetItem(item[2]))
+            self.tableWidget.setItem(row, 3, QtWidgets.QTableWidgetItem(item[3]))
+
+            self.image = QtWidgets.QLabel(self.centralwidget)
+            self.image.setText('')
+            self.image.setScaledContents(True)
+            self.pixmap = QPixmap(item[0])
+            self.pixmap = self.pixmap.scaled(200, 250)
+            self.image.setPixmap(self.pixmap)
+            self.tableWidget.setCellWidget(row, 0, self.image)
+            self.image.setHidden(True)
+            self.tableWidget.verticalHeader().setDefaultSectionSize(200)
+
+
+
             row = row + 1
-
-
-
 
 
 
