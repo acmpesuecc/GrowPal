@@ -1,5 +1,6 @@
 # -------------------------------------------------------Import statements------------------------------------------------------- #
 import sys
+import os
 # pip install PyQt5
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
@@ -369,6 +370,7 @@ class sellPage(QMainWindow):
             "url_endpoint" : "https://ik.imagekit.io/bule8zjn18b/"
         }
 )
+        or.remove(num+".jpeg")
     def sell(self):
         if self.lineEdit_prod_name.text() == "" or self.lineEdit_price.text() == "" or self.lineEdit_description.text() == "" or self.lineEdit_name.text == "" or self.lineEdit_cont_num.text() == "" or self.lineEdit_email.text() == "" or self.lineEdit_address.text() == "" or self.lineEdit_upi_id == "":
             error_dialog = QtWidgets.QErrorMessage(self)
