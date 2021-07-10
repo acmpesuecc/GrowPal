@@ -357,10 +357,8 @@ class sellPage(QMainWindow):
         num = len(list(num))
         num = num  + 1 
         num = str(num)
-        givenFile = Image.open(givenFile)
-        givenFile.save(num + ".jpeg")
         upload = imagekit.upload(
-                file= open(num+".jpeg", "rb"), 
+                file= open(givenFile, "rb"), 
                 file_name= num+".jpeg", 
                 options = {"use_unique_file_name" : False }
 )       
@@ -444,7 +442,10 @@ class transactionPage(QMainWindow):
 
     def setPrice(self):
         global picture
-        self.pixmap = QPixmap(picture)
+
+        self.data = urllib.request.urlopen(picture).read()
+        self.pixmap = QPixmap()
+        self.pixmap.loadFromData(self.data)
         self.pixmap = self.pixmap.scaled(256, 171)
         self.label_picture.setPixmap(self.pixmap)
         self.label_ammount.setText(f'''Item: {item}
