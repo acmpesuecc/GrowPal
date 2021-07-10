@@ -77,7 +77,7 @@
       <property name="styleSheet">
        <string notr="true">background-color: black;
 color: white; 
-QHeaderView::section{background-color: black ; 
+horizontalHeader::section{background-color: black ; 
 color: white; }
 </string>
       </property>
