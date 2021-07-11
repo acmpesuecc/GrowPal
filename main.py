@@ -5,7 +5,8 @@ import os
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 from PyQt5 import QtGui
-from PyQt5.QtWidgets import QDialog, QApplication, QMainWindow, QLineEdit, QWidget, QFileDialog, QLabel
+from PyQt5.QtGui import QKeySequence
+from PyQt5.QtWidgets import QShortcut, QDialog, QApplication, QMainWindow, QLineEdit, QWidget, QFileDialog, QLabel
 from PyQt5.QtCore import QFile, QTextStream, QSize
 from PyQt5.QtGui import QIcon, QPixmap
 from validate_email import validate_email
@@ -16,8 +17,6 @@ import mysql.connector
 from pandas.core.common import flatten
 from imagekitio import ImageKit
 # pip install imagekitio
-from PIL import Image
-# pip install pillow
 import urllib
 # -------------------------------------------------------Variables and Misc.------------------------------------------------------- #
 global loginpage_details
@@ -44,7 +43,6 @@ else:
 
 global curs
 curs = db.cursor()
-
 def getLoginDetails():
     global loginpage_details
     curs.execute('select username, password from login_details')
@@ -52,13 +50,16 @@ def getLoginDetails():
     loginpage_details = list(flatten(loginpage_details))
 
 getLoginDetails()
-
+#cloudinary.config( 
+#  cloud_name = "growpal", 
+#  api_key = "399172334233584", 
+#  api_secret = "k9yRx3Qut_rC9uK2ntCl3_bra0M" 
+#)
 imagekit = ImageKit(
         private_key = 'private_UWuh0ACI8AKq5HVubqJ7K1gON6Q=',
         public_key='public_9lTcdw6jQBz3nQTYfU1MXlsC/ZU=',
         url_endpoint = 'https://ik.imagekit.io/bule8zjn18b'
 )
-
 
 
 
@@ -91,6 +92,8 @@ class login_page(QMainWindow):
         self.pushButton_back.clicked.connect(self.back_button_pressed)
         self.pushbutton_login.clicked.connect(self.login_button_pressed)
         self.password_view.clicked.connect(self.pass_view_clicked)
+        self.shortcut_login = QShortcut(QKeySequence('return'), self)
+        self.shortcut_login.activated.connect(self.login_button_pressed)
         global logged_in_username
         global logged_in_password
         logged_in_username = ''
@@ -162,6 +165,8 @@ class register_page(QMainWindow):
         self.pushbutton_register.clicked.connect(self.register_button_clicked)
         self.sp_view.clicked.connect(self.sp_view_clicked)
         self.cp_view.clicked.connect(self.cp_view_clicked)
+        self.shortcut_register = QShortcut(QKeySequence('return'), self)
+        self.shortcut_register.activated.connect(self.register_button_clicked)
 
         self.ispicon = QIcon('visiblity.svg')
         self.sp_view.setIcon(self.ispicon)
@@ -467,7 +472,8 @@ class creditCard(QMainWindow):
         global price
         global item
         global logged_in_username
-        curs.execute(f"insert into credit_card_transactions values('{logged_in_username}','{item}', '{price}', '{self.lineEdit_cnum.text()}', '{self.lineEdit_cvv.text()}', '{self.lineEdit_del_add.text()}')")
+        global picture
+        curs.execute(f"insert into credit_card_transactions values('{logged_in_username}','{item}', '{price}', '{self.lineEdit_cnum.text()}', '{self.lineEdit_cvv.text()}', '{self.lineEdit_del_add.text()}', '{picture}')")
         db.commit()
         error_dialog = QtWidgets.QErrorMessage(self)
         error_dialog.setWindowTitle('Order')
@@ -492,7 +498,8 @@ class debitCard(QMainWindow):
         global price
         global item
         global logged_in_username
-        curs.execute(f"insert into debit_card_transactions values('{logged_in_username}', '{item}', '{price}','{self.lineEdit_cnum.text()}', '{self.lineEdit_cvv.text()}', '{self.lineEdit_del_add.text()}')")
+        global picture
+        curs.execute(f"insert into debit_card_transactions values('{logged_in_username}', '{item}', '{price}','{self.lineEdit_cnum.text()}', '{self.lineEdit_cvv.text()}', '{self.lineEdit_del_add.text()}', '{picture}')")
         db.commit()
         error_dialog = QtWidgets.QErrorMessage(self)
         error_dialog.setWindowTitle('Order')
@@ -518,7 +525,8 @@ class upi(QMainWindow):
         global price
         global item
         global logged_in_username
-        curs.execute(f"insert into upi_transactions values('{logged_in_username}', '{item}', '{price}', '{self.lineEdit_upinum.text()}', '{self.lineEdit_del_add.text()}')")
+        global picture
+        curs.execute(f"insert into upi_transactions values('{logged_in_username}', '{item}', '{price}', '{self.lineEdit_upinum.text()}', '{self.lineEdit_del_add.text()}', '{picture}')")
         db.commit()
         error_dialog = QtWidgets.QErrorMessage(self)
         error_dialog.setWindowTitle('Order')
@@ -539,7 +547,8 @@ class netBank(QMainWindow):
         global price
         global item
         global logged_in_username
-        curs.execute(f"insert into net_bank_transactions values('{logged_in_username}', '{item}', '{price}','{self.lineEdit_acnum.text()}', '{self.lineEdit_cifnum.text()}', '{self.lineEdit_branch_code.text()}', '{self.lineEdit_del_add.text()}')")
+        global picture
+        curs.execute(f"insert into net_bank_transactions values('{logged_in_username}', '{item}', '{price}','{self.lineEdit_acnum.text()}', '{self.lineEdit_cifnum.text()}', '{self.lineEdit_branch_code.text()}', '{self.lineEdit_del_add.text()}', '{picture}')")
         db.commit()
         error_dialog = QtWidgets.QErrorMessage(self)
         error_dialog.setWindowTitle('Order')
@@ -567,7 +576,7 @@ class orders(QMainWindow):
         global logged_in_username
 
 
-        curs.execute(f"select item, price, flat_number from credit_card_transactions where username = '{logged_in_username}' union select item, price, flat_number from debit_card_transactions where username = '{logged_in_username}' union select item, price, flat_number from upi_transactions where username = '{logged_in_username}' union select item, price, flat_number from net_bank_transactions where username = '{logged_in_username}';")
+        curs.execute(f"select item, price, flat_number, image_url from credit_card_transactions where username = '{logged_in_username}' union select item, price, flat_number, image_url from debit_card_transactions where username = '{logged_in_username}' union select item, price, flat_number, image_url from upi_transactions where username = '{logged_in_username}' union select item, price, flat_number, image_url from net_bank_transactions where username = '{logged_in_username}';")
 
 
 
@@ -578,6 +587,25 @@ class orders(QMainWindow):
             self.tableWidget.setItem(row, 1, QtWidgets.QTableWidgetItem(order[0]))
             self.tableWidget.setItem(row, 2, QtWidgets.QTableWidgetItem(order[1]))
             self.tableWidget.setItem(row, 3, QtWidgets.QTableWidgetItem(order[2]))
+
+            
+            self.image = QtWidgets.QLabel(self.centralwidget)
+            self.image.setText('')
+            self.image.setScaledContents(True)
+            self.data = urllib.request.urlopen(order[3]).read()
+            self.pixmap = QPixmap()
+            self.pixmap.loadFromData(self.data)
+            self.pixmap = self.pixmap.scaled(200, 250)
+            self.image.setPixmap(self.pixmap)
+            self.tableWidget.setCellWidget(row, 0, self.image)
+            self.image.setHidden(True)
+            self.tableWidget.verticalHeader().setDefaultSectionSize(200)
+
+
+
+
+
+
             row = row + 1
 
 # -------------------------------------------------------Items------------------------------------------------------- #
