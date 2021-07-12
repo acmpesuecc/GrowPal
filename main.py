@@ -565,7 +565,6 @@ class orders(QMainWindow):
         loadUi("orders.ui", self)
         self.tableWidget.setColumnWidth(0, 250)
         self.tableWidget.setColumnWidth(1, 200)
-        self.tableWidget.setColumnWidth(2, 332)
         self.loadData()
         self.pushButton_back.clicked.connect(self.go_back)
 
