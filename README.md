@@ -24,10 +24,6 @@ pip install mysql-connector
 ```
 
 ```
-pip install pillow
-```
-
-```
 pip install imagekitio
 ```
 
