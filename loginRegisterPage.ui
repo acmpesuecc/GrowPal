@@ -122,6 +122,10 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>login_button</tabstop>
+  <tabstop>register_button</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

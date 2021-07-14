@@ -168,6 +168,13 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>lineEdit_username</tabstop>
+  <tabstop>lineEdit_password</tabstop>
+  <tabstop>pushbutton_login</tabstop>
+  <tabstop>password_view</tabstop>
+  <tabstop>pushButton_back</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

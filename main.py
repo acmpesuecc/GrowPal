@@ -330,11 +330,11 @@ class buy_page(QMainWindow):
             self.data = urllib.request.urlopen(item[3]).read()
             self.pixmap = QPixmap()
             self.pixmap.loadFromData(self.data)
-            self.pixmap = self.pixmap.scaled(200, 250)
+            self.pixmap = self.pixmap.scaled(250, 250)
             self.image.setPixmap(self.pixmap)
             self.tableWidget.setCellWidget(row, 0, self.image)
             self.image.setHidden(True)
-            self.tableWidget.verticalHeader().setDefaultSectionSize(200)
+            self.tableWidget.verticalHeader().setDefaultSectionSize(250)
             
             row = row + 1
 
@@ -575,7 +575,7 @@ class orders(QMainWindow):
         global logged_in_username
 
 
-        curs.execute(f"select item, price, flat_number, image_url from credit_card_transactions where username = '{logged_in_username}' union select item, price, flat_number, image_url from debit_card_transactions where username = '{logged_in_username}' union select item, price, flat_number, image_url from upi_transactions where username = '{logged_in_username}' union select item, price, flat_number, image_url from net_bank_transactions where username = '{logged_in_username}';")
+        curs.execute(f"select item, price, flat_number, image_url from credit_card_transactions where username = '{logged_in_username}' union all select item, price, flat_number, image_url from debit_card_transactions where username = '{logged_in_username}' union all select item, price, flat_number, image_url from upi_transactions where username = '{logged_in_username}' union all select item, price, flat_number, image_url from net_bank_transactions where username = '{logged_in_username}';")
 
 
 

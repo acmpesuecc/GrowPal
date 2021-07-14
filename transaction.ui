@@ -188,6 +188,13 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>pushButton_cc</tabstop>
+  <tabstop>pushButton_upi</tabstop>
+  <tabstop>pushButton_dc</tabstop>
+  <tabstop>pushButton_netbank</tabstop>
+  <tabstop>pushButton_back</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

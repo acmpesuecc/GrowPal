@@ -548,6 +548,20 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>lineEdit_prod_name</tabstop>
+  <tabstop>lineEdit_price</tabstop>
+  <tabstop>lineEdit_description</tabstop>
+  <tabstop>lineEdit_name</tabstop>
+  <tabstop>lineEdit_cont_num</tabstop>
+  <tabstop>lineEdit_email</tabstop>
+  <tabstop>lineEdit_address</tabstop>
+  <tabstop>lineEdit_upi_id</tabstop>
+  <tabstop>pushButton_UploadImages</tabstop>
+  <tabstop>pushButton_Sell</tabstop>
+  <tabstop>comboBox</tabstop>
+  <tabstop>pushButton_back</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

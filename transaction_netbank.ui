@@ -184,6 +184,14 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>lineEdit_acnum</tabstop>
+  <tabstop>lineEdit_cifnum</tabstop>
+  <tabstop>lineEdit_branch_code</tabstop>
+  <tabstop>lineEdit_del_add</tabstop>
+  <tabstop>pushButton_pay</tabstop>
+  <tabstop>pushButton_cancel</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
