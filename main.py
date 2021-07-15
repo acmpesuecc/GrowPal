@@ -357,6 +357,12 @@ class sellPage(QMainWindow):
 
         global givenFile
         givenFile = sellPage.file[0]
+        
+        self.pixmap = QPixmap(givenFile)
+        self.label_picture.setScaledContents(True)
+
+        self.pixmap = self.pixmap.scaled(190, 122)
+        self.label_picture.setPixmap(self.pixmap)
         curs.execute("select product_name from listed_items")
         num = curs.fetchall()
         num = len(list(num))
