@@ -407,28 +407,24 @@ class sellPage(QMainWindow):
 
         global givenFile
         givenFile = sellPage.file[0]
-        
-        self.pixmap = QPixmap(givenFile)
-        self.label_picture.setScaledContents(True)
+        if givenFile == '':
+            givenFile = 'https://ik.imagekit.io/bule8zjn18b/ina.jpeg'
 
-        self.pixmap = self.pixmap.scaled(190, 122)
-        self.label_picture.setPixmap(self.pixmap)
-        curs.execute("select product_name from listed_items")
-        num = curs.fetchall()
-        num = len(list(num))
-        num = num  + 1 
-        num = str(num)
-        upload = imagekit.upload(
-                file= open(givenFile, "rb"), 
-                file_name= num+".jpeg", 
-                options = {"use_unique_file_name" : False }
-)       
-        global imagekit_url
-        imagekit_url = imagekit.url({
-            "path": num + ".jpeg",
-            "url_endpoint" : "https://ik.imagekit.io/bule8zjn18b/"
-        }
-)
+            self.data = urllib.request.urlopen(givenFile).read()
+            self.pixmap = QPixmap()
+            self.pixmap.loadFromData(self.data)
+            self.label_picture.setScaledContents(True)
+            self.pixmap = self.pixmap.scaled(190, 212)
+            self.label_picture.setPixmap(self.pixmap)
+        
+
+
+        else:
+            self.pixmap = QPixmap(givenFile)
+            self.pixmap = self.pixmap.scaled(190, 212)
+            self.label_picture.setScaledContents(True)
+            self.label_picture.setPixmap(self.pixmap)
+
         
     def sell(self):
         if self.lineEdit_prod_name.text() == "" or self.lineEdit_price.text() == "" or self.lineEdit_description.text() == "" or self.lineEdit_name.text == "" or self.lineEdit_cont_num.text() == "" or self.lineEdit_email.text() == "" or self.lineEdit_address.text() == "" or self.lineEdit_upi_id == "":
@@ -456,6 +452,24 @@ class sellPage(QMainWindow):
             self.label_browse.setText('')
             global logged_in_username
             global imagekit_url
+
+
+            curs.execute("select product_name from listed_items")
+            num = curs.fetchall()
+            num = len(list(num))
+            num = num  + 1 
+            num = str(num)
+            upload = imagekit.upload(
+                file= open(givenFile, "rb"), 
+                file_name= num+".jpeg", 
+                options = {"use_unique_file_name" : False }
+                )       
+            global imagekit_url
+            imagekit_url = imagekit.url({
+                "path": num + ".jpeg",
+                "url_endpoint" : "https://ik.imagekit.io/bule8zjn18b/"
+                }
+                )
             curs.execute(f"insert into listed_items values('{sellPage.given_prod_name}', '{sellPage.given_price}', '{sellPage.given_description}', '{logged_in_username}', '{sellPage.given_name}', '{sellPage.given_cont_num}', '{sellPage.given_email}','{sellPage.given_address}', '{sellPage.given_upi_id}', '{str(imagekit_url)}');")      
             db.commit()
             error_dialog = QtWidgets.QErrorMessage(self)
@@ -558,7 +572,7 @@ class debitCard(QMainWindow):
         global item
         global logged_in_username
         global picture
-        curs.execute(f"insert into debit_card_transactions values('{logged_in_username}', '{item}', '{price}','{self.lineEdit_cnum.text()}', '{self.lineEdit_cvv.text()}', '{self.lineEdit_del_add.text()}', '{picture}')")
+        curs.execute(f"insert into debit_card_transactions values('{logged_in_username}', '{item}', '{price}','{self.lineEdit_dnum.text()}', '{self.lineEdit_cvv.text()}', '{self.lineEdit_del_add.text()}', '{picture}')")
         db.commit()
         error_dialog = QtWidgets.QErrorMessage(self)
         error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")

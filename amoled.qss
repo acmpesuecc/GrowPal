@@ -117,6 +117,7 @@ QToolButton:hover{
 	background-color: #000000;
 }
 QLineEdit {
+	color: #FFFFFF;
 	background:#000000;
 	selection-background-color:#007b50;
 	selection-color: #FFFFFF;

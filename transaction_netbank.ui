@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>922</width>
     <height>600</height>
    </rect>
   </property>
@@ -18,24 +18,10 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0" colspan="2">
-     <widget class="QLabel" name="label">
-      <property name="font">
-       <font>
-        <pointsize>48</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Net Banking  </string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0" colspan="2">
-     <layout class="QFormLayout" name="formLayout">
+    <item row="1" column="0" colspan="3">
+     <layout class="QFormLayout" name="formLayout_2">
       <item row="0" column="0">
-       <widget class="QLabel" name="label_2">
+       <widget class="QLabel" name="label_6">
         <property name="font">
          <font>
           <pointsize>26</pointsize>
@@ -44,21 +30,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Account Number:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_3">
-        <property name="font">
-         <font>
-          <pointsize>26</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>CIF Number: </string>
+         <string>Account Number: </string>
         </property>
        </widget>
       </item>
@@ -73,6 +45,20 @@
         </property>
        </widget>
       </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_7">
+        <property name="font">
+         <font>
+          <pointsize>26</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>CIF Number: </string>
+        </property>
+       </widget>
+      </item>
       <item row="1" column="1">
        <widget class="QLineEdit" name="lineEdit_cifnum">
         <property name="font">
@@ -84,33 +70,8 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_5">
-        <property name="font">
-         <font>
-          <pointsize>26</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Branch Code: </string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLineEdit" name="lineEdit_branch_code">
-        <property name="font">
-         <font>
-          <pointsize>26</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-       </widget>
-      </item>
       <item row="3" column="0">
-       <widget class="QLabel" name="label_4">
+       <widget class="QLabel" name="label_8">
         <property name="font">
          <font>
           <pointsize>26</pointsize>
@@ -134,7 +95,59 @@
         </property>
        </widget>
       </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="font">
+         <font>
+          <pointsize>26</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Branch Code:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="lineEdit_branch_code">
+        <property name="font">
+         <font>
+          <pointsize>26</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+       </widget>
+      </item>
      </layout>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label">
+      <property name="font">
+       <font>
+        <pointsize>36</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Net Banking</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLabel" name="label_5">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>card.svg</pixmap>
+      </property>
+     </widget>
     </item>
     <item row="2" column="0">
      <widget class="QPushButton" name="pushButton_cancel">
@@ -153,7 +166,7 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="1">
+    <item row="2" column="1" colspan="2">
      <widget class="QPushButton" name="pushButton_pay">
       <property name="font">
        <font>
@@ -177,21 +190,13 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>922</width>
      <height>30</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <tabstops>
-  <tabstop>lineEdit_acnum</tabstop>
-  <tabstop>lineEdit_cifnum</tabstop>
-  <tabstop>lineEdit_branch_code</tabstop>
-  <tabstop>lineEdit_del_add</tabstop>
-  <tabstop>pushButton_pay</tabstop>
-  <tabstop>pushButton_cancel</tabstop>
- </tabstops>
  <resources/>
  <connections/>
 </ui>
