@@ -50,11 +50,6 @@ def getLoginDetails():
     loginpage_details = list(flatten(loginpage_details))
 
 getLoginDetails()
-#cloudinary.config( 
-#  cloud_name = "growpal", 
-#  api_key = "399172334233584", 
-#  api_secret = "k9yRx3Qut_rC9uK2ntCl3_bra0M" 
-#)
 imagekit = ImageKit(
         private_key = 'private_UWuh0ACI8AKq5HVubqJ7K1gON6Q=',
         public_key='public_9lTcdw6jQBz3nQTYfU1MXlsC/ZU=',
@@ -124,6 +119,7 @@ class login_page(QMainWindow):
         if self.lineEdit_username.text() == "" or self.lineEdit_password.text() == "":
 
             error_dialog = QtWidgets.QErrorMessage(self)
+            error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
             error_dialog.setWindowTitle('Empty Fields')
             error_dialog.showMessage("Please fill all the fields")
         else:
@@ -136,6 +132,7 @@ class login_page(QMainWindow):
                     self.lineEdit_username.setText("")
                     self.lineEdit_password.setText("")
                     error_dialog = QtWidgets.QErrorMessage(self)
+                    error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
                     error_dialog.setWindowTitle('Welcome')
                     error_dialog.showMessage(
                         f"Welcome back {logged_in_username}!")
@@ -143,12 +140,14 @@ class login_page(QMainWindow):
                     buy_page.loadData()
                 else:
                     error_dialog = QtWidgets.QErrorMessage(self)
+                    error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
                     error_dialog.setWindowTitle('Password')
                     error_dialog.showMessage(
                         'Incorrect password, please try again')
                     self.lineEdit_password.setText("")
             else:
                 error_dialog = QtWidgets.QErrorMessage(self)
+                error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
                 error_dialog.setWindowTitle('Account')
                 error_dialog.showMessage('Please create an account')
                 self.lineEdit_username.setText("")
@@ -200,16 +199,19 @@ class register_page(QMainWindow):
 
         if self.lineEdit_username.text() == "" or self.lineEdit_email.text() == "" or self.lineEdit_phnumber.text() == "" or self.lineEdit_password.text() == "" or self.lineEdit_repeatpassword.text() == "":
             error_dialog = QtWidgets.QErrorMessage(self)
+            error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
             error_dialog.setWindowTitle('Empty Fields')
             error_dialog.showMessage("Please fill all the fields")
         elif len(self.lineEdit_phnumber.text()) != 10:
             error_dialog = QtWidgets.QErrorMessage(self)
+            error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
             error_dialog.setWindowTitle('Phone Number')
             error_dialog.showMessage('Please enter a valid phone number')
             self.lineEdit_phnumber.setText("")
 
         elif self.lineEdit_password.text() != self.lineEdit_repeatpassword.text():
             error_dialog = QtWidgets.QErrorMessage(self)
+            error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
             error_dialog.setWindowTitle('Password')
             error_dialog.showMessage('Your passwords do not match. Try again.')
             self.lineEdit_password.setText("")
@@ -228,12 +230,14 @@ class register_page(QMainWindow):
                     self.lineEdit_password.setText("")
                     self.lineEdit_repeatpassword.setText("")
                     error_dialog = QtWidgets.QErrorMessage(self)
+                    error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
                     error_dialog.setWindowTitle('Thanks!')
                     error_dialog.showMessage(
                         'Thanks for creating an account with us! Please login with the same credentials')
                     widget.setCurrentIndex(1)
                 else:
                     error_dialog = QtWidgets.QErrorMessage(self)
+                    error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
                     error_dialog.setWindowTitle('Account')
                     error_dialog.showMessage(
                         'You are already registered, please login.')
@@ -241,6 +245,7 @@ class register_page(QMainWindow):
 
             else:
                 error_dialog = QtWidgets.QErrorMessage(self)
+                error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
                 error_dialog.setWindowTitle('Email')
                 error_dialog.showMessage('Please enter a valid email ID')
                 self.lineEdit_email.setText("")
@@ -261,6 +266,10 @@ class buy_page(QMainWindow):
         self.tableWidget.setColumnWidth(0, 250)
         self.tableWidget.setColumnWidth(1, 200)
         self.loadData()
+        self.search_button.clicked.connect(self.loadFromSearch)
+        self.search_bar.textChanged.connect(self.empty)
+        self.shortcut_search = QShortcut(QKeySequence('return'), self)
+        self.shortcut_search.activated.connect(self.loadFromSearch)
         self.tableWidget.selectionModel().selectionChanged.connect(self.selection)
     def selection(self, selected):
         for ix in selected.indexes():
@@ -335,8 +344,49 @@ class buy_page(QMainWindow):
             self.tableWidget.setCellWidget(row, 0, self.image)
             self.image.setHidden(True)
             self.tableWidget.verticalHeader().setDefaultSectionSize(250)
-            
             row = row + 1
+    
+
+
+    def empty(self):
+        if self.search_bar.text() == '':
+            self.loadData()
+
+    def loadFromSearch(self):
+        self.search_criteria = self.search_bar.text()
+        if self.search_criteria == '':
+            self.loadData()
+
+        else:
+
+            curs.execute(f"select product_name, product_price, product_description, product_image_address from listed_items")
+            listed_items = curs.fetchall()
+    
+            row = 0
+            self.tableWidget.setRowCount(0)
+            self.tableWidget.setRowCount(len(listed_items))
+            for item in listed_items:
+                if self.search_criteria.lower() in item[0].lower():
+                    self.tableWidget.setItem(row, 1, QtWidgets.QTableWidgetItem(item[0]))
+                    self.tableWidget.setItem(row, 2, QtWidgets.QTableWidgetItem(item[1]))
+                    self.tableWidget.setItem(row, 3, QtWidgets.QTableWidgetItem(item[2]))
+
+
+
+                    self.image = QtWidgets.QLabel(self.centralwidget)
+                    self.image.setText('')
+                    self.image.setScaledContents(True)
+                    self.data = urllib.request.urlopen(item[3]).read()
+                    self.pixmap = QPixmap()
+                    self.pixmap.loadFromData(self.data)
+                    self.pixmap = self.pixmap.scaled(250, 250)
+                    self.image.setPixmap(self.pixmap)
+                    self.tableWidget.setCellWidget(row, 0, self.image)
+                    self.image.setHidden(True)
+                    self.tableWidget.verticalHeader().setDefaultSectionSize(250)
+                    row = row + 1
+
+
 
 # -------------------------------------------------------sellPage------------------------------------------------------- #
 class sellPage(QMainWindow):
@@ -383,6 +433,7 @@ class sellPage(QMainWindow):
     def sell(self):
         if self.lineEdit_prod_name.text() == "" or self.lineEdit_price.text() == "" or self.lineEdit_description.text() == "" or self.lineEdit_name.text == "" or self.lineEdit_cont_num.text() == "" or self.lineEdit_email.text() == "" or self.lineEdit_address.text() == "" or self.lineEdit_upi_id == "":
             error_dialog = QtWidgets.QErrorMessage(self)
+            error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
             error_dialog.setWindowTitle('Empty Fields')
             error_dialog.showMessage("Please fill all the fields")
         else:
@@ -408,6 +459,7 @@ class sellPage(QMainWindow):
             curs.execute(f"insert into listed_items values('{sellPage.given_prod_name}', '{sellPage.given_price}', '{sellPage.given_description}', '{logged_in_username}', '{sellPage.given_name}', '{sellPage.given_cont_num}', '{sellPage.given_email}','{sellPage.given_address}', '{sellPage.given_upi_id}', '{str(imagekit_url)}');")      
             db.commit()
             error_dialog = QtWidgets.QErrorMessage(self)
+            error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
 
 
             error_dialog.setWindowTitle('Sell')
@@ -482,6 +534,7 @@ class creditCard(QMainWindow):
         curs.execute(f"insert into credit_card_transactions values('{logged_in_username}','{item}', '{price}', '{self.lineEdit_cnum.text()}', '{self.lineEdit_cvv.text()}', '{self.lineEdit_del_add.text()}', '{picture}')")
         db.commit()
         error_dialog = QtWidgets.QErrorMessage(self)
+        error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
         error_dialog.setWindowTitle('Order')
         error_dialog.showMessage('Your order has been placed.')
         transactionPage.go_back()
@@ -508,6 +561,7 @@ class debitCard(QMainWindow):
         curs.execute(f"insert into debit_card_transactions values('{logged_in_username}', '{item}', '{price}','{self.lineEdit_cnum.text()}', '{self.lineEdit_cvv.text()}', '{self.lineEdit_del_add.text()}', '{picture}')")
         db.commit()
         error_dialog = QtWidgets.QErrorMessage(self)
+        error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
         error_dialog.setWindowTitle('Order')
         error_dialog.showMessage('Your order has been placed.')
 
@@ -535,6 +589,7 @@ class upi(QMainWindow):
         curs.execute(f"insert into upi_transactions values('{logged_in_username}', '{item}', '{price}', '{self.lineEdit_upinum.text()}', '{self.lineEdit_del_add.text()}', '{picture}')")
         db.commit()
         error_dialog = QtWidgets.QErrorMessage(self)
+        error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
         error_dialog.setWindowTitle('Order')
         error_dialog.showMessage('Your order has been placed.')
 
@@ -557,6 +612,7 @@ class netBank(QMainWindow):
         curs.execute(f"insert into net_bank_transactions values('{logged_in_username}', '{item}', '{price}','{self.lineEdit_acnum.text()}', '{self.lineEdit_cifnum.text()}', '{self.lineEdit_branch_code.text()}', '{self.lineEdit_del_add.text()}', '{picture}')")
         db.commit()
         error_dialog = QtWidgets.QErrorMessage(self)
+        error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
         error_dialog.setWindowTitle('Order')
         error_dialog.showMessage('Your order has been placed.')
 
