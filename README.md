@@ -43,5 +43,5 @@ screen for checkout and transaction - Done
 
 SQL integration - Done 
 
-Testing - N/A
+Testing - in progress
 
