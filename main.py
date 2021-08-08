@@ -34,7 +34,7 @@ price = 0
 global givenFile
 givenFile = 'product_cake1.jpeg'
 global db
-db = mysql.connector.connect(host='sql6.freemysqlhosting.net', user = 'sql6424083', passwd = 'D2acFG7MzS', database = 'sql6424083')
+db = mysql.connector.connect(host='sql6.freesqldatabase.com', user = 'sql6429789', passwd = 'pz3CzMcbKL', database = 'sql6429789')
 if(db):
     print('sql connection successful')
 else:

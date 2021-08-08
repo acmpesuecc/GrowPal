@@ -296,7 +296,7 @@ color: white; }
        </font>
       </property>
       <property name="placeholderText">
-       <string> Search</string>
+       <string>Search</string>
       </property>
       <property name="clearButtonEnabled">
        <bool>false</bool>
