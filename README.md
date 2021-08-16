@@ -29,19 +29,19 @@ pip install imagekitio
 
 
 ## Progress
-Make UI pages - 90%
+- [x] Make UI pages - 90%
 
-Login page and logic for username and password - Done
+- [x] Login page and logic for username and password - Done
 
-scroll widget for buy page - Done
+- [x] scroll widget for buy page - Done
 
-Sell Page - Done
+- [x] Sell Page - Done
 
-Upload Images - Done 
+- [x] Upload Images - Done 
 
-screen for checkout and transaction - Done
+- [x] screen for checkout and transaction - Done
 
-SQL integration - Done 
+- [x] SQL integration - Done 
 
-Testing - in progress
+- [x] Testing - in progress
 
