@@ -41,7 +41,7 @@ product_price_listed = ''
 global product_description_listed
 product_description_listed = ''
 global db
-db = mysql.connector.connect(host='localhost', user = 'root', passwd = 'mysql_password', database = 'growpal')
+db = mysql.connector.connect(host='anuragrao.ddns.net', user = 'root', passwd = 'mysql_password', database = 'growpal')
 if(db):
     print('sql connection successful')
 else:
