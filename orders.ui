@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1284</width>
+    <height>658</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -105,6 +105,21 @@ color: white; }
       </attribute>
       <column>
        <property name="text">
+        <string>Cancel</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>20</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="textAlignment">
+        <set>AlignCenter</set>
+       </property>
+      </column>
+      <column>
+       <property name="text">
         <string>Picture</string>
        </property>
        <property name="font">
@@ -185,8 +200,8 @@ color: white; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
-     <height>30</height>
+     <width>1284</width>
+     <height>29</height>
     </rect>
    </property>
   </widget>

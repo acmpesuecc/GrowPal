@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>998</width>
+    <height>572</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,41 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="0" colspan="6">
+    <item row="2" column="0" colspan="3">
+     <widget class="QPushButton" name="pushButton_back">
+      <property name="font">
+       <font>
+        <pointsize>26</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>      &lt;      </string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label">
+      <property name="font">
+       <font>
+        <pointsize>28</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Selling  </string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="7">
      <widget class="QTableWidget" name="tableWidget">
       <property name="font">
        <font>
@@ -46,6 +80,21 @@ color: white; }
       <attribute name="horizontalHeaderStretchLastSection">
        <bool>true</bool>
       </attribute>
+      <column>
+       <property name="text">
+        <string>Edit</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>18</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="textAlignment">
+        <set>AlignHCenter|AlignTop</set>
+       </property>
+      </column>
       <column>
        <property name="text">
         <string>Image</string>
@@ -108,7 +157,7 @@ color: white; }
       </column>
      </widget>
     </item>
-    <item row="2" column="4" colspan="2">
+    <item row="2" column="5" colspan="2">
      <spacer name="horizontalSpacer_2">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
@@ -121,34 +170,7 @@ color: white; }
       </property>
      </spacer>
     </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="label">
-      <property name="font">
-       <font>
-        <pointsize>28</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Selling  </string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QLabel" name="label_2">
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap>selling.svg</pixmap>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="2" colspan="2">
+    <item row="2" column="3" colspan="2">
      <spacer name="horizontalSpacer">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
@@ -161,20 +183,13 @@ color: white; }
       </property>
      </spacer>
     </item>
-    <item row="2" column="0" colspan="2">
-     <widget class="QPushButton" name="pushButton_back">
-      <property name="font">
-       <font>
-        <pointsize>26</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
+    <item row="0" column="1">
+     <widget class="QLabel" name="label_2">
       <property name="text">
-       <string>      &lt;      </string>
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>selling.svg</pixmap>
       </property>
      </widget>
     </item>
@@ -185,8 +200,8 @@ color: white; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
-     <height>30</height>
+     <width>998</width>
+     <height>29</height>
     </rect>
    </property>
   </widget>

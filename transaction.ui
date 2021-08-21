@@ -88,28 +88,24 @@
           <bold>true</bold>
          </font>
         </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>UPI  </string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QPushButton" name="pushButton_dc">
-        <property name="font">
-         <font>
-          <pointsize>28</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
+        <property name="layoutDirection">
+         <enum>Qt::RightToLeft</enum>
         </property>
         <property name="styleSheet">
          <string notr="true"/>
         </property>
         <property name="text">
-         <string>Debit Card  </string>
+         <string>UPI </string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>upi.svg</normaloff>upi.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>34</width>
+          <height>34</height>
+         </size>
         </property>
        </widget>
       </item>
@@ -122,11 +118,24 @@
           <bold>true</bold>
          </font>
         </property>
+        <property name="layoutDirection">
+         <enum>Qt::RightToLeft</enum>
+        </property>
         <property name="styleSheet">
          <string notr="true"/>
         </property>
         <property name="text">
-         <string>Credit Card  </string>
+         <string>Credit Card </string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>card.svg</normaloff>card.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>34</width>
+          <height>34</height>
+         </size>
         </property>
        </widget>
       </item>
@@ -139,11 +148,57 @@
           <bold>true</bold>
          </font>
         </property>
+        <property name="layoutDirection">
+         <enum>Qt::RightToLeft</enum>
+        </property>
         <property name="styleSheet">
          <string notr="true"/>
         </property>
         <property name="text">
-         <string>Net Banking  </string>
+         <string>Net Banking </string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>netbanking.svg</normaloff>netbanking.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QPushButton" name="pushButton_dc">
+        <property name="font">
+         <font>
+          <pointsize>28</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::RightToLeft</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>Debit Card </string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>card.svg</normaloff>card.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>34</width>
+          <height>34</height>
+         </size>
         </property>
        </widget>
       </item>
@@ -192,7 +247,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>30</height>
+     <height>29</height>
     </rect>
    </property>
   </widget>

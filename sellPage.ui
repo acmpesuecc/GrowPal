@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>972</width>
-    <height>661</height>
+    <height>766</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,6 +18,256 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QLabel" name="label">
+      <property name="font">
+       <font>
+        <pointsize>28</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Sell</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0" colspan="5">
+     <widget class="QLabel" name="label_browse">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>42</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="5">
+     <widget class="QPushButton" name="pushButton_UploadImages">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Upload Images</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0" colspan="5">
+     <layout class="QFormLayout" name="formLayout_3">
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_upiID">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>UPI ID:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_phnumber">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Ph Number:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_address">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Flat Number: </string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="lineEdit_cont_num">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="lineEdit_upi_id">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLineEdit" name="lineEdit_address">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_email">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Email:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="lineEdit_email">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_Name">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Your Name:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="lineEdit_name">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="2" column="5">
+     <widget class="QLabel" name="label_picture">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>sell_page.svg</pixmap>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="3" colspan="3">
+     <widget class="QPushButton" name="pushButton_Sell">
+      <property name="minimumSize">
+       <size>
+        <width>581</width>
+        <height>61</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>28</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>Sell</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0" colspan="2">
+     <widget class="QPushButton" name="pushButton_back">
+      <property name="font">
+       <font>
+        <pointsize>28</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>&lt;</string>
+      </property>
+     </widget>
+    </item>
     <item row="1" column="0" colspan="6">
      <layout class="QFormLayout" name="formLayout">
       <item row="0" column="0">
@@ -189,253 +439,6 @@
       </item>
      </layout>
     </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="label">
-      <property name="font">
-       <font>
-        <pointsize>28</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Sell</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="0" colspan="5">
-     <widget class="QLabel" name="label_browse">
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>42</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::Box</enum>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="5">
-     <widget class="QPushButton" name="pushButton_UploadImages">
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>0</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>16</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Upload Images</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0" colspan="5">
-     <layout class="QFormLayout" name="formLayout_3">
-      <item row="4" column="0">
-       <widget class="QLabel" name="label_upiID">
-        <property name="font">
-         <font>
-          <pointsize>16</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>UPI ID:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_phnumber">
-        <property name="font">
-         <font>
-          <pointsize>16</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Contact Number:           </string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="label_address">
-        <property name="font">
-         <font>
-          <pointsize>16</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Flat Number: </string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QLineEdit" name="lineEdit_cont_num">
-        <property name="font">
-         <font>
-          <pointsize>16</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QLineEdit" name="lineEdit_upi_id">
-        <property name="font">
-         <font>
-          <pointsize>16</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="1">
-       <widget class="QLineEdit" name="lineEdit_address">
-        <property name="font">
-         <font>
-          <pointsize>16</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_email">
-        <property name="font">
-         <font>
-          <pointsize>16</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Email:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="lineEdit_email">
-        <property name="font">
-         <font>
-          <pointsize>16</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="label_Name">
-        <property name="font">
-         <font>
-          <pointsize>16</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Your Name:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="lineEdit_name">
-        <property name="font">
-         <font>
-          <pointsize>16</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item row="2" column="5">
-     <widget class="QLabel" name="label_picture">
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QLabel" name="label_2">
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap>sell_page.svg</pixmap>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="3" colspan="3">
-     <widget class="QPushButton" name="pushButton_Sell">
-      <property name="minimumSize">
-       <size>
-        <width>581</width>
-        <height>61</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>28</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="text">
-       <string>Sell</string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="0" colspan="2">
-     <widget class="QPushButton" name="pushButton_back">
-      <property name="font">
-       <font>
-        <pointsize>28</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="text">
-       <string>&lt;</string>
-      </property>
-     </widget>
-    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -444,7 +447,7 @@
      <x>0</x>
      <y>0</y>
      <width>972</width>
-     <height>30</height>
+     <height>29</height>
     </rect>
    </property>
   </widget>

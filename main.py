@@ -33,8 +33,14 @@ global price
 price = 0
 global givenFile
 givenFile = 'product_cake1.jpeg'
+global product_name_listed
+product_name_listed = ''
+global product_price_listed
+product_price_listed = ''
+global product_description_listed
+product_description_listed = ''
 global db
-db = mysql.connector.connect(host='sql6.freesqldatabase.com', user = 'sql6429789', passwd = 'pz3CzMcbKL', database = 'sql6429789')
+db = mysql.connector.connect(host='localhost', user = 'root', passwd = 'mysql_password', database = 'growpal')
 if(db):
     print('sql connection successful')
 else:
@@ -321,7 +327,7 @@ class buy_page(QMainWindow):
     def loadData(self):
 
         global logged_in_username 
-        curs.execute(f"select product_name, product_price, product_description, product_image_address from listed_items;")
+        curs.execute(f"select product_name, product_price, product_description, product_image_address from listed_items where deleted = 'False';")
         listed_items = curs.fetchall()
     
         row = 0
@@ -470,7 +476,11 @@ class sellPage(QMainWindow):
                 "url_endpoint" : "https://ik.imagekit.io/bule8zjn18b/"
                 }
                 )
-            curs.execute(f"insert into listed_items values('{sellPage.given_prod_name}', '{sellPage.given_price}', '{sellPage.given_description}', '{logged_in_username}', '{sellPage.given_name}', '{sellPage.given_cont_num}', '{sellPage.given_email}','{sellPage.given_address}', '{sellPage.given_upi_id}', '{str(imagekit_url)}');")      
+            curs.execute("select item_id_num from numbers")
+            item_id = int(curs.fetchone()[0])
+            item_id += 1
+            curs.execute(f"insert into listed_items values('{sellPage.given_prod_name}', '{sellPage.given_price}', '{sellPage.given_description}', '{logged_in_username}', '{sellPage.given_name}', '{sellPage.given_cont_num}', '{sellPage.given_email}','{sellPage.given_address}', '{sellPage.given_upi_id}', '{str(imagekit_url)}', 'False', {item_id});")      
+            curs.execute(f"update numbers set item_id_num = {item_id} where item_id_num = {item_id - 1}")
             db.commit()
             error_dialog = QtWidgets.QErrorMessage(self)
             error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
@@ -545,7 +555,11 @@ class creditCard(QMainWindow):
         global item
         global logged_in_username
         global picture
-        curs.execute(f"insert into credit_card_transactions values('{logged_in_username}','{item}', '{price}', '{self.lineEdit_cnum.text()}', '{self.lineEdit_cvv.text()}', '{self.lineEdit_del_add.text()}', '{picture}')")
+        curs.execute("select order_id_num from numbers")
+        order_id = int(curs.fetchone()[0])
+        order_id += 1
+        curs.execute(f"insert into credit_card_transactions values('{logged_in_username}','{item}', '{price}', '{self.lineEdit_cnum.text()}', '{self.lineEdit_cvv.text()}', '{self.lineEdit_del_add.text()}', '{picture}', 'False')")
+        curs.execute(f'''update numbers set order_id_num = {order_id} where order_id_num = {order_id - 1}''')
         db.commit()
         error_dialog = QtWidgets.QErrorMessage(self)
         error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
@@ -572,7 +586,11 @@ class debitCard(QMainWindow):
         global item
         global logged_in_username
         global picture
-        curs.execute(f"insert into debit_card_transactions values('{logged_in_username}', '{item}', '{price}','{self.lineEdit_dnum.text()}', '{self.lineEdit_cvv.text()}', '{self.lineEdit_del_add.text()}', '{picture}')")
+        curs.execute("select order_id_num from numbers")
+        order_id = int(curs.fetchone()[0])
+        order_id += 1
+        curs.execute(f"insert into debit_card_transactions values('{logged_in_username}', '{item}', '{price}','{self.lineEdit_dnum.text()}', '{self.lineEdit_cvv.text()}', '{self.lineEdit_del_add.text()}', '{picture}', 'False')")
+        curs.execute(f'''update numbers set order_id_num = {order_id} where order_id_num = {order_id - 1}''')
         db.commit()
         error_dialog = QtWidgets.QErrorMessage(self)
         error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
@@ -600,7 +618,11 @@ class upi(QMainWindow):
         global item
         global logged_in_username
         global picture
-        curs.execute(f"insert into upi_transactions values('{logged_in_username}', '{item}', '{price}', '{self.lineEdit_upinum.text()}', '{self.lineEdit_del_add.text()}', '{picture}')")
+        curs.execute("select order_id_num from numbers")
+        order_id = int(curs.fetchone()[0])
+        order_id += 1
+        curs.execute(f"insert into upi_transactions values('{logged_in_username}', '{item}', '{price}', '{self.lineEdit_upinum.text()}', '{self.lineEdit_del_add.text()}', '{picture}', 'False')")
+        curs.execute(f'''update numbers set order_id_num = {order_id} where order_id_num = {order_id - 1}''')
         db.commit()
         error_dialog = QtWidgets.QErrorMessage(self)
         error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
@@ -623,7 +645,11 @@ class netBank(QMainWindow):
         global item
         global logged_in_username
         global picture
-        curs.execute(f"insert into net_bank_transactions values('{logged_in_username}', '{item}', '{price}','{self.lineEdit_acnum.text()}', '{self.lineEdit_cifnum.text()}', '{self.lineEdit_branch_code.text()}', '{self.lineEdit_del_add.text()}', '{picture}')")
+        curs.execute("select order_id_num from numbers")
+        order_id = int(curs.fetchone()[0])
+        order_id += 1
+        curs.execute(f"insert into net_bank_transactions values('{logged_in_username}', '{item}', '{price}','{self.lineEdit_acnum.text()}', '{self.lineEdit_cifnum.text()}', '{self.lineEdit_branch_code.text()}', '{self.lineEdit_del_add.text()}', '{picture}', 'False')")
+        curs.execute(f'''update numbers set order_id_num = {order_id} where order_id_num = {order_id - 1}''')
         db.commit()
         error_dialog = QtWidgets.QErrorMessage(self)
         error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
@@ -643,6 +669,7 @@ class orders(QMainWindow):
         self.tableWidget.setColumnWidth(1, 200)
         self.loadData()
         self.pushButton_back.clicked.connect(self.go_back)
+        self.tableWidget.selectionModel().selectionChanged.connect(self.selection)
 
     def go_back(self):
         widget.setCurrentIndex(3)
@@ -651,7 +678,7 @@ class orders(QMainWindow):
         global logged_in_username
 
 
-        curs.execute(f"select item, price, flat_number, image_url from credit_card_transactions where username = '{logged_in_username}' union all select item, price, flat_number, image_url from debit_card_transactions where username = '{logged_in_username}' union all select item, price, flat_number, image_url from upi_transactions where username = '{logged_in_username}' union all select item, price, flat_number, image_url from net_bank_transactions where username = '{logged_in_username}';")
+        curs.execute(f"select item, price, flat_number, image_url from credit_card_transactions where username = '{logged_in_username}' and deleted = 'False' union all select item, price, flat_number, image_url from debit_card_transactions where username = '{logged_in_username}' and deleted = 'False' union all select item, price, flat_number, image_url from upi_transactions where username = '{logged_in_username}' and deleted = 'False' union all select item, price, flat_number, image_url from net_bank_transactions where username = '{logged_in_username}' and deleted = 'False';")
 
 
 
@@ -659,10 +686,10 @@ class orders(QMainWindow):
         row = 0
         self.tableWidget.setRowCount(len(order_list))
         for order in order_list:
-            self.tableWidget.setItem(row, 1, QtWidgets.QTableWidgetItem(order[0]))
-            self.tableWidget.setItem(row, 2, QtWidgets.QTableWidgetItem(order[1]))
-            self.tableWidget.setItem(row, 3, QtWidgets.QTableWidgetItem(order[2]))
-
+            self.tableWidget.setItem(row, 2, QtWidgets.QTableWidgetItem(order[0]))
+            self.tableWidget.setItem(row, 3, QtWidgets.QTableWidgetItem(order[1]))
+            self.tableWidget.setItem(row, 4, QtWidgets.QTableWidgetItem(order[2]))
+            self.tableWidget.setItem(row, 0, QtWidgets.QTableWidgetItem("                Cancel"))
             
             self.image = QtWidgets.QLabel(self.centralwidget)
             self.image.setText('')
@@ -672,7 +699,7 @@ class orders(QMainWindow):
             self.pixmap.loadFromData(self.data)
             self.pixmap = self.pixmap.scaled(200, 250)
             self.image.setPixmap(self.pixmap)
-            self.tableWidget.setCellWidget(row, 0, self.image)
+            self.tableWidget.setCellWidget(row, 1, self.image)
             self.image.setHidden(True)
             self.tableWidget.verticalHeader().setDefaultSectionSize(200)
 
@@ -683,27 +710,60 @@ class orders(QMainWindow):
 
             row = row + 1
 
+
+
+    def selection(self, selected):
+        for ix in selected.indexes():
+            global item_name_selected 
+            global logged_in_username
+            row_listed = ix.row()
+            column_listed = ix.column()
+            
+
+            item_name_selected = self.tableWidget.item(row_listed, 2).text()
+            
+            
+            curs.execute(f'''select item, "credit_card_transactions" from credit_card_transactions where username = '{logged_in_username}' union all select item, "debit_card_transactions" from debit_card_transactions where username = '{logged_in_username}' union all select item, "upi_transactions" from upi_transactions where username = '{logged_in_username}' union all select item, "net_bank_transactions"  from net_bank_transactions where username = '{logged_in_username}';''')
+            search_list = curs.fetchall()
+
+            for i in search_list:
+                if item_name_selected in i[0]:
+                    item_table = i[1]
+                    break
+            
+            curs.execute(f'''update {item_table} set deleted = "True" where item = "{item_name_selected}" and username = "{logged_in_username}";''')
+            error_dialog = QtWidgets.QErrorMessage(self)
+            error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
+            error_dialog.setWindowTitle('Cancel')
+            error_dialog.showMessage("Your order has been cancelled")
+            self.loadData()
+
+
+
 # -------------------------------------------------------Items------------------------------------------------------- #
 class Items(QMainWindow):
     def __init__(self) -> None:
         super(Items, self).__init__()
+        
         loadUi("sold_items.ui", self)
         self.loadData()
         self.pushButton_back.clicked.connect(orders.go_back)
+        self.tableWidget.selectionModel().selectionChanged.connect(self.selection)
 
 
 
     def loadData(self):
         global logged_in_username 
-        curs.execute(f"select product_image_address, product_name, product_price, product_description from listed_items where seller_username = '{logged_in_username}';")
+        curs.execute(f"select product_image_address, product_name, product_price, product_description from listed_items where seller_username = '{logged_in_username}' and deleted = 'False';")
         listed_items = curs.fetchall()
     
         row = 0
         self.tableWidget.setRowCount(len(listed_items))
         for item in listed_items:
-            self.tableWidget.setItem(row, 1, QtWidgets.QTableWidgetItem(item[1]))
-            self.tableWidget.setItem(row, 2, QtWidgets.QTableWidgetItem(item[2]))
-            self.tableWidget.setItem(row, 3, QtWidgets.QTableWidgetItem(item[3]))
+            self.tableWidget.setItem(row, 0, QtWidgets.QTableWidgetItem("           EDIT"))
+            self.tableWidget.setItem(row, 2, QtWidgets.QTableWidgetItem(item[1]))
+            self.tableWidget.setItem(row, 3, QtWidgets.QTableWidgetItem(item[2]))
+            self.tableWidget.setItem(row, 4, QtWidgets.QTableWidgetItem(item[3]))
 
             self.image = QtWidgets.QLabel(self.centralwidget)
             self.image.setText('')
@@ -714,13 +774,99 @@ class Items(QMainWindow):
             self.pixmap.loadFromData(self.data)
             self.pixmap = self.pixmap.scaled(200, 250)
             self.image.setPixmap(self.pixmap)
-            self.tableWidget.setCellWidget(row, 0, self.image)
+            self.tableWidget.setCellWidget(row, 1, self.image)
             self.image.setHidden(True)
             self.tableWidget.verticalHeader().setDefaultSectionSize(200)
 
 
 
             row = row + 1
+
+    def selection(self, selected):
+        for ix in selected.indexes():
+            global row_listed 
+            global column_listed
+            row_listed = ix.row()
+            column_listed = ix.column()
+            global product_name_listed
+            global product_price_listed
+            global product_description_listed
+
+            product_name_listed = self.tableWidget.item(row_listed, 2).text()
+            product_price_listed = self.tableWidget.item(row_listed, 3).text()
+            
+            curs.execute(f"select product_description from listed_items where product_name = '{product_name_listed}';")
+            product_description_listed = curs.fetchone()
+            product_description_listed = list(product_description_listed)
+            product_description_listed = str(product_description_listed[0])
+            Edit_Items.update_data()
+            self.go_to_edit_page()
+
+
+
+    def go_to_edit_page(self):
+        widget.setCurrentIndex(12)
+
+        
+
+
+
+
+# -------------------------------------------------------Edit Items------------------------------------------------------- #
+class Edit_Items(QDialog):
+    def __init__(self) -> None:
+        super(Edit_Items, self).__init__()
+        loadUi("editPage.ui", self)
+        self.pushButton_delete.clicked.connect(self.delete)
+        self.pushButton_done.clicked.connect(self.done)
+        self.update_data()
+
+    def delete(self): 
+        curs.execute(f"update listed_items set deleted = 'True' where product_name = '{self.lineEdit_name.text()}';")
+        Items.loadData()
+        buy_page.loadData()
+        widget.setCurrentIndex(11)
+    def done(self):
+        self.item_name = self.lineEdit_name.text()
+        self.item_price = self.lineEdit_price.text()
+        self.item_description = self.lineEdit_description.text()
+
+
+        curs.execute(f'''update listed_items set product_name = "{self.item_name}", product_price = "{self.item_price}", product_description = "{self.item_description}" where product_name = "{self.item_name}" ;''')
+        Items.loadData()
+        buy_page.loadData()
+        widget.setCurrentIndex(11)
+
+
+
+
+
+
+
+
+
+
+
+
+    def update_data(self):
+        global product_name_listed
+        global product_price_listed
+        global product_description_listed
+        self.lineEdit_name.setText(product_name_listed)
+        self.lineEdit_price.setText(product_price_listed)
+        self.lineEdit_description.setText(product_description_listed)
+
+
+
+
+    
+
+
+
+
+
+
+
 
 
 
@@ -751,6 +897,7 @@ upi = upi()
 netBank = netBank()
 orders = orders()
 Items = Items()
+Edit_Items = Edit_Items()
 # Indexing for all the stacked pages. indexes are appointed in the order they are added.
 widget.addWidget(login_register_page)           # 0
 widget.addWidget(loginpage)                     # 1
@@ -764,6 +911,7 @@ widget.addWidget(upi)                           # 8
 widget.addWidget(netBank)                       # 9
 widget.addWidget(orders)                        # 10
 widget.addWidget(Items)                         # 11
+widget.addWidget(Edit_Items)                    # 12
 # End of indexing for stacked widgets
 
 
