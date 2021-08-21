@@ -222,6 +222,11 @@ color: white; }
       </attribute>
       <column>
        <property name="text">
+        <string>item_id</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
         <string>Image</string>
        </property>
        <property name="font">

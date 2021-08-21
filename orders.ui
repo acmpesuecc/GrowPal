@@ -105,6 +105,11 @@ color: white; }
       </attribute>
       <column>
        <property name="text">
+        <string>order_id</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
         <string>Cancel</string>
        </property>
        <property name="font">
