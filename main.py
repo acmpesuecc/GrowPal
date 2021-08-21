@@ -18,6 +18,7 @@ from pandas.core.common import flatten
 from imagekitio import ImageKit
 # pip install imagekitio
 import urllib
+import qdarkstyle
 # -------------------------------------------------------Variables and Misc.------------------------------------------------------- #
 global loginpage_details
 loginpage_details = []
@@ -878,10 +879,11 @@ class Edit_Items(QDialog):
  # End of class declaration
 # -------------------------------------------------------Indexing for stacked widget------------------------------------------------------- #
 app = QApplication(sys.argv)
-file = QFile("amoled.qss")
-file.open(QFile.ReadOnly | QFile.Text)
-stream = QTextStream(file)
-app.setStyleSheet(stream.readAll())
+#file = QFile("amoled.qss")
+#file.open(QFile.ReadOnly | QFile.Text)
+#stream = QTextStream(file)
+#app.setStyleSheet(stream.readAll())
+app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyside2'))
 widget = QtWidgets.QStackedWidget()
 
 
