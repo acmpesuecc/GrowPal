@@ -917,7 +917,7 @@ app = QApplication(sys.argv)
 #file.open(QFile.ReadOnly | QFile.Text)
 #stream = QTextStream(file)
 #app.setStyleSheet(stream.readAll())
-app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyside2'))
+app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
 widget = QtWidgets.QStackedWidget()
 
 
