@@ -1,3 +1,14 @@
+#   ____                   ____       _ 
+#  / ___|_ __ _____      _|  _ \ __ _| |
+# | |  _| '__/ _ \ \ /\ / / |_) / _` | |
+# | |_| | | | (_) \ V  V /|  __/ (_| | |
+#  \____|_|  \___/ \_/\_/ |_|   \__,_|_|
+#
+#
+#
+# Please go through the README file before execution 
+#
+#
 # -------------------------------------------------------Import statements------------------------------------------------------- #
 import sys
 import os
@@ -41,11 +52,11 @@ product_price_listed = ''
 global product_description_listed
 product_description_listed = ''
 global db
-db = mysql.connector.connect(host='anuragrao.ddns.net', user = 'root', passwd = 'mysql_password', database = 'growpal')
-if(db):
-    print('sql connection successful')
-else:
-    print('sql messed up')
+try: db = mysql.connector.connect(host='localhost', user = 'root', passwd = 'mysql_password', database = 'growpal')
+except:
+    try: db = mysql.connector.connect(host= 'anuragrao.ddns.net', user = 'root', passwd = 'mysql_password', database = 'growpal')
+    except: print("Error Connecting to SQL Server")
+
 
 
 global curs
@@ -295,8 +306,8 @@ class buy_page(QMainWindow):
             
             item_ID = self.tableWidget.item(row, 0).text()
             
-            price = self.tableWidget.item(row, 4).text()
-            item = self.tableWidget.item(row, 3).text()
+            price = self.tableWidget.item(row, 3).text()
+            item = self.tableWidget.item(row, 2).text()
             
             curs.execute(f"select product_image_address from listed_items where item_id = {item_ID};")
             picture = curs.fetchone()
@@ -628,6 +639,7 @@ class upi(QMainWindow):
         curs.execute("select order_id_num from numbers")
         order_id = int(curs.fetchone()[0])
         order_id += 1
+        print("PRICE: ",price)
         curs.execute(f"insert into upi_transactions values('{logged_in_username}', '{item}', '{price}', '{self.lineEdit_upinum.text()}', '{self.lineEdit_del_add.text()}', '{picture}',{order_id}, 'False')")
         curs.execute(f'''update numbers set order_id_num = {order_id} where order_id_num = {order_id - 1}''')
         db.commit()
