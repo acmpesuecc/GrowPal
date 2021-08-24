@@ -54,7 +54,7 @@ product_description_listed = ''
 global db
 try: db = mysql.connector.connect(host='localhost', user = 'root', passwd = 'mysql_password', database = 'growpal')
 except:
-    try: db = mysql.connector.connect(host= 'anuragrao.ddns.net', user = 'growpal', passwd = 'mysql_password', database = 'growpal')
+    try: db = mysql.connector.connect(host= 'anuragrao.ddns.net', user = 'growpal', passwd = 'growpass!', database = 'growpal')
     except: print("Error Connecting to SQL Server")
 
 
