@@ -15,11 +15,15 @@ import os
 # pip install PyQt5
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
-from PyQt5 import QtGui
+from PyQt5 import *
+#from PyQt5 import QtGui
 from PyQt5.QtGui import QKeySequence
-from PyQt5.QtWidgets import QShortcut, QDialog, QApplication, QMainWindow, QLineEdit, QWidget, QFileDialog, QLabel
-from PyQt5.QtCore import QFile, QTextStream, QSize
-from PyQt5.QtGui import QIcon, QPixmap
+#from PyQt5.QtWidgets import QShortcut, QDialog, QApplication, QMainWindow, QLineEdit, QWidget, QFileDialog, QLabel
+from PyQt5.QtWidgets import *
+#from PyQt5.QtCore import QFile, QTextStream, QSize
+from PyQt5.QtCore import *
+#from PyQt5.QtGui import QIcon, QPixmap
+from PyQt5.QtGui import *
 from dns.message import Message
 from validate_email import validate_email
 # pip install validate_email
@@ -98,7 +102,9 @@ class loginregisterpage(QMainWindow):
         self.setWindowTitle("GrowPal")
         self.login_button.clicked.connect(self.gotologin_page)
         self.register_button.clicked.connect(self.gotoregister_page)
-
+        self.blur_effect = QGraphicsBlurEffect()
+        self.blur_effect.setBlurRadius(20)
+        self.label.setGraphicsEffect(self.blur_effect)
     def gotologin_page(self):
         widget.setCurrentIndex(1)
 
@@ -122,6 +128,9 @@ class login_page(QMainWindow):
         logged_in_password = ''
         self.icon = QIcon('visiblity.svg')
         self.password_view.setIcon(self.icon)
+        self.blur_effect = QGraphicsBlurEffect()
+        self.blur_effect.setBlurRadius(20)
+        self.label.setGraphicsEffect(self.blur_effect)
     def pass_view_clicked(self):
         if self.password_view.isChecked():
             self.lineEdit_password.setEchoMode(QLineEdit.Normal)
@@ -199,6 +208,9 @@ class register_page(QMainWindow):
         self.sp_view.setIcon(self.ispicon)
         self.icpicon = QIcon('visiblity.svg')
         self.cp_view.setIcon(self.icpicon)
+        self.blur_effect = QGraphicsBlurEffect()
+        self.blur_effect.setBlurRadius(20)
+        self.label_2.setGraphicsEffect(self.blur_effect)
 
 
 

@@ -111,7 +111,7 @@ padding-bottom: 7px;
       </widget>
      </item>
      <item row="3" column="4">
-      <widget class="QPushButton" name="cp_view">
+      <widget class="QPushButton" name="sp_view">
        <property name="minimumSize">
         <size>
          <width>40</width>
@@ -146,7 +146,7 @@ padding-bottom: 7px;
       </widget>
      </item>
      <item row="4" column="4">
-      <widget class="QPushButton" name="sp_view">
+      <widget class="QPushButton" name="cp_view">
        <property name="minimumSize">
         <size>
          <width>0</width>
@@ -436,8 +436,8 @@ QPushButton:pressed{
   <tabstop>lineEdit_phnumber</tabstop>
   <tabstop>lineEdit_password</tabstop>
   <tabstop>lineEdit_repeatpassword</tabstop>
-  <tabstop>cp_view</tabstop>
   <tabstop>sp_view</tabstop>
+  <tabstop>cp_view</tabstop>
  </tabstops>
  <resources/>
  <connections/>
