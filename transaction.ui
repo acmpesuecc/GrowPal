@@ -37,7 +37,7 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_2">
-    <item row="2" column="0" colspan="3">
+    <item row="2" column="0" colspan="4">
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="QPushButton" name="pushButton_back">
@@ -86,7 +86,17 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="0" colspan="3">
+    <item row="0" column="1">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>transaction.svg</pixmap>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="4">
      <layout class="QGridLayout" name="gridLayout">
       <item row="1" column="0">
        <widget class="QPushButton" name="pushButton_upi">
@@ -213,17 +223,7 @@
       </item>
      </layout>
     </item>
-    <item row="0" column="1">
-     <widget class="QLabel" name="label_2">
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap>transaction.svg</pixmap>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="2">
+    <item row="0" column="3">
      <widget class="QLabel" name="label_ammount">
       <property name="maximumSize">
        <size>
@@ -247,6 +247,13 @@
       </property>
       <property name="wordWrap">
        <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QLabel" name="label_picture">
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </item>
