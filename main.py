@@ -353,6 +353,9 @@ class buy_page(QMainWindow):
         self.shortcut_search = QShortcut(QKeySequence('return'), self)
         self.shortcut_search.activated.connect(self.loadFromSearch)
         self.tableWidget.selectionModel().selectionChanged.connect(self.selection)
+        self.blur_effect = QGraphicsBlurEffect()
+        self.blur_effect.setBlurRadius(20)
+        self.label_3.setGraphicsEffect(self.blur_effect)
     
     
     
