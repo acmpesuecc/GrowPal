@@ -20,6 +20,7 @@ from PyQt5.QtGui import QKeySequence
 from PyQt5.QtWidgets import QShortcut, QDialog, QApplication, QMainWindow, QLineEdit, QWidget, QFileDialog, QLabel
 from PyQt5.QtCore import QFile, QTextStream, QSize
 from PyQt5.QtGui import QIcon, QPixmap
+from dns.message import Message
 from validate_email import validate_email
 # pip install validate_email
 import mysql.connector
@@ -29,7 +30,11 @@ from pandas.core.common import flatten
 from imagekitio import ImageKit
 # pip install imagekitio
 import urllib
+#pip install qdarkstyle
 import qdarkstyle
+import smtplib
+from email.mime.multipart import MIMEMultipart
+import random
 # -------------------------------------------------------Variables and Misc.------------------------------------------------------- #
 global loginpage_details
 loginpage_details = []
@@ -57,7 +62,13 @@ except:
     try: db = mysql.connector.connect(host= 'anuragrao.ddns.net', user = 'developer', passwd = 'dev_password', database = 'growpal')
     except: print("Error Connecting to SQL Server")
 
-
+try:
+    global server
+    server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+    server.ehlo()
+    server.login('system.growpal@gmail.com', 'growpass!')
+except:
+    print('Something went wrong with mail server')
 
 global curs
 curs = db.cursor()
@@ -100,8 +111,6 @@ class login_page(QMainWindow):
     def __init__(self):
         super(login_page, self).__init__()
         loadUi("loginPage.ui", self)
-        #logged_in_username = ""
-        #logged_in_password = ""
         self.pushButton_back.clicked.connect(self.back_button_pressed)
         self.pushbutton_login.clicked.connect(self.login_button_pressed)
         self.password_view.clicked.connect(self.pass_view_clicked)
@@ -111,8 +120,8 @@ class login_page(QMainWindow):
         global logged_in_password
         logged_in_username = ''
         logged_in_password = ''
-        self.iicon = QIcon('visiblity.svg')
-        self.password_view.setIcon(self.iicon)
+        self.icon = QIcon('visiblity.svg')
+        self.password_view.setIcon(self.icon)
     def pass_view_clicked(self):
         if self.password_view.isChecked():
             self.lineEdit_password.setEchoMode(QLineEdit.Normal)
@@ -184,11 +193,35 @@ class register_page(QMainWindow):
         self.cp_view.clicked.connect(self.cp_view_clicked)
         self.shortcut_register = QShortcut(QKeySequence('return'), self)
         self.shortcut_register.activated.connect(self.register_button_clicked)
+        self.pushButton_otp.clicked.connect(self.otp_button_clicked)
 
         self.ispicon = QIcon('visiblity.svg')
         self.sp_view.setIcon(self.ispicon)
         self.icpicon = QIcon('visiblity.svg')
         self.cp_view.setIcon(self.icpicon)
+
+
+
+
+    def otp_button_clicked(self):
+        self.otp = random.randint(100000, 999999)
+        msg = "\r\n".join([
+            "From: system.growpal@gmail.com",
+            f"To: {self.lineEdit_email.text()}",
+            "Subject: Verification",
+            "",
+            f"Your verification code is: {self.otp}. Please DO NOT share it with anybody. GrowPal never calls you for any reason"
+            ])
+        server.sendmail('system.growpal@gmail.com', self.lineEdit_email.text(), msg)
+        error_dialog = QtWidgets.QErrorMessage(self)
+        error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
+        error_dialog.setWindowTitle('OTP')
+        error_dialog.showMessage("Please check your mail inbox for the OTP")
+
+
+
+
+
     def sp_view_clicked(self):
         if self.sp_view.isChecked():
             self.lineEdit_password.setEchoMode(QLineEdit.Normal)
@@ -238,27 +271,45 @@ class register_page(QMainWindow):
         elif self.lineEdit_password.text() == self.lineEdit_repeatpassword.text():
             if validate_email(self.lineEdit_email.text()):
                 if self.lineEdit_username.text() not in loginpage_details:
+                    
 
-                    curs.execute(f"insert into login_details values('{self.lineEdit_username.text()}', '{self.lineEdit_password.text()}', '{self.lineEdit_email.text()}', '{self.lineEdit_phnumber.text()}')")
-                    db.commit()
-                    getLoginDetails()
-                    self.lineEdit_username.setText('')
-                    self.lineEdit_email.setText('')
-                    self.lineEdit_phnumber.setText('') 
-                    self.lineEdit_password.setText("")
-                    self.lineEdit_repeatpassword.setText("")
-                    error_dialog = QtWidgets.QErrorMessage(self)
-                    error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
-                    error_dialog.setWindowTitle('Thanks!')
-                    error_dialog.showMessage(
-                        'Thanks for creating an account with us! Please login with the same credentials')
-                    widget.setCurrentIndex(1)
+                    if int(self.lineEdit_otp.text()) == self.otp: 
+
+
+
+
+
+
+                        curs.execute(f"insert into login_details values('{self.lineEdit_username.text()}', '{self.lineEdit_password.text()}', '{self.lineEdit_email.text()}', '{self.lineEdit_phnumber.text()}')")
+                        db.commit()
+                        getLoginDetails()
+                        self.lineEdit_username.setText('')
+                        self.lineEdit_email.setText('')
+                        self.lineEdit_phnumber.setText('') 
+                        self.lineEdit_password.setText("")
+                        self.lineEdit_repeatpassword.setText("")
+                        error_dialog = QtWidgets.QErrorMessage(self)
+                        error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
+                        error_dialog.setWindowTitle('Thanks!')
+                        error_dialog.showMessage(
+                            'Thanks for creating an account with us! Please login with the same credentials')
+                        widget.setCurrentIndex(1)
+
+
+
+                    else:
+                        error_dialog = QtWidgets.QErrorMessage(self)
+                        error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
+                        error_dialog.setWindowTitle('OTP')
+                        error_dialog.showMessage(
+                        'OTP Incorrect')
+
                 else:
                     error_dialog = QtWidgets.QErrorMessage(self)
                     error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
                     error_dialog.setWindowTitle('Account')
                     error_dialog.showMessage(
-                        'You are already registered, please login.')
+                        'Username already exists.')
                     widget.setCurrentIndex(1)
 
             else:
@@ -685,7 +736,7 @@ class orders(QMainWindow):
         super(orders, self).__init__()
         loadUi("orders.ui", self)
         self.tableWidget.setColumnHidden(0, True)
-        self.tableWidget.setColumnWidth(1, 250)
+        self.tableWidget.setColumnWidth(1, 220)
         self.tableWidget.setColumnWidth(2, 200)
         self.loadData()
         self.pushButton_back.clicked.connect(self.go_back)
@@ -917,10 +968,11 @@ app = QApplication(sys.argv)
 #file.open(QFile.ReadOnly | QFile.Text)
 #stream = QTextStream(file)
 #app.setStyleSheet(stream.readAll())
-app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
+#app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
 widget = QtWidgets.QStackedWidget()
 
-
+widget.setMaximumHeight(800)
+widget.setMaximumWidth(1200)
 login_register_page = loginregisterpage()
 loginpage = login_page()
 buy_page = buy_page()
