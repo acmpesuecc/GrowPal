@@ -27,6 +27,10 @@ pip install mysql-connector-python
 pip install imagekitio
 ```
 
+```
+pip install qdarkstyle
+```
+
 
 ## Progress
 - [x] Make UI pages - 90%
