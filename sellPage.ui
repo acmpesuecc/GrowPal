@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1200</width>
-    <height>800</height>
+    <width>1000</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>1200</width>
-    <height>800</height>
+    <width>1000</width>
+    <height>600</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -26,7 +26,7 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: black;</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
@@ -45,6 +45,9 @@
       <bold>true</bold>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;</string>
+    </property>
     <property name="text">
      <string>Sell</string>
     </property>
@@ -55,9 +58,9 @@
    <widget class="QLabel" name="label_browse">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>620</y>
-      <width>941</width>
+      <x>0</x>
+      <y>470</y>
+      <width>761</width>
       <height>42</height>
      </rect>
     </property>
@@ -85,10 +88,10 @@
    <widget class="QPushButton" name="pushButton_UploadImages">
     <property name="geometry">
      <rect>
-      <x>960</x>
-      <y>617</y>
-      <width>231</width>
-      <height>51</height>
+      <x>790</x>
+      <y>470</y>
+      <width>191</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="minimumSize">
@@ -104,18 +107,47 @@
       <bold>true</bold>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+	background-color: qlineargradient(spread:pad, x1:0, y1:505682, x2:1, y2:0.477, stop:0 rgba(11, 131, 120, 219), stop:1 rgba(85, 98, 112, 226));
+	color: rgba(255, 255, 255, 210);
+	border-radius: 5px;
+}
+QPushButton:hover{
+	background-color: qlineargradient(spread:pad, x1:0, y1:505682, x2:1, y2:0.477, stop:0 rgba(150, 123, 111, 219), stop:1 rgba(85, 81, 84, 226));
+}
+QPushButton:pressed{
+	paddind-left: 5px;
+	padding-top: 5px;
+	background-color: rgba(150, 123, 111, 255);
+}
+
+</string>
+    </property>
     <property name="text">
-     <string>Upload Images</string>
+     <string>Upload Image</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_picture">
     <property name="geometry">
      <rect>
-      <x>970</x>
-      <y>350</y>
-      <width>221</width>
-      <height>251</height>
+      <x>780</x>
+      <y>240</y>
+      <width>200</width>
+      <height>200</height>
      </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>200</width>
+      <height>200</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>200</width>
+      <height>200</height>
+     </size>
     </property>
     <property name="text">
      <string/>
@@ -126,8 +158,8 @@
      <rect>
       <x>77</x>
       <y>6</y>
-      <width>48</width>
-      <height>48</height>
+      <width>51</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
@@ -141,9 +173,9 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>680</y>
-      <width>1041</width>
-      <height>67</height>
+      <y>530</y>
+      <width>831</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="minimumSize">
@@ -160,7 +192,21 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">QPushButton{
+	background-color: qlineargradient(spread:pad, x1:0, y1:505682, x2:1, y2:0.477, stop:0 rgba(11, 131, 120, 219), stop:1 rgba(85, 98, 112, 226));
+	color: rgba(255, 255, 255, 210);
+	border-radius: 5px;
+}
+QPushButton:hover{
+	background-color: qlineargradient(spread:pad, x1:0, y1:505682, x2:1, y2:0.477, stop:0 rgba(150, 123, 111, 219), stop:1 rgba(85, 81, 84, 226));
+}
+QPushButton:pressed{
+	paddind-left: 5px;
+	padding-top: 5px;
+	background-color: rgba(150, 123, 111, 255);
+}
+
+</string>
     </property>
     <property name="text">
      <string>Sell</string>
@@ -170,9 +216,9 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>680</y>
-      <width>131</width>
-      <height>67</height>
+      <y>530</y>
+      <width>121</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="font">
@@ -183,7 +229,21 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">QPushButton{
+	background-color: qlineargradient(spread:pad, x1:0, y1:505682, x2:1, y2:0.477, stop:0 rgba(11, 131, 120, 219), stop:1 rgba(85, 98, 112, 226));
+	color: rgba(255, 255, 255, 210);
+	border-radius: 5px;
+}
+QPushButton:hover{
+	background-color: qlineargradient(spread:pad, x1:0, y1:505682, x2:1, y2:0.477, stop:0 rgba(150, 123, 111, 219), stop:1 rgba(85, 81, 84, 226));
+}
+QPushButton:pressed{
+	paddind-left: 5px;
+	padding-top: 5px;
+	background-color: rgba(150, 123, 111, 255);
+}
+
+</string>
     </property>
     <property name="text">
      <string/>
@@ -199,334 +259,369 @@
      </size>
     </property>
    </widget>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>310</y>
-      <width>951</width>
-      <height>293</height>
+      <y>220</y>
+      <width>761</width>
+      <height>231</height>
      </rect>
     </property>
-    <layout class="QFormLayout" name="formLayout_3">
-     <item row="4" column="0">
-      <widget class="QLabel" name="label_upiID">
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>UPI ID:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="0">
-      <widget class="QLabel" name="label_phnumber">
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Ph Number:</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="0">
-      <widget class="QLabel" name="label_address">
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Flat Number: </string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="1">
-      <widget class="QLineEdit" name="lineEdit_cont_num">
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-         <weight>75</weight>
-         <italic>true</italic>
-         <bold>true</bold>
-        </font>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="1">
-      <widget class="QLineEdit" name="lineEdit_upi_id">
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-         <weight>75</weight>
-         <italic>true</italic>
-         <bold>true</bold>
-        </font>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="1">
-      <widget class="QLineEdit" name="lineEdit_address">
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-         <weight>75</weight>
-         <italic>true</italic>
-         <bold>true</bold>
-        </font>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label_email">
-       <property name="font">
-        <font>
-         <pointsize>16</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Email:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="label_Name">
-       <property name="font">
-        <font>
-         <pointsize>16</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Your Name:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="lineEdit_name">
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-         <weight>75</weight>
-         <italic>true</italic>
-         <bold>true</bold>
-        </font>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QLineEdit" name="lineEdit_email">
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-         <weight>75</weight>
-         <italic>true</italic>
-         <bold>true</bold>
-        </font>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <widget class="QLineEdit" name="lineEdit_address">
+     <property name="geometry">
+      <rect>
+       <x>6</x>
+       <y>186</y>
+       <width>741</width>
+       <height>37</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(0,0,0,0);
+border: none;
+border-bottom: 2px solid rgba(46,82, 101, 200);
+color:white;
+padding-bottom: 7px;
+</string>
+     </property>
+     <property name="placeholderText">
+      <string>Flat Number</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_name">
+     <property name="geometry">
+      <rect>
+       <x>6</x>
+       <y>6</y>
+       <width>741</width>
+       <height>37</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(0,0,0,0);
+border: none;
+border-bottom: 2px solid rgba(46,82, 101, 200);
+color:white;
+padding-bottom: 7px;
+</string>
+     </property>
+     <property name="placeholderText">
+      <string>Your Name</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_upi_id">
+     <property name="geometry">
+      <rect>
+       <x>6</x>
+       <y>141</y>
+       <width>741</width>
+       <height>37</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(0,0,0,0);
+border: none;
+border-bottom: 2px solid rgba(46,82, 101, 200);
+color:white;
+padding-bottom: 7px;
+</string>
+     </property>
+     <property name="placeholderText">
+      <string>UPI ID</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_email">
+     <property name="geometry">
+      <rect>
+       <x>6</x>
+       <y>51</y>
+       <width>741</width>
+       <height>37</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(0,0,0,0);
+border: none;
+border-bottom: 2px solid rgba(46,82, 101, 200);
+color:white;
+padding-bottom: 7px;
+</string>
+     </property>
+     <property name="placeholderText">
+      <string>Mail ID </string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_cont_num">
+     <property name="geometry">
+      <rect>
+       <x>6</x>
+       <y>96</y>
+       <width>741</width>
+       <height>37</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(0,0,0,0);
+border: none;
+border-bottom: 2px solid rgba(46,82, 101, 200);
+color:white;
+padding-bottom: 7px;
+</string>
+     </property>
+     <property name="placeholderText">
+      <string>Phone Number</string>
+     </property>
+    </widget>
    </widget>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>80</y>
-      <width>1191</width>
-      <height>214</height>
+      <y>0</y>
+      <width>1000</width>
+      <height>600</height>
      </rect>
     </property>
-    <layout class="QFormLayout" name="formLayout">
-     <item row="0" column="0">
-      <widget class="QLabel" name="label_NameOfProd">
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Name Of Your Product:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="lineEdit_prod_name">
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-         <weight>75</weight>
-         <italic>true</italic>
-         <bold>true</bold>
-        </font>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label_Price">
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Price(in rupees):</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QLineEdit" name="lineEdit_price">
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-         <weight>75</weight>
-         <italic>true</italic>
-         <bold>true</bold>
-        </font>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="0">
-      <widget class="QLabel" name="label_product_category">
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Product Category</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="1">
-      <widget class="QComboBox" name="comboBox">
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-         <weight>75</weight>
-         <italic>true</italic>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="maxVisibleItems">
-        <number>10</number>
-       </property>
-       <property name="frame">
-        <bool>true</bool>
-       </property>
-       <item>
-        <property name="text">
-         <string>Select Category </string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Food</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Fruits And Vegetables</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Cosmetics</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Apparel</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Accessories</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Home Decor</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Stationary</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Kitchenware</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Handmade</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Electronics</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Others</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-     <item row="4" column="0">
-      <widget class="QLabel" name="label_Description">
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-         <weight>75</weight>
-         <italic>false</italic>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Description:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="1">
-      <widget class="QLineEdit" name="lineEdit_description">
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-         <weight>75</weight>
-         <italic>true</italic>
-         <bold>true</bold>
-        </font>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>OsfFKJ0.jpg</pixmap>
+    </property>
    </widget>
+   <widget class="QLineEdit" name="lineEdit_prod_name">
+    <property name="geometry">
+     <rect>
+      <x>6</x>
+      <y>50</y>
+      <width>989</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,0);
+border: none;
+border-bottom: 2px solid rgba(46,82, 101, 200);
+color:white;
+padding-bottom: 7px;
+</string>
+    </property>
+    <property name="placeholderText">
+     <string>Name Of Your Product</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_price">
+    <property name="geometry">
+     <rect>
+      <x>6</x>
+      <y>95</y>
+      <width>989</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,0);
+border: none;
+border-bottom: 2px solid rgba(46,82, 101, 200);
+color:white;
+padding-bottom: 7px;
+</string>
+    </property>
+    <property name="placeholderText">
+     <string>Price </string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox">
+    <property name="geometry">
+     <rect>
+      <x>6</x>
+      <y>140</y>
+      <width>989</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,0);
+border: none;
+border-bottom: 2px solid rgba(46,82, 101, 200);
+color:white;
+padding-bottom: 7px;
+</string>
+    </property>
+    <property name="maxVisibleItems">
+     <number>10</number>
+    </property>
+    <property name="frame">
+     <bool>true</bool>
+    </property>
+    <item>
+     <property name="text">
+      <string>Select Category </string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Food</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Fruits And Vegetables</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Cosmetics</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Apparel</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Accessories</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Home Decor</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Stationary</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Kitchenware</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Handmade</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Electronics</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Others</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_description">
+    <property name="geometry">
+     <rect>
+      <x>6</x>
+      <y>185</y>
+      <width>989</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,0);
+border: none;
+border-bottom: 2px solid rgba(46,82, 101, 200);
+color:white;
+padding-bottom: 7px;
+</string>
+    </property>
+    <property name="placeholderText">
+     <string>Product Description</string>
+    </property>
+   </widget>
+   <zorder>label_3</zorder>
+   <zorder>label</zorder>
+   <zorder>label_browse</zorder>
+   <zorder>pushButton_UploadImages</zorder>
+   <zorder>label_picture</zorder>
+   <zorder>label_2</zorder>
+   <zorder>pushButton_Sell</zorder>
+   <zorder>pushButton_back</zorder>
+   <zorder>frame</zorder>
+   <zorder>lineEdit_prod_name</zorder>
+   <zorder>lineEdit_price</zorder>
+   <zorder>comboBox</zorder>
+   <zorder>lineEdit_description</zorder>
   </widget>
  </widget>
  <tabstops>

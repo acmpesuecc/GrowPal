@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1200</width>
-    <height>800</height>
+    <width>1000</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>1200</width>
-    <height>800</height>
+    <width>1000</width>
+    <height>600</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -41,8 +41,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1200</width>
-      <height>800</height>
+      <width>1000</width>
+      <height>600</height>
      </rect>
     </property>
     <property name="font">
@@ -60,8 +60,8 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>150</y>
+      <x>30</x>
+      <y>50</y>
       <width>281</width>
       <height>81</height>
      </rect>
@@ -83,8 +83,8 @@
    <widget class="QWidget" name="formLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>250</y>
+      <x>30</x>
+      <y>150</y>
       <width>931</width>
       <height>331</height>
      </rect>
@@ -352,8 +352,8 @@ QPushButton:pressed{
    <widget class="QPushButton" name="pushButton_back">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>590</y>
+      <x>30</x>
+      <y>490</y>
       <width>121</width>
       <height>41</height>
      </rect>
@@ -392,8 +392,8 @@ QPushButton:pressed{
    <widget class="QPushButton" name="pushbutton_register">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>590</y>
+      <x>160</x>
+      <y>490</y>
       <width>801</width>
       <height>39</height>
      </rect>

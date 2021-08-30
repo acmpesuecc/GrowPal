@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1200</width>
-    <height>800</height>
+    <width>1000</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>1200</width>
-    <height>800</height>
+    <width>1000</width>
+    <height>600</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -63,7 +63,7 @@
    <widget class="QPushButton" name="pushButton_logout">
     <property name="geometry">
      <rect>
-      <x>1101</x>
+      <x>900</x>
       <y>10</y>
       <width>91</width>
       <height>31</height>
@@ -112,7 +112,7 @@ QPushButton:pressed{
    <widget class="QPushButton" name="pushButton_selling_items">
     <property name="geometry">
      <rect>
-      <x>630</x>
+      <x>440</x>
       <y>10</y>
       <width>141</width>
       <height>31</height>
@@ -161,7 +161,7 @@ QPushButton:pressed{
    <widget class="QPushButton" name="pushButton_orders">
     <property name="geometry">
      <rect>
-      <x>780</x>
+      <x>590</x>
       <y>10</y>
       <width>141</width>
       <height>31</height>
@@ -234,7 +234,7 @@ QPushButton:pressed{
    <widget class="QPushButton" name="search_button">
     <property name="geometry">
      <rect>
-      <x>1150</x>
+      <x>950</x>
       <y>50</y>
       <width>40</width>
       <height>36</height>
@@ -275,7 +275,7 @@ QPushButton:pressed{
    <widget class="QPushButton" name="pushButton_sell">
     <property name="geometry">
      <rect>
-      <x>930</x>
+      <x>740</x>
       <y>10</y>
       <width>141</width>
       <height>31</height>
@@ -324,10 +324,10 @@ QPushButton:pressed{
    <widget class="QTableWidget" name="tableWidget">
     <property name="geometry">
      <rect>
-      <x>6</x>
-      <y>94</y>
-      <width>1188</width>
-      <height>700</height>
+      <x>0</x>
+      <y>100</y>
+      <width>1000</width>
+      <height>500</height>
      </rect>
     </property>
     <property name="font">
@@ -431,7 +431,7 @@ QPushButton:pressed{
      <rect>
       <x>6</x>
       <y>49</y>
-      <width>1141</width>
+      <width>941</width>
       <height>37</height>
      </rect>
     </property>
@@ -463,8 +463,8 @@ padding-bottom: 7px;
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1200</width>
-      <height>800</height>
+      <width>1000</width>
+      <height>600</height>
      </rect>
     </property>
     <property name="text">
