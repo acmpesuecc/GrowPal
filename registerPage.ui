@@ -77,7 +77,7 @@
      <string notr="true">color: #ffffff;</string>
     </property>
     <property name="text">
-     <string>Sign Up</string>
+     <string>SIGN UP</string>
     </property>
    </widget>
    <widget class="QWidget" name="formLayoutWidget">

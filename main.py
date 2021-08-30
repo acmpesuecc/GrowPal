@@ -10,7 +10,6 @@
 #
 ### TODO
 # Solve the global variable mess (please)
-# UI Redesign - Transaction Pages Left 
 # Tune Background Image and Blur Effect 
 # -------------------------------------------------------Import statements------------------------------------------------------- #
 import sys
@@ -610,6 +609,9 @@ class transactionPage(QMainWindow):
 
 
         self.pushButton_netbank.clicked.connect(self.netbank)
+        self.blur_effect = QGraphicsBlurEffect()
+        self.blur_effect.setBlurRadius(20)
+        self.label_3.setGraphicsEffect(self.blur_effect)
 
     def go_back(self):
         widget.setCurrentIndex(3)
@@ -648,6 +650,10 @@ class creditCard(QMainWindow):
         loadUi("transaction_cc.ui", self)
         self.pushButton_cancel.clicked.connect(transactionPage.go_back)
         self.pushButton_pay.clicked.connect(self.pay)
+        self.blur_effect = QGraphicsBlurEffect()
+        self.blur_effect.setBlurRadius(20)
+        self.label_2.setGraphicsEffect(self.blur_effect)
+        
 
     def pay(self):
         global price
@@ -679,6 +685,10 @@ class debitCard(QMainWindow):
         loadUi("transaction_dc.ui", self)
         self.pushButton_cancel.clicked.connect(transactionPage.go_back)
         self.pushButton_pay.clicked.connect(self.pay)
+        self.blur_effect = QGraphicsBlurEffect()
+        self.blur_effect.setBlurRadius(20)
+        self.label_2.setGraphicsEffect(self.blur_effect)
+        
 
     def pay(self):
         global price
@@ -711,6 +721,9 @@ class upi(QMainWindow):
         loadUi("transaction_upi.ui", self)
         self.pushButton_cancel.clicked.connect(transactionPage.go_back)
         self.pushButton_pay.clicked.connect(self.pay)
+        self.blur_effect = QGraphicsBlurEffect()
+        self.blur_effect.setBlurRadius(20)
+        self.label_2.setGraphicsEffect(self.blur_effect)
 
     def pay(self):
         global price
@@ -739,6 +752,9 @@ class netBank(QMainWindow):
         loadUi("transaction_netbank.ui", self)
         self.pushButton_cancel.clicked.connect(transactionPage.go_back)
         self.pushButton_pay.clicked.connect(self.pay)
+        self.blur_effect = QGraphicsBlurEffect()
+        self.blur_effect.setBlurRadius(20)
+        self.label_2.setGraphicsEffect(self.blur_effect)
 
     def pay(self):
         global price
@@ -847,6 +863,7 @@ class orders(QMainWindow):
             error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
             error_dialog.setWindowTitle('Cancel')
             error_dialog.showMessage("Your order has been cancelled")
+            self.tableWidget.clearSelection()
             self.loadData()
 
 
@@ -924,6 +941,7 @@ class Items(QMainWindow):
 
 
     def go_to_edit_page(self):
+        self.tableWidget.clearSelection()
         widget.setCurrentIndex(12)
 
         

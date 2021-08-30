@@ -26,151 +26,231 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: black;</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QLabel" name="label">
-      <property name="font">
-       <font>
-        <pointsize>36</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Debit Card  </string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QLabel" name="label_5">
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap>card.svg</pixmap>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0" rowspan="2" colspan="4">
-     <layout class="QFormLayout" name="formLayout_2">
-      <item row="0" column="0">
-       <widget class="QLabel" name="label_6">
-        <property name="font">
-         <font>
-          <pointsize>26</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Card Number:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_7">
-        <property name="font">
-         <font>
-          <pointsize>26</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>CVV:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_8">
-        <property name="font">
-         <font>
-          <pointsize>26</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Flat Number: </string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="lineEdit_dnum">
-        <property name="font">
-         <font>
-          <pointsize>26</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="lineEdit_cvv">
-        <property name="font">
-         <font>
-          <pointsize>26</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLineEdit" name="lineEdit_del_add">
-        <property name="font">
-         <font>
-          <pointsize>26</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item row="3" column="0">
-     <widget class="QPushButton" name="pushButton_cancel">
-      <property name="font">
-       <font>
-        <pointsize>26</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="text">
-       <string>Cancel </string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="1" colspan="3">
-     <widget class="QPushButton" name="pushButton_pay">
-      <property name="font">
-       <font>
-        <pointsize>26</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="text">
-       <string>Pay</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>6</x>
+      <y>100</y>
+      <width>271</width>
+      <height>57</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>36</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;</string>
+    </property>
+    <property name="text">
+     <string>DEBIT CARD</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>103</y>
+      <width>48</width>
+      <height>48</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>card.svg</pixmap>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_cancel">
+    <property name="geometry">
+     <rect>
+      <x>6</x>
+      <y>543</y>
+      <width>241</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>26</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+	background-color: qlineargradient(spread:pad, x1:0, y1:505682, x2:1, y2:0.477, stop:0 rgba(11, 131, 120, 219), stop:1 rgba(85, 98, 112, 226));
+	color: rgba(255, 255, 255, 210);
+	border-radius: 5px;
+}
+QPushButton:hover{
+	background-color: qlineargradient(spread:pad, x1:0, y1:505682, x2:1, y2:0.477, stop:0 rgba(150, 123, 111, 219), stop:1 rgba(85, 81, 84, 226));
+}
+QPushButton:pressed{
+	padding-left: 5px;
+	padding-top: 5px;
+	background-color: rgba(150, 123, 111, 255);
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Cancel </string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_pay">
+    <property name="geometry">
+     <rect>
+      <x>255</x>
+      <y>543</y>
+      <width>741</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>26</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+	background-color: qlineargradient(spread:pad, x1:0, y1:505682, x2:1, y2:0.477, stop:0 rgba(11, 131, 120, 219), stop:1 rgba(85, 98, 112, 226));
+	color: rgba(255, 255, 255, 210);
+	border-radius: 5px;
+}
+QPushButton:hover{
+	background-color: qlineargradient(spread:pad, x1:0, y1:505682, x2:1, y2:0.477, stop:0 rgba(150, 123, 111, 219), stop:1 rgba(85, 81, 84, 226));
+}
+QPushButton:pressed{
+	padding-left: 5px;
+	padding-top: 5px;
+	background-color: rgba(150, 123, 111, 255);
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Pay</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1000</width>
+      <height>600</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>OsfFKJ0.jpg</pixmap>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_dnum">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>230</y>
+      <width>971</width>
+      <height>53</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>26</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,0);
+border: none;
+border-bottom: 2px solid rgba(46,82, 101, 200);
+color:white;
+padding-bottom: 7px;
+</string>
+    </property>
+    <property name="placeholderText">
+     <string>Card Number</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_cvv">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>300</y>
+      <width>971</width>
+      <height>53</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>26</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,0);
+border: none;
+border-bottom: 2px solid rgba(46,82, 101, 200);
+color:white;
+padding-bottom: 7px;
+</string>
+    </property>
+    <property name="placeholderText">
+     <string>CVV</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_del_add">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>370</y>
+      <width>971</width>
+      <height>53</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>26</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,0);
+border: none;
+border-bottom: 2px solid rgba(46,82, 101, 200);
+color:white;
+padding-bottom: 7px;
+</string>
+    </property>
+    <property name="placeholderText">
+     <string>House Number</string>
+    </property>
+   </widget>
+   <zorder>label_2</zorder>
+   <zorder>pushButton_cancel</zorder>
+   <zorder>pushButton_pay</zorder>
+   <zorder>label</zorder>
+   <zorder>label_5</zorder>
+   <zorder>lineEdit_dnum</zorder>
+   <zorder>lineEdit_cvv</zorder>
+   <zorder>lineEdit_del_add</zorder>
   </widget>
  </widget>
  <resources/>

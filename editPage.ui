@@ -30,7 +30,7 @@
     <rect>
      <x>10</x>
      <y>110</y>
-     <width>121</width>
+     <width>151</width>
      <height>57</height>
     </rect>
    </property>
@@ -46,13 +46,13 @@
 </string>
    </property>
    <property name="text">
-    <string>Edit</string>
+    <string>EDIT</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>130</x>
+     <x>160</x>
      <y>110</y>
      <width>48</width>
      <height>48</height>

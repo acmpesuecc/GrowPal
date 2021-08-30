@@ -69,7 +69,7 @@ QPushButton:pressed{
      <rect>
       <x>6</x>
       <y>6</y>
-      <width>133</width>
+      <width>151</width>
       <height>45</height>
      </rect>
     </property>
@@ -84,7 +84,7 @@ QPushButton:pressed{
      <string notr="true">color: white;</string>
     </property>
     <property name="text">
-     <string>Selling  </string>
+     <string>SELLING</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -217,8 +217,8 @@ QPushButton:pressed{
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>147</x>
-      <y>6</y>
+      <x>160</x>
+      <y>0</y>
       <width>48</width>
       <height>48</height>
      </rect>

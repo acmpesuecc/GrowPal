@@ -228,7 +228,7 @@ QPushButton:pressed{
      <string notr="true">color: white;</string>
     </property>
     <property name="text">
-     <string>Home           </string>
+     <string>Home</string>
     </property>
    </widget>
    <widget class="QPushButton" name="search_button">
