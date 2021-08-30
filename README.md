@@ -31,6 +31,9 @@ pip install imagekitio
 pip install qdarkstyle
 ```
 
+```
+pip install dnspython
+```
 
 ## Progress
 - [x] Make UI pages - 90%

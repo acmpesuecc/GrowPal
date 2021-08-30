@@ -8,7 +8,10 @@
 #
 # Please go through the README file before execution 
 #
-#
+### TODO
+# Solve the global variable mess (please)
+# UI Redesign - Transaction Pages Left 
+# Tune Background Image and Blur Effect 
 # -------------------------------------------------------Import statements------------------------------------------------------- #
 import sys
 import os
@@ -155,7 +158,7 @@ class login_page(QMainWindow):
         if self.lineEdit_username.text() == "" or self.lineEdit_password.text() == "":
 
             error_dialog = QtWidgets.QErrorMessage(self)
-            error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
+            error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
             error_dialog.setWindowTitle('Empty Fields')
             error_dialog.showMessage("Please fill all the fields")
         else:
@@ -168,7 +171,7 @@ class login_page(QMainWindow):
                     self.lineEdit_username.setText("")
                     self.lineEdit_password.setText("")
                     error_dialog = QtWidgets.QErrorMessage(self)
-                    error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
+                    error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
                     error_dialog.setWindowTitle('Welcome')
                     error_dialog.showMessage(
                         f"Welcome back {logged_in_username}!")
@@ -176,14 +179,14 @@ class login_page(QMainWindow):
                     buy_page.loadData()
                 else:
                     error_dialog = QtWidgets.QErrorMessage(self)
-                    error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
+                    error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
                     error_dialog.setWindowTitle('Password')
                     error_dialog.showMessage(
                         'Incorrect password, please try again')
                     self.lineEdit_password.setText("")
             else:
                 error_dialog = QtWidgets.QErrorMessage(self)
-                error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
+                error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
                 error_dialog.setWindowTitle('Account')
                 error_dialog.showMessage('Please create an account')
                 self.lineEdit_username.setText("")
@@ -226,7 +229,7 @@ class register_page(QMainWindow):
             ])
         server.sendmail('system.growpal@gmail.com', self.lineEdit_email.text(), msg)
         error_dialog = QtWidgets.QErrorMessage(self)
-        error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
+        error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
         error_dialog.setWindowTitle('OTP')
         error_dialog.showMessage("Please check your mail inbox for the OTP")
 
@@ -262,23 +265,31 @@ class register_page(QMainWindow):
 
         if self.lineEdit_username.text() == "" or self.lineEdit_email.text() == "" or self.lineEdit_phnumber.text() == "" or self.lineEdit_password.text() == "" or self.lineEdit_repeatpassword.text() == "":
             error_dialog = QtWidgets.QErrorMessage(self)
-            error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
+            error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
             error_dialog.setWindowTitle('Empty Fields')
             error_dialog.showMessage("Please fill all the fields")
         elif len(self.lineEdit_phnumber.text()) != 10:
             error_dialog = QtWidgets.QErrorMessage(self)
-            error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
+            error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
             error_dialog.setWindowTitle('Phone Number')
             error_dialog.showMessage('Please enter a valid phone number')
             self.lineEdit_phnumber.setText("")
 
         elif self.lineEdit_password.text() != self.lineEdit_repeatpassword.text():
             error_dialog = QtWidgets.QErrorMessage(self)
-            error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
+            error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
             error_dialog.setWindowTitle('Password')
             error_dialog.showMessage('Your passwords do not match. Try again.')
             self.lineEdit_password.setText("")
             self.lineEdit_repeatpassword.setText("")
+
+
+        elif self.lineEdit_otp.text() == '':
+            error_dialog = QtWidgets.QErrorMessage(self)
+            error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
+            error_dialog.setWindowTitle('OTP')
+            error_dialog.showMessage('Please enter OTP')
+
 
         elif self.lineEdit_password.text() == self.lineEdit_repeatpassword.text():
             if validate_email(self.lineEdit_email.text()):
@@ -301,7 +312,7 @@ class register_page(QMainWindow):
                         self.lineEdit_password.setText("")
                         self.lineEdit_repeatpassword.setText("")
                         error_dialog = QtWidgets.QErrorMessage(self)
-                        error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
+                        error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
                         error_dialog.setWindowTitle('Thanks!')
                         error_dialog.showMessage(
                             'Thanks for creating an account with us! Please login with the same credentials')
@@ -311,14 +322,14 @@ class register_page(QMainWindow):
 
                     else:
                         error_dialog = QtWidgets.QErrorMessage(self)
-                        error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
+                        error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
                         error_dialog.setWindowTitle('OTP')
                         error_dialog.showMessage(
                         'OTP Incorrect')
 
                 else:
                     error_dialog = QtWidgets.QErrorMessage(self)
-                    error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
+                    error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
                     error_dialog.setWindowTitle('Account')
                     error_dialog.showMessage(
                         'Username already exists.')
@@ -326,7 +337,7 @@ class register_page(QMainWindow):
 
             else:
                 error_dialog = QtWidgets.QErrorMessage(self)
-                error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
+                error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
                 error_dialog.setWindowTitle('Email')
                 error_dialog.showMessage('Please enter a valid email ID')
                 self.lineEdit_email.setText("")
@@ -356,6 +367,7 @@ class buy_page(QMainWindow):
         self.blur_effect = QGraphicsBlurEffect()
         self.blur_effect.setBlurRadius(20)
         self.label_3.setGraphicsEffect(self.blur_effect)
+        self.tableWidget.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
     
     
     
@@ -522,7 +534,7 @@ class sellPage(QMainWindow):
     def sell(self):
         if self.lineEdit_prod_name.text() == "" or self.lineEdit_price.text() == "" or self.lineEdit_description.text() == "" or self.lineEdit_name.text == "" or self.lineEdit_cont_num.text() == "" or self.lineEdit_email.text() == "" or self.lineEdit_address.text() == "" or self.lineEdit_upi_id == "":
             error_dialog = QtWidgets.QErrorMessage(self)
-            error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
+            error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
             error_dialog.setWindowTitle('Empty Fields')
             error_dialog.showMessage("Please fill all the fields")
         else:
@@ -570,7 +582,7 @@ class sellPage(QMainWindow):
             curs.execute(f"update numbers set item_id_num = {item_id} where item_id_num = {item_id - 1}")
             db.commit()
             error_dialog = QtWidgets.QErrorMessage(self)
-            error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
+            error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
 
 
             error_dialog.setWindowTitle('Sell')
@@ -649,7 +661,7 @@ class creditCard(QMainWindow):
         curs.execute(f'''update numbers set order_id_num = {order_id} where order_id_num = {order_id - 1}''')
         db.commit()
         error_dialog = QtWidgets.QErrorMessage(self)
-        error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
+        error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
         error_dialog.setWindowTitle('Order')
         error_dialog.showMessage('Your order has been placed.')
         transactionPage.go_back()
@@ -680,7 +692,7 @@ class debitCard(QMainWindow):
         curs.execute(f'''update numbers set order_id_num = {order_id} where order_id_num = {order_id - 1}''')
         db.commit()
         error_dialog = QtWidgets.QErrorMessage(self)
-        error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
+        error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
         error_dialog.setWindowTitle('Order')
         error_dialog.showMessage('Your order has been placed.')
 
@@ -713,7 +725,7 @@ class upi(QMainWindow):
         curs.execute(f'''update numbers set order_id_num = {order_id} where order_id_num = {order_id - 1}''')
         db.commit()
         error_dialog = QtWidgets.QErrorMessage(self)
-        error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
+        error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
         error_dialog.setWindowTitle('Order')
         error_dialog.showMessage('Your order has been placed.')
 
@@ -740,7 +752,7 @@ class netBank(QMainWindow):
         curs.execute(f'''update numbers set order_id_num = {order_id} where order_id_num = {order_id - 1}''')
         db.commit()
         error_dialog = QtWidgets.QErrorMessage(self)
-        error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
+        error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
         error_dialog.setWindowTitle('Order')
         error_dialog.showMessage('Your order has been placed.')
 
@@ -759,6 +771,14 @@ class orders(QMainWindow):
         self.loadData()
         self.pushButton_back.clicked.connect(self.go_back)
         self.tableWidget.selectionModel().selectionChanged.connect(self.selection)
+        self.tableWidget.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
+        self.blur_effect = QGraphicsBlurEffect()
+        self.blur_effect.setBlurRadius(20)
+        self.label_3.setGraphicsEffect(self.blur_effect)
+        self.tableWidget.setColumnWidth(1, 100)
+        self.tableWidget.setColumnWidth(2, 200)
+        self.tableWidget.setColumnWidth(3, 150)
+        self.tableWidget.setColumnWidth(4, 150)
 
     def go_back(self):
         widget.setCurrentIndex(3)
@@ -779,7 +799,7 @@ class orders(QMainWindow):
             self.tableWidget.setItem(row, 3, QtWidgets.QTableWidgetItem(order[0]))
             self.tableWidget.setItem(row, 4, QtWidgets.QTableWidgetItem(order[1]))
             self.tableWidget.setItem(row, 5, QtWidgets.QTableWidgetItem(order[2]))
-            self.tableWidget.setItem(row, 1, QtWidgets.QTableWidgetItem("                Cancel"))
+            self.tableWidget.setItem(row, 1, QtWidgets.QTableWidgetItem("   Cancel"))
             
             self.image = QtWidgets.QLabel(self.centralwidget)
             self.image.setText('')
@@ -787,7 +807,7 @@ class orders(QMainWindow):
             self.data = urllib.request.urlopen(order[3]).read()
             self.pixmap = QPixmap()
             self.pixmap.loadFromData(self.data)
-            self.pixmap = self.pixmap.scaled(200, 250)
+            self.pixmap = self.pixmap.scaled(200, 200)
             self.image.setPixmap(self.pixmap)
             self.tableWidget.setCellWidget(row, 2, self.image)
             self.image.setHidden(True)
@@ -824,7 +844,7 @@ class orders(QMainWindow):
             
             curs.execute(f'''update {item_table} set deleted = "True" where order_id = {order_id_selected};''')
             error_dialog = QtWidgets.QErrorMessage(self)
-            error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
+            error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
             error_dialog.setWindowTitle('Cancel')
             error_dialog.showMessage("Your order has been cancelled")
             self.loadData()
@@ -841,6 +861,11 @@ class Items(QMainWindow):
         self.pushButton_back.clicked.connect(orders.go_back)
         self.tableWidget.setColumnHidden(0, True)
         self.tableWidget.selectionModel().selectionChanged.connect(self.selection)
+        self.tableWidget.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
+        self.blur_effect = QGraphicsBlurEffect()
+        self.blur_effect.setBlurRadius(20)
+        self.label_3.setGraphicsEffect(self.blur_effect)
+        self.tableWidget.setColumnWidth(1, 100)
 
 
 
@@ -853,7 +878,7 @@ class Items(QMainWindow):
         self.tableWidget.setRowCount(len(listed_items))
         for item in listed_items:
             self.tableWidget.setItem(row, 0, QtWidgets.QTableWidgetItem(str(item[4])))
-            self.tableWidget.setItem(row, 1, QtWidgets.QTableWidgetItem("           EDIT"))
+            self.tableWidget.setItem(row, 1, QtWidgets.QTableWidgetItem("  EDIT"))
             self.tableWidget.setItem(row, 3, QtWidgets.QTableWidgetItem(item[1]))
             self.tableWidget.setItem(row, 4, QtWidgets.QTableWidgetItem(item[2]))
             self.tableWidget.setItem(row, 5, QtWidgets.QTableWidgetItem(item[3]))
@@ -914,6 +939,9 @@ class Edit_Items(QDialog):
         self.pushButton_delete.clicked.connect(self.delete)
         self.pushButton_done.clicked.connect(self.done)
         self.update_data()
+        self.blur_effect = QGraphicsBlurEffect()
+        self.blur_effect.setBlurRadius(20)
+        self.label_6.setGraphicsEffect(self.blur_effect)
 
     def delete(self): 
         global item_id_selected
@@ -921,7 +949,7 @@ class Edit_Items(QDialog):
         Items.loadData()
         buy_page.loadData()
         error_dialog = QtWidgets.QErrorMessage(self)
-        error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
+        error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
         error_dialog.setWindowTitle('Delete')
         error_dialog.showMessage("Your item has been deleted")
         widget.setCurrentIndex(11)
@@ -936,7 +964,7 @@ class Edit_Items(QDialog):
         Items.loadData()
         buy_page.loadData()
         error_dialog = QtWidgets.QErrorMessage(self)
-        error_dialog.setStyleSheet("color: #FFFFFF; font-size: 16px;")
+        error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
         error_dialog.setWindowTitle('Update')
         error_dialog.showMessage("Your item has been updated")
         widget.setCurrentIndex(11)
