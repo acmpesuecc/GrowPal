@@ -156,7 +156,7 @@ QPushButton:pressed{
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>OsfFKJ0.jpg</pixmap>
+     <pixmap>image.png</pixmap>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_dnum">

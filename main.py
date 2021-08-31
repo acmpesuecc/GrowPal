@@ -104,9 +104,7 @@ class loginregisterpage(QMainWindow):
         self.setWindowTitle("GrowPal")
         self.login_button.clicked.connect(self.gotologin_page)
         self.register_button.clicked.connect(self.gotoregister_page)
-        self.blur_effect = QGraphicsBlurEffect()
-        self.blur_effect.setBlurRadius(20)
-        self.label.setGraphicsEffect(self.blur_effect)
+
     def gotologin_page(self):
         widget.setCurrentIndex(1)
 
@@ -124,15 +122,16 @@ class login_page(QMainWindow):
         self.password_view.clicked.connect(self.pass_view_clicked)
         self.shortcut_login = QShortcut(QKeySequence('return'), self)
         self.shortcut_login.activated.connect(self.login_button_pressed)
+        self.pushButton_forgot.clicked.connect(self.go_to_forgot)
         global logged_in_username
         global logged_in_password
         logged_in_username = ''
         logged_in_password = ''
         self.icon = QIcon('visiblity.svg')
         self.password_view.setIcon(self.icon)
-        self.blur_effect = QGraphicsBlurEffect()
-        self.blur_effect.setBlurRadius(20)
-        self.label.setGraphicsEffect(self.blur_effect)
+        
+    def go_to_forgot(self):
+        widget.setCurrentIndex(13)
     def pass_view_clicked(self):
         if self.password_view.isChecked():
             self.lineEdit_password.setEchoMode(QLineEdit.Normal)
@@ -193,6 +192,58 @@ class login_page(QMainWindow):
                 widget.setCurrentIndex(2)
 
 
+
+
+
+
+# -------------------------------------------------------Forgot Page------------------------------------------------------- #
+class forgot(QMainWindow):
+    def __init__(self):
+        super(forgot, self).__init__()
+        loadUi("forgot.ui", self)
+        self.pushButton_back.clicked.connect(self.back_button_pressed)
+        self.pushbutton_send.clicked.connect(self.send_button_pressed)
+        self.shortcut_send = QShortcut(QKeySequence('return'), self)
+        self.shortcut_send.activated.connect(self.send_button_pressed)
+        
+        curs.execute("select email from login_details;")
+        self.emails = curs.fetchall()
+        self.emails = list(flatten(self.emails))
+        print(self.emails)
+    def back_button_pressed(self):
+        widget.setCurrentIndex(1)
+
+    def send_button_pressed(self):
+
+        if self.lineEdit_email.text() in self.emails:
+            curs.execute(f"select username, password from login_details where email = '{self.lineEdit_email.text()}'")
+            self.to_send = curs.fetchall()
+
+            for entry in self.to_send:
+                msg = "\r\n".join([
+                "From: system.growpal@gmail.com",
+                f"To: {self.lineEdit_email.text()}",
+                "Subject: Forgot Credentials",
+                "",
+                f'''Hi! We heard you forgot your credentials. We are here to help. Here are your login details:
+                Username: {entry[0]}
+                Password: {entry[1]}'''
+                ])
+                server.sendmail('system.growpal@gmail.com', self.lineEdit_email.text(), msg)
+            error_dialog = QtWidgets.QErrorMessage(self)
+            error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
+            error_dialog.setWindowTitle('Mail')
+            error_dialog.showMessage("We have sent your credentials to your email ID.")
+        else:
+            error_dialog = QtWidgets.QErrorMessage(self)
+            error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
+            error_dialog.setWindowTitle('Mail')
+            error_dialog.showMessage("email ID does not exist in the database. Please check once again.")
+
+
+
+
+
 # -------------------------------------------------------register_page------------------------------------------------------- #
 class register_page(QMainWindow):
     def __init__(self):
@@ -210,9 +261,6 @@ class register_page(QMainWindow):
         self.sp_view.setIcon(self.ispicon)
         self.icpicon = QIcon('visiblity.svg')
         self.cp_view.setIcon(self.icpicon)
-        self.blur_effect = QGraphicsBlurEffect()
-        self.blur_effect.setBlurRadius(20)
-        self.label_2.setGraphicsEffect(self.blur_effect)
 
 
 
@@ -363,9 +411,7 @@ class buy_page(QMainWindow):
         self.shortcut_search = QShortcut(QKeySequence('return'), self)
         self.shortcut_search.activated.connect(self.loadFromSearch)
         self.tableWidget.selectionModel().selectionChanged.connect(self.selection)
-        self.blur_effect = QGraphicsBlurEffect()
-        self.blur_effect.setBlurRadius(20)
-        self.label_3.setGraphicsEffect(self.blur_effect)
+
         self.tableWidget.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
 
     
@@ -498,9 +544,7 @@ class sellPage(QMainWindow):
         self.pushButton_UploadImages.clicked.connect(self.upload)
         self.pushButton_Sell.clicked.connect(self.sell)
         global logged_in_username
-        self.blur_effect = QGraphicsBlurEffect()
-        self.blur_effect.setBlurRadius(20)
-        self.label_3.setGraphicsEffect(self.blur_effect)
+
 
     def getback(self):
         widget.setCurrentIndex(3)
@@ -609,9 +653,7 @@ class transactionPage(QMainWindow):
 
 
         self.pushButton_netbank.clicked.connect(self.netbank)
-        self.blur_effect = QGraphicsBlurEffect()
-        self.blur_effect.setBlurRadius(20)
-        self.label_3.setGraphicsEffect(self.blur_effect)
+
 
     def go_back(self):
         widget.setCurrentIndex(3)
@@ -650,9 +692,7 @@ class creditCard(QMainWindow):
         loadUi("transaction_cc.ui", self)
         self.pushButton_cancel.clicked.connect(transactionPage.go_back)
         self.pushButton_pay.clicked.connect(self.pay)
-        self.blur_effect = QGraphicsBlurEffect()
-        self.blur_effect.setBlurRadius(20)
-        self.label_2.setGraphicsEffect(self.blur_effect)
+
         
 
     def pay(self):
@@ -685,9 +725,7 @@ class debitCard(QMainWindow):
         loadUi("transaction_dc.ui", self)
         self.pushButton_cancel.clicked.connect(transactionPage.go_back)
         self.pushButton_pay.clicked.connect(self.pay)
-        self.blur_effect = QGraphicsBlurEffect()
-        self.blur_effect.setBlurRadius(20)
-        self.label_2.setGraphicsEffect(self.blur_effect)
+
         
 
     def pay(self):
@@ -721,9 +759,7 @@ class upi(QMainWindow):
         loadUi("transaction_upi.ui", self)
         self.pushButton_cancel.clicked.connect(transactionPage.go_back)
         self.pushButton_pay.clicked.connect(self.pay)
-        self.blur_effect = QGraphicsBlurEffect()
-        self.blur_effect.setBlurRadius(20)
-        self.label_2.setGraphicsEffect(self.blur_effect)
+
 
     def pay(self):
         global price
@@ -752,9 +788,7 @@ class netBank(QMainWindow):
         loadUi("transaction_netbank.ui", self)
         self.pushButton_cancel.clicked.connect(transactionPage.go_back)
         self.pushButton_pay.clicked.connect(self.pay)
-        self.blur_effect = QGraphicsBlurEffect()
-        self.blur_effect.setBlurRadius(20)
-        self.label_2.setGraphicsEffect(self.blur_effect)
+
 
     def pay(self):
         global price
@@ -788,9 +822,7 @@ class orders(QMainWindow):
         self.pushButton_back.clicked.connect(self.go_back)
         self.tableWidget.selectionModel().selectionChanged.connect(self.selection)
         self.tableWidget.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
-        self.blur_effect = QGraphicsBlurEffect()
-        self.blur_effect.setBlurRadius(20)
-        self.label_3.setGraphicsEffect(self.blur_effect)
+
         self.tableWidget.setColumnWidth(1, 100)
         self.tableWidget.setColumnWidth(2, 200)
         self.tableWidget.setColumnWidth(3, 150)
@@ -879,9 +911,7 @@ class Items(QMainWindow):
         self.tableWidget.setColumnHidden(0, True)
         self.tableWidget.selectionModel().selectionChanged.connect(self.selection)
         self.tableWidget.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
-        self.blur_effect = QGraphicsBlurEffect()
-        self.blur_effect.setBlurRadius(20)
-        self.label_3.setGraphicsEffect(self.blur_effect)
+
         self.tableWidget.setColumnWidth(1, 100)
 
 
@@ -957,9 +987,6 @@ class Edit_Items(QDialog):
         self.pushButton_delete.clicked.connect(self.delete)
         self.pushButton_done.clicked.connect(self.done)
         self.update_data()
-        self.blur_effect = QGraphicsBlurEffect()
-        self.blur_effect.setBlurRadius(20)
-        self.label_6.setGraphicsEffect(self.blur_effect)
 
     def delete(self): 
         global item_id_selected
@@ -1052,6 +1079,7 @@ netBank = netBank()
 orders = orders()
 Items = Items()
 Edit_Items = Edit_Items()
+forgot = forgot()
 # Indexing for all the stacked pages. indexes are appointed in the order they are added.
 widget.addWidget(login_register_page)           # 0
 widget.addWidget(loginpage)                     # 1
@@ -1066,6 +1094,7 @@ widget.addWidget(netBank)                       # 9
 widget.addWidget(orders)                        # 10
 widget.addWidget(Items)                         # 11
 widget.addWidget(Edit_Items)                    # 12
+widget.addWidget(forgot)                        # 13
 # End of indexing for stacked widgets
 
 

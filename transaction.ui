@@ -63,7 +63,7 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>350</x>
+      <x>370</x>
       <y>110</y>
       <width>48</width>
       <height>48</height>
@@ -117,6 +117,9 @@
       <width>200</width>
       <height>200</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 10px</string>
     </property>
     <property name="text">
      <string/>
@@ -186,7 +189,7 @@ QPushButton:pressed{
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>OsfFKJ0.jpg</pixmap>
+     <pixmap>image.png</pixmap>
     </property>
    </widget>
    <widget class="QWidget" name="layoutWidget">

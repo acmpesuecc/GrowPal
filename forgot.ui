@@ -37,7 +37,7 @@
     </property>
     <layout class="QGridLayout" name="gridLayout">
      <item row="0" column="0" colspan="2">
-      <widget class="QLineEdit" name="lineEdit_username">
+      <widget class="QLineEdit" name="lineEdit_email">
        <property name="font">
         <font>
          <pointsize>18</pointsize>
@@ -54,56 +54,7 @@ padding-bottom: 7px;
 </string>
        </property>
        <property name="placeholderText">
-        <string>Username</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLineEdit" name="lineEdit_password">
-       <property name="font">
-        <font>
-         <pointsize>18</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgba(0,0,0,0);
-border: none;
-border-bottom: 2px solid rgba(46,82, 101, 200);
-color:white;
-padding-bottom: 7px;
-</string>
-       </property>
-       <property name="echoMode">
-        <enum>QLineEdit::Password</enum>
-       </property>
-       <property name="placeholderText">
-        <string>Password</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QPushButton" name="password_view">
-       <property name="styleSheet">
-        <string notr="true">background-color: rgba(0,0,0,0);
-</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>visibility.svg</normaloff>visibility.svg</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>30</width>
-         <height>30</height>
-        </size>
-       </property>
-       <property name="checkable">
-        <bool>true</bool>
+        <string>email</string>
        </property>
       </widget>
      </item>
@@ -114,7 +65,7 @@ padding-bottom: 7px;
      <rect>
       <x>100</x>
       <y>160</y>
-      <width>261</width>
+      <width>801</width>
       <height>61</height>
      </rect>
     </property>
@@ -131,10 +82,10 @@ padding-bottom: 7px;
      <string notr="true">color: white;</string>
     </property>
     <property name="text">
-     <string>SIGN IN</string>
+     <string>Forgot Credentials?</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushbutton_login">
+   <widget class="QPushButton" name="pushbutton_send">
     <property name="geometry">
      <rect>
       <x>200</x>
@@ -168,7 +119,7 @@ QPushButton:pressed{
 </string>
     </property>
     <property name="text">
-     <string>Login</string>
+     <string>Send</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_back">
@@ -228,49 +179,11 @@ QPushButton:pressed{
      <pixmap>image.png</pixmap>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_forgot">
-    <property name="geometry">
-     <rect>
-      <x>700</x>
-      <y>410</y>
-      <width>261</width>
-      <height>39</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>11</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton{
-	background-color: rgba(0,0,0,0);
-	color: grey;
-	border: none;
-}
-QPushButton:hover{
-	color: white;
-}
-QPushButton:pressed{
-	padding-left: 5px;
-	padding-top: 5px;
-
-}
-
-</string>
-    </property>
-    <property name="text">
-     <string>Forgot Login Details?</string>
-    </property>
-   </widget>
    <zorder>label</zorder>
    <zorder>formLayoutWidget</zorder>
    <zorder>label_3</zorder>
-   <zorder>pushbutton_login</zorder>
+   <zorder>pushbutton_send</zorder>
    <zorder>pushButton_back</zorder>
-   <zorder>pushButton_forgot</zorder>
   </widget>
  </widget>
  <resources/>
