@@ -1,5 +1,5 @@
 # GrowPal
-This is a repository for managing code for the GrowPal project. 
+This is a repository for managing code for the GrowPal project. Please open an issue if you find any!
 
 ## Installation
 Make sure the required libraries are installed. 
