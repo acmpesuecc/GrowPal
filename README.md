@@ -44,6 +44,7 @@ Head to the Start Menu and open the Settings page.
 
 From here, click the Personlization option, then Fonts.
 ![image](https://user-images.githubusercontent.com/77329899/131461465-0aedf1e9-2d91-48b0-a5a9-7b05681a2742.png)
+
 Next, drag the fonts files onto the installer window. After a few seconds, the Google Roboto font will be installed within Windows. 
 
 
