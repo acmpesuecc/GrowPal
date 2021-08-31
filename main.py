@@ -367,7 +367,7 @@ class buy_page(QMainWindow):
         self.blur_effect.setBlurRadius(20)
         self.label_3.setGraphicsEffect(self.blur_effect)
         self.tableWidget.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
-    
+
     
     
     def selection(self, selected):

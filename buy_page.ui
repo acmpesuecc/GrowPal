@@ -339,7 +339,7 @@ QPushButton:pressed{
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius: 25px;</string>
+     <string notr="true"/>
     </property>
     <property name="sizeAdjustPolicy">
      <enum>QAbstractScrollArea::AdjustToContents</enum>
