@@ -209,7 +209,6 @@ class forgot(QMainWindow):
         curs.execute("select email from login_details;")
         self.emails = curs.fetchall()
         self.emails = list(flatten(self.emails))
-        print(self.emails)
     def back_button_pressed(self):
         widget.setCurrentIndex(1)
 
@@ -234,6 +233,7 @@ class forgot(QMainWindow):
             error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
             error_dialog.setWindowTitle('Mail')
             error_dialog.showMessage("We have sent your credentials to your email ID.")
+            self.back_button_pressed()
         else:
             error_dialog = QtWidgets.QErrorMessage(self)
             error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
@@ -769,7 +769,6 @@ class upi(QMainWindow):
         curs.execute("select order_id_num from numbers")
         order_id = int(curs.fetchone()[0])
         order_id += 1
-        print("PRICE: ",price)
         curs.execute(f"insert into upi_transactions values('{logged_in_username}', '{item}', '{price}', '{self.lineEdit_upinum.text()}', '{self.lineEdit_del_add.text()}', '{picture}',{order_id}, 'False')")
         curs.execute(f'''update numbers set order_id_num = {order_id} where order_id_num = {order_id - 1}''')
         db.commit()
