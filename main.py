@@ -150,6 +150,8 @@ class login_page(QMainWindow):
 
     def back_button_pressed(self):
         widget.setCurrentIndex(0)
+        self.lineEdit_password.setText('')
+
 
     def login_button_pressed(self):
         getLoginDetails()
@@ -307,6 +309,9 @@ class register_page(QMainWindow):
 
     def back_button_clicked(self):
         widget.setCurrentIndex(0)
+        self.lineEdit_password.setText('')
+        self.lineEdit_repeatpassword.setText('')
+
 
     def register_button_clicked(self):
 
@@ -580,6 +585,21 @@ class sellPage(QMainWindow):
             error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
             error_dialog.setWindowTitle('Empty Fields')
             error_dialog.showMessage("Please fill all the fields")
+
+        elif(not validate_email(self.lineEdit_email.text())):
+            error_dialog = QtWidgets.QErrorMessage(self)
+            error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
+            error_dialog.setWindowTitle('Invalid Email')
+            error_dialog.showMessage("Please enter a valid email ID.")
+
+        elif(self.label_browse.text() == ''):
+            error_dialog = QtWidgets.QErrorMessage(self)
+            error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
+            error_dialog.setWindowTitle('Image')
+            error_dialog.showMessage("Please upload an image of the product.")
+
+
+
         else:
             sellPage.given_prod_name = self.lineEdit_prod_name.text()
             sellPage.given_price = self.lineEdit_price.text()
