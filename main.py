@@ -41,6 +41,7 @@ import qdarkstyle
 import smtplib
 from email.mime.multipart import MIMEMultipart
 import random
+
 # -------------------------------------------------------Variables and Misc.------------------------------------------------------- #
 global loginpage_details
 loginpage_details = []
@@ -129,9 +130,10 @@ class login_page(QMainWindow):
         logged_in_password = ''
         self.icon = QIcon('visiblity.svg')
         self.password_view.setIcon(self.icon)
-        
+
     def go_to_forgot(self):
         widget.setCurrentIndex(13)
+        self.lineEdit_password.setText('')
     def pass_view_clicked(self):
         if self.password_view.isChecked():
             self.lineEdit_password.setEchoMode(QLineEdit.Normal)
@@ -512,31 +514,41 @@ class buy_page(QMainWindow):
 
             curs.execute(f"select product_name, product_price, product_description, product_image_address, item_id from listed_items")
             listed_items = curs.fetchall()
-    
-            row = 0
-            self.tableWidget.setRowCount(0)
-            self.tableWidget.setRowCount(len(listed_items))
-            for item in listed_items:
-                if self.search_criteria.lower() in item[0].lower():
-                    self.tableWidget.setItem(row, 0, QtWidgets.QTableWidgetItem(str(item[4])))
-                    self.tableWidget.setItem(row, 2, QtWidgets.QTableWidgetItem(item[0]))
-                    self.tableWidget.setItem(row, 3, QtWidgets.QTableWidgetItem(item[1]))
-                    self.tableWidget.setItem(row, 4, QtWidgets.QTableWidgetItem(item[2]))
+            filtered = 0
+            for i in listed_items:
+                if self.search_criteria.lower() in i[0]:
+                    filtered +=1
+
+            if filtered == 0: 
+                error_dialog = QtWidgets.QErrorMessage(self)
+                error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
+                error_dialog.setWindowTitle('Search')
+                error_dialog.showMessage("Oopsie, no results found :(")
+            else:
+                row = 0
+                self.tableWidget.setRowCount(0)
+                self.tableWidget.setRowCount(len(listed_items))
+                for item in listed_items:
+                    if self.search_criteria.lower() in item[0].lower():
+                        self.tableWidget.setItem(row, 0, QtWidgets.QTableWidgetItem(str(item[4])))
+                        self.tableWidget.setItem(row, 2, QtWidgets.QTableWidgetItem(item[0]))
+                        self.tableWidget.setItem(row, 3, QtWidgets.QTableWidgetItem(item[1]))
+                        self.tableWidget.setItem(row, 4, QtWidgets.QTableWidgetItem(item[2]))
 
 
 
-                    self.image = QtWidgets.QLabel(self.centralwidget)
-                    self.image.setText('')
-                    self.image.setScaledContents(True)
-                    self.data = urllib.request.urlopen(item[3]).read()
-                    self.pixmap = QPixmap()
-                    self.pixmap.loadFromData(self.data)
-                    self.pixmap = self.pixmap.scaled(250, 250)
-                    self.image.setPixmap(self.pixmap)
-                    self.tableWidget.setCellWidget(row, 1, self.image)
-                    self.image.setHidden(True)
-                    self.tableWidget.verticalHeader().setDefaultSectionSize(250)
-                    row = row + 1
+                        self.image = QtWidgets.QLabel(self.centralwidget)
+                        self.image.setText('')
+                        self.image.setScaledContents(True)
+                        self.data = urllib.request.urlopen(item[3]).read()
+                        self.pixmap = QPixmap()
+                        self.pixmap.loadFromData(self.data)
+                        self.pixmap = self.pixmap.scaled(250, 250)
+                        self.image.setPixmap(self.pixmap)
+                        self.tableWidget.setCellWidget(row, 1, self.image)
+                        self.image.setHidden(True)
+                        self.tableWidget.verticalHeader().setDefaultSectionSize(250)
+                        row = row + 1
 
 
 
@@ -699,7 +711,7 @@ class transactionPage(QMainWindow):
         self.pixmap = self.pixmap.scaled(256, 171)
         self.label_picture.setPixmap(self.pixmap)
         self.label_ammount.setText(f'''Item: {item}
-Ammount: {price}''')
+Amount: {price}''')
 
 
 
@@ -1080,7 +1092,6 @@ app = QApplication(sys.argv)
 #app.setStyleSheet(stream.readAll())
 #app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
 widget = QtWidgets.QStackedWidget()
-
 widget.setMaximumHeight(600)
 widget.setMaximumWidth(1000)
 widget.setMinimumHeight(600)

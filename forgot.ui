@@ -64,9 +64,9 @@ padding-bottom: 7px;
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>160</y>
+      <y>100</y>
       <width>801</width>
-      <height>61</height>
+      <height>121</height>
      </rect>
     </property>
     <property name="font">

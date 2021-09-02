@@ -234,8 +234,8 @@ QPushButton:pressed{
    <widget class="QPushButton" name="search_button">
     <property name="geometry">
      <rect>
-      <x>950</x>
-      <y>50</y>
+      <x>6</x>
+      <y>60</y>
       <width>40</width>
       <height>36</height>
      </rect>
@@ -429,8 +429,8 @@ QPushButton:pressed{
    <widget class="QLineEdit" name="search_bar">
     <property name="geometry">
      <rect>
-      <x>6</x>
-      <y>49</y>
+      <x>50</x>
+      <y>60</y>
       <width>941</width>
       <height>37</height>
      </rect>
@@ -446,7 +446,7 @@ QPushButton:pressed{
     <property name="styleSheet">
      <string notr="true">background-color: rgba(0,0,0,0);
 border: none;
-border-bottom: 2px solid rgba(46,82, 101, 200);
+border-bottom: 2px solid white;
 color:white;
 padding-bottom: 7px;
 </string>
