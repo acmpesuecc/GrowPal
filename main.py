@@ -45,6 +45,13 @@ from email.mime.multipart import MIMEMultipart
 import random
 
 # -------------------------------------------------------Variables and Misc.------------------------------------------------------- #
+
+print(r''' _        ___       _      ____    ___   _   _    ____             
+| |      / _ \     / \    |  _ \  |_ _| | \ | |  / ___|            
+| |     | | | |   / _ \   | | | |  | |  |  \| | | |  _             
+| |___  | |_| |  / ___ \  | |_| |  | |  | |\  | | |_| |  _   _   _ 
+|_____|  \___/  /_/   \_\ |____/  |___| |_| \_|  \____| (_) (_) (_)
+''')
 global loginpage_details
 loginpage_details = []
 global register_page_email
