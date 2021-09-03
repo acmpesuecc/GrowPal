@@ -11,6 +11,8 @@
 ### TODO
 # Solve the global variable mess (please)
 # Tune Background Image and Blur Effect 
+# Server Optimization
+
 # -------------------------------------------------------Import statements------------------------------------------------------- #
 import sys
 import os
@@ -86,6 +88,7 @@ def getLoginDetails():
     loginpage_details = list(flatten(loginpage_details))
 
 getLoginDetails()
+
 imagekit = ImageKit(
         private_key = 'private_UWuh0ACI8AKq5HVubqJ7K1gON6Q=',
         public_key='public_9lTcdw6jQBz3nQTYfU1MXlsC/ZU=',
@@ -178,7 +181,7 @@ class login_page(QMainWindow):
                     error_dialog.showMessage(
                         f"Welcome back {logged_in_username}!")
                     widget.setCurrentIndex(3)
-                    buy_page.loadData()
+                    #buy_page.loadData()
                 else:
                     error_dialog = QtWidgets.QErrorMessage(self)
                     error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
@@ -453,14 +456,13 @@ class buy_page(QMainWindow):
 
     def go_to_items(self):
         widget.setCurrentIndex(11)
-        Items.loadData()
 
 
 
 
     def go_to_orders(self):
         widget.setCurrentIndex(10)
-        orders.loadData()
+
 
     def logout(self):
         widget.setCurrentIndex(0)
@@ -516,7 +518,7 @@ class buy_page(QMainWindow):
             listed_items = curs.fetchall()
             filtered = 0
             for i in listed_items:
-                if self.search_criteria.lower() in i[0]:
+                if self.search_criteria.lower() in i[0].lower():
                     filtered +=1
 
             if filtered == 0: 
@@ -524,6 +526,7 @@ class buy_page(QMainWindow):
                 error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
                 error_dialog.setWindowTitle('Search')
                 error_dialog.showMessage("Oopsie, no results found :(")
+                
             else:
                 row = 0
                 self.tableWidget.setRowCount(0)
@@ -665,6 +668,7 @@ class sellPage(QMainWindow):
                 f"Your product {sellPage.given_prod_name} is now listed for {sellPage.given_price} rupees")
             widget.setCurrentIndex(3)
             buy_page.loadData()
+            Items.loadData()
 
 
 
@@ -743,6 +747,7 @@ class creditCard(QMainWindow):
         error_dialog.setWindowTitle('Order')
         error_dialog.showMessage('Your order has been placed.')
         transactionPage.go_back()
+        orders.loadData()
 
 
 
@@ -777,7 +782,7 @@ class debitCard(QMainWindow):
         error_dialog.showMessage('Your order has been placed.')
 
         transactionPage.go_back()
-
+        orders.loadData()
 
 
 
@@ -810,7 +815,7 @@ class upi(QMainWindow):
         error_dialog.showMessage('Your order has been placed.')
 
         transactionPage.go_back()
-
+        orders.loadData()
 # -------------------------------------------------------Transaction - NetBanking------------------------------------------------------- #
 
 class netBank(QMainWindow):
@@ -838,7 +843,7 @@ class netBank(QMainWindow):
         error_dialog.showMessage('Your order has been placed.')
 
         transactionPage.go_back()
-
+        orders.loadData()
 
 # -------------------------------------------------------Orders------------------------------------------------------- #
 
@@ -956,7 +961,7 @@ class Items(QMainWindow):
         self.tableWidget.setRowCount(len(listed_items))
         for item in listed_items:
             self.tableWidget.setItem(row, 0, QtWidgets.QTableWidgetItem(str(item[4])))
-            self.tableWidget.setItem(row, 1, QtWidgets.QTableWidgetItem("  EDIT"))
+            self.tableWidget.setItem(row, 1, QtWidgets.QTableWidgetItem("   EDIT"))
             self.tableWidget.setItem(row, 3, QtWidgets.QTableWidgetItem(item[1]))
             self.tableWidget.setItem(row, 4, QtWidgets.QTableWidgetItem(item[2]))
             self.tableWidget.setItem(row, 5, QtWidgets.QTableWidgetItem(item[3]))
@@ -1084,7 +1089,7 @@ class Edit_Items(QDialog):
 
 
  # End of class declaration
-# -------------------------------------------------------Indexing for stacked widget------------------------------------------------------- #
+# -------------------------------------------------------Indexing for stacked widget and Data------------------------------------------------------- #
 app = QApplication(sys.argv)
 #file = QFile("amoled.qss")
 #file.open(QFile.ReadOnly | QFile.Text)
@@ -1110,6 +1115,9 @@ orders = orders()
 Items = Items()
 Edit_Items = Edit_Items()
 forgot = forgot()
+buy_page.loadData()
+Items.loadData()
+orders.loadData()
 # Indexing for all the stacked pages. indexes are appointed in the order they are added.
 widget.addWidget(login_register_page)           # 0
 widget.addWidget(loginpage)                     # 1
