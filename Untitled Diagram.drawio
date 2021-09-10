@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-09-10T06:08:54.769Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36" etag="7pavPSKsdl_HvasL61Li" version="15.1.4" type="github">
+<mxfile host="app.diagrams.net" modified="2021-09-10T06:20:46.334Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36" etag="XlQW6buQ1IqcqCjQdy7l" version="15.1.4" type="github">
   <diagram id="v8a2AImK6Y1Kj5C-OFho" name="Page-1">
     <mxGraphModel dx="963" dy="519" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -19,8 +19,11 @@
         <mxCell id="FD6uZ6-jMCt1QQ3MNHTS-7" value="Login or Register" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
           <mxGeometry x="342" y="270" width="120" height="60" as="geometry" />
         </mxCell>
+        <mxCell id="FD6uZ6-jMCt1QQ3MNHTS-27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="FD6uZ6-jMCt1QQ3MNHTS-9" target="FD6uZ6-jMCt1QQ3MNHTS-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="FD6uZ6-jMCt1QQ3MNHTS-9" value="Receive login details" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
-          <mxGeometry x="560" y="270" width="150" height="60" as="geometry" />
+          <mxGeometry x="510" y="270" width="150" height="60" as="geometry" />
         </mxCell>
         <mxCell id="FD6uZ6-jMCt1QQ3MNHTS-13" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="FD6uZ6-jMCt1QQ3MNHTS-7" target="FD6uZ6-jMCt1QQ3MNHTS-9">
           <mxGeometry relative="1" as="geometry">
@@ -31,13 +34,46 @@
         <mxCell id="FD6uZ6-jMCt1QQ3MNHTS-14" value="Login" style="edgeLabel;resizable=0;html=1;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="FD6uZ6-jMCt1QQ3MNHTS-13">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="FD6uZ6-jMCt1QQ3MNHTS-17" value="" style="endArrow=classic;html=1;" edge="1" parent="1" source="FD6uZ6-jMCt1QQ3MNHTS-9">
+        <mxCell id="FD6uZ6-jMCt1QQ3MNHTS-17" value="" style="endArrow=classic;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="FD6uZ6-jMCt1QQ3MNHTS-9" target="FD6uZ6-jMCt1QQ3MNHTS-19">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="635" y="170" as="sourcePoint" />
             <mxPoint x="635" y="170" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="FD6uZ6-jMCt1QQ3MNHTS-18" value="Forgot Credentails?" style="edgeLabel;resizable=0;html=1;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="FD6uZ6-jMCt1QQ3MNHTS-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FD6uZ6-jMCt1QQ3MNHTS-19" value="Receive email ID and verify" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="510" y="125" width="145" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="FD6uZ6-jMCt1QQ3MNHTS-22" value="" style="endArrow=classic;html=1;" edge="1" parent="1" source="FD6uZ6-jMCt1QQ3MNHTS-19">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="655" y="210" as="sourcePoint" />
+            <mxPoint x="700" y="160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FD6uZ6-jMCt1QQ3MNHTS-23" value="Send username and password with associated email from database" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="690" y="110" width="110" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="FD6uZ6-jMCt1QQ3MNHTS-25" value="" style="endArrow=classic;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="FD6uZ6-jMCt1QQ3MNHTS-23" target="FD6uZ6-jMCt1QQ3MNHTS-9">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="755" y="270" as="sourcePoint" />
+            <mxPoint x="755" y="290.71067811865476" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="745" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FD6uZ6-jMCt1QQ3MNHTS-26" value="Verify email, phone number and unique username" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="525" y="380" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="FD6uZ6-jMCt1QQ3MNHTS-30" value="" style="endArrow=classic;html=1;" edge="1" parent="1" source="FD6uZ6-jMCt1QQ3MNHTS-7">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="242" y="300" as="sourcePoint" />
+            <mxPoint x="242" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FD6uZ6-jMCt1QQ3MNHTS-31" value="Register" style="edgeLabel;resizable=0;html=1;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="FD6uZ6-jMCt1QQ3MNHTS-30">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
