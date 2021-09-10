@@ -188,6 +188,8 @@ class login_page(QMainWindow):
                     error_dialog.showMessage(
                         f"Welcome back {logged_in_username}!")
                     widget.setCurrentIndex(3)
+                    Items.loadData()
+                    orders.loadData()
                     #buy_page.loadData()
                 else:
                     error_dialog = QtWidgets.QErrorMessage(self)
@@ -1123,8 +1125,7 @@ Items = Items()
 Edit_Items = Edit_Items()
 forgot = forgot()
 buy_page.loadData()
-Items.loadData()
-orders.loadData()
+
 # Indexing for all the stacked pages. indexes are appointed in the order they are added.
 widget.addWidget(login_register_page)           # 0
 widget.addWidget(loginpage)                     # 1
