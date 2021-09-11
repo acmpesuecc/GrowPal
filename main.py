@@ -415,7 +415,7 @@ class buy_page(QMainWindow):
     def __init__(self) -> None:
         super(buy_page, self).__init__()
         loadUi("buy_page.ui", self)
-        self.pushButton_logout.clicked.connect(self.logout)
+        self.pushButton_logout.clicked.connect(self.are_you_sure)
         self.pushButton_sell.clicked.connect(self.gotoSellPage)
         global price
         global item
@@ -562,6 +562,28 @@ class buy_page(QMainWindow):
                         self.tableWidget.verticalHeader().setDefaultSectionSize(250)
                         row = row + 1
 
+
+
+
+    def are_you_sure(self):
+        msg = QMessageBox()
+        msg.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
+        msg.setWindowTitle("Logout")
+        msg.setText("Are you sure?")
+        msg.setIcon(QMessageBox.Question)
+        msg.setStandardButtons(QMessageBox.Yes|QMessageBox.No)
+        msg.setDefaultButton(QMessageBox.No)
+        msg.buttonClicked.connect(self.popup_button)
+        x = msg.exec_()
+
+    def popup_button(self, button):
+        button_pressed = button.text()
+
+        if button_pressed == '&Yes':
+            self.logout()
+
+        else:
+            pass
 
 
 # -------------------------------------------------------sellPage------------------------------------------------------- #
@@ -917,24 +939,38 @@ class orders(QMainWindow):
 
     def selection(self, selected):
         for ix in selected.indexes():
+            msg = QMessageBox()
+            msg.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
+            msg.setWindowTitle("Cancel")
+            msg.setText("Are you sure you want to cancel this order?")
+            msg.setIcon(QMessageBox.Question)
+            msg.setStandardButtons(QMessageBox.Yes|QMessageBox.No)
+            msg.setDefaultButton(QMessageBox.No)
             global item_name_selected 
             global logged_in_username
-            row_listed = ix.row()
-            column_listed = ix.column()
-            
+            self.row_listed = ix.row()
+            self.column_listed = ix.column()
+            msg.buttonClicked.connect(self.msgbutton)
+            x = msg.exec_()
 
-            order_id_selected = int(self.tableWidget.item(row_listed, 0).text())
-            
-            
+
+
+    def msgbutton(self, button):
+        if button.text() == "&Yes":
+    
+
+            order_id_selected = int(self.tableWidget.item(self.row_listed, 0).text())
+    
+    
             curs.execute(f'''select order_id, "credit_card_transactions" from credit_card_transactions where order_id = {order_id_selected} union all select order_id, "debit_card_transactions" from debit_card_transactions where order_id = {order_id_selected} union all select order_id, "upi_transactions" from upi_transactions where order_id = {order_id_selected} union all select order_id, "net_bank_transactions"  from net_bank_transactions where order_id = {order_id_selected};''')
             search_list = curs.fetchall()
-            
+    
 
             for i in search_list:
                 if order_id_selected == i[0]:
                     item_table = i[1]
                     break
-            
+    
             curs.execute(f'''update {item_table} set deleted = "True" where order_id = {order_id_selected};''')
             error_dialog = QtWidgets.QErrorMessage(self)
             error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
@@ -942,8 +978,12 @@ class orders(QMainWindow):
             error_dialog.showMessage("Your order has been cancelled")
             self.tableWidget.clearSelection()
             self.loadData()
+        else:
+            self.tableWidget.clearSelection()
 
 
+
+    
 
 # -------------------------------------------------------Items------------------------------------------------------- #
 class Items(QMainWindow):
@@ -1019,6 +1059,8 @@ class Items(QMainWindow):
         self.tableWidget.clearSelection()
         widget.setCurrentIndex(12)
 
+
+
         
 
 
@@ -1029,7 +1071,7 @@ class Edit_Items(QDialog):
     def __init__(self) -> None:
         super(Edit_Items, self).__init__()
         loadUi("editPage.ui", self)
-        self.pushButton_delete.clicked.connect(self.delete)
+        self.pushButton_delete.clicked.connect(self.are_you_sure)
         self.pushButton_done.clicked.connect(self.done)
         self.update_data()
 
@@ -1060,7 +1102,25 @@ class Edit_Items(QDialog):
         widget.setCurrentIndex(11)
 
 
+    def are_you_sure(self):
+        msg = QMessageBox()
+        msg.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
+        msg.setWindowTitle("Delete")
+        msg.setText("Are you sure you want to PERMANENTLY DELETE this item?")
+        msg.setIcon(QMessageBox.Question)
+        msg.setStandardButtons(QMessageBox.Yes|QMessageBox.No)
+        msg.setDefaultButton(QMessageBox.No)
+        msg.buttonClicked.connect(self.popup_button)
+        x = msg.exec_()
 
+    def popup_button(self, button):
+        button_pressed = button.text()
+
+        if button_pressed == '&Yes':
+            self.delete()
+
+        else:
+            pass
 
 
 
