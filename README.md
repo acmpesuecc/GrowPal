@@ -7,9 +7,13 @@ Make sure the required libraries are installed.
 Run ```main.py``` to execute. Please contact ```+91 9663006833``` or ```raoanu2004@gmail.com``` if there is an error connecting to the server. 
 
 ## Libraries required:
+To install all libraries in one command:
+
 ```
 pip install PyQt5 validate_email pandas mysql-connector-python imagekitio qdarkstyle dnspython
 ```
+
+For geniuses wanting to install them individually:
 ```
 pip install PyQt5
 ```
