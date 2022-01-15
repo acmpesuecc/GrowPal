@@ -73,9 +73,9 @@ product_price_listed = ''
 global product_description_listed
 product_description_listed = ''
 global db
-try: db = mysql.connector.connect(host='localhost', user = 'root', passwd = 'mysql_password', database = 'growpal')
+try: db = mysql.connector.connect(host='localhost', user = 'growpal_local', passwd = 'local_password', database = 'growpal')
 except:
-    try: db = mysql.connector.connect(host= 'archserver.ddns.net', user = 'developer', passwd = 'dev_password', database = 'growpal')
+    try: db = mysql.connector.connect(host= 'archserver.ddns.net', user = 'growpal', passwd = 'growpal4life', database = 'growpal')
     except: print("Error Connecting to SQL Server")
 
 try:
