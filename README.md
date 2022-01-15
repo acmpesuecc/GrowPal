@@ -8,6 +8,9 @@ Run ```main.py``` to execute. Please contact ```+91 9663006833``` or ```raoanu20
 
 ## Libraries required:
 ```
+pip install PyQt5 validate_email pandas mysql-connector-python imagekitio qdarkstyle dnspython
+```
+```
 pip install PyQt5
 ```
 
