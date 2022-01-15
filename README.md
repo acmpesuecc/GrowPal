@@ -6,7 +6,7 @@ Make sure the required libraries are installed.
 
 Run ```main.py``` to execute. Please contact ```+91 9663006833``` or ```raoanu2004@gmail.com``` if there is an error connecting to the server. 
 
-## Libraries required:
+## Libraries required
 To install all libraries in one command:
 
 ```
