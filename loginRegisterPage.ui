@@ -116,9 +116,9 @@ QPushButton:pressed{
     <property name="geometry">
      <rect>
       <x>200</x>
-      <y>140</y>
-      <width>461</width>
-      <height>121</height>
+      <y>110</y>
+      <width>611</width>
+      <height>241</height>
      </rect>
     </property>
     <property name="styleSheet">
