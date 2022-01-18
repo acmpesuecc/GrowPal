@@ -8,11 +8,6 @@
 #
 # Please go through the README file before execution 
 #
-### TODO
-# Solve the global variable mess (please)
-# Tune Background Image and Blur Effect 
-# Server Optimization
-
 # -------------------------------------------------------Import statements------------------------------------------------------- #
 import sys
 import os
