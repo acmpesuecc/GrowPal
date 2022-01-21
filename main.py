@@ -1,4 +1,5 @@
 #!/usr/bin/python
+#   ____                   ____       _
 #  / ___|_ __ _____      _|  _ \ __ _| |
 # | |  _| '__/ _ \ \ /\ / / |_) / _` | |
 # | |_| | | | (_) \ V  V /|  __/ (_| | |
@@ -44,7 +45,7 @@ import random
 print(r''' _        ___       _      ____    ___   _   _    ____             
 | |      / _ \     / \    |  _ \  |_ _| | \ | |  / ___|            
 | |     | | | |   / _ \   | | | |  | |  |  \| | | |  _             
-| |___  | |_| |  / ___ \  | |_| |  | |  | |\  | | |_| |  _   _   _ 
+| |___  | |_| |  / ___ \  | |_| |  | |  | |\  | | |_| |  _   _   _
 |_____|  \___/  /_/   \_\ |____/  |___| |_| \_|  \____| (_) (_) (_)
 ''')
 global loginpage_details
@@ -60,7 +61,7 @@ listedItems = {}
 global price
 price = 0
 global givenFile
-givenFile = 'product_cake1.jpeg'
+givenFile = ''
 global product_name_listed
 product_name_listed = ''
 global product_price_listed
@@ -659,6 +660,7 @@ class sellPage(QMainWindow):
             self.lineEdit_address.setText('')
             self.lineEdit_upi_id.setText('')
             self.label_browse.setText('')
+            self.label_picture.clear()
             global logged_in_username
             global imagekit_url
 
