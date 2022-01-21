@@ -4,43 +4,14 @@ This is a repository for managing code for the GrowPal project. Please open an i
 ## Installation
 Make sure the required libraries are installed. 
 
-Run ```main.py``` to execute. Please contact ```+91 9663006833``` or ```raoanu2004@gmail.com``` if there is an error connecting to the server. 
+Run ```main.py``` to execute. Please contact ```+91 9663006833``` or ```raoanu2004@icloud.com``` if there is an error connecting to the server. 
 
 ## Libraries required
-To install all libraries in one command:
-
+Run in Command Prompt or an equivalent shell:
 ```
 pip install PyQt5 validate_email pandas mysql-connector-python imagekitio qdarkstyle dnspython
 ```
 
-For geniuses wanting to install them individually:
-```
-pip install PyQt5
-```
-
-```
-pip install validate_email
-```
-
-```
-pip install pandas
-```
-
-```
-pip install mysql-connector-python
-```
-
-```
-pip install imagekitio
-```
-
-```
-pip install qdarkstyle
-```
-
-```
-pip install dnspython
-```
 
 ## Font Configuration
 Open the ```Roboto``` folder. This folder contains the font files required. 
