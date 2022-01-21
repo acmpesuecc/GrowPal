@@ -65,7 +65,7 @@ Note that you can also double-click the individual font files to load them into 
 
 
 ### Linux
-Copy and paste all the font files to ```/.fonts```. Please refer your distribution's wiki/forums for further information.
+Copy and paste all the font files to ```~/.fonts```. Please refer your distribution's wiki/forums for further information.
 
 
 ## Progress
