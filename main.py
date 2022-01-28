@@ -229,7 +229,7 @@ class forgot(QMainWindow):
         if self.lineEdit_email.text() in self.emails:
             curs.execute(f"select username, password from login_details where email = '{self.lineEdit_email.text()}'")
             self.to_send = curs.fetchall()
-
+            # If one email ID has multiple accounts.
             for entry in self.to_send:
                 msg = "\r\n".join([
                 "From: system.growpal@gmail.com",
@@ -282,7 +282,7 @@ class register_page(QMainWindow):
         msg = "\r\n".join([
             "From: system.growpal@gmail.com",
             f"To: {self.lineEdit_email.text()}",
-            "Subject: Verification",
+            "Subject: Verification [NO REPLY]",
             "",
             f"Your verification code is: {self.otp}. Please DO NOT share it with anybody. GrowPal never calls you for any reason"
             ])
