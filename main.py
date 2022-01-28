@@ -775,6 +775,18 @@ class creditCard(QMainWindow):
         error_dialog.setWindowTitle('Order')
         error_dialog.showMessage('Your order has been placed.')
         transactionPage.go_back()
+        curs.execute(f"select email from login_details where username = '{logged_in_username}'")
+        send_to_email = curs.fetchone()
+        send_to_email = str(send_to_email[0])
+        msg = "\r\n".join([
+                "From: system.growpal@gmail.com",
+                f"To: {send_to_email}",
+                "Subject: Order [NO REPLY]",
+                "",
+                f'''We have received your order for {item}. Please note than your order ID is: {order_id}. We hope you have a great day ahead!'''
+                ])
+        server.sendmail('system.growpal@gmail.com', send_to_email, msg)
+
         orders.loadData()
 
 
@@ -810,6 +822,18 @@ class debitCard(QMainWindow):
         error_dialog.showMessage('Your order has been placed.')
 
         transactionPage.go_back()
+
+        curs.execute(f"select email from login_details where username = '{logged_in_username}'")
+        send_to_email = curs.fetchone()
+        send_to_email = str(send_to_email[0])
+        msg = "\r\n".join([
+                "From: system.growpal@gmail.com",
+                f"To: {send_to_email}",
+                "Subject: Order [NO REPLY]",
+                "",
+                f'''We have received your order for {item}. Please note than your order ID is: {order_id}. We hope you have a great day ahead!'''
+                ])
+        server.sendmail('system.growpal@gmail.com', send_to_email, msg)
         orders.loadData()
 
 
@@ -843,6 +867,17 @@ class upi(QMainWindow):
         error_dialog.showMessage('Your order has been placed.')
 
         transactionPage.go_back()
+        curs.execute(f"select email from login_details where username = '{logged_in_username}'")
+        send_to_email = curs.fetchone()
+        send_to_email = str(send_to_email[0])
+        msg = "\r\n".join([
+                "From: system.growpal@gmail.com",
+                f"To: {send_to_email}",
+                "Subject: Order [NO REPLY]",
+                "",
+                f'''We have received your order for {item}. Please note than your order ID is: {order_id}. We hope you have a great day ahead!'''
+                ])
+        server.sendmail('system.growpal@gmail.com', send_to_email, msg)
         orders.loadData()
 # -------------------------------------------------------Transaction - NetBanking------------------------------------------------------- #
 
@@ -871,6 +906,17 @@ class netBank(QMainWindow):
         error_dialog.showMessage('Your order has been placed.')
 
         transactionPage.go_back()
+        curs.execute(f"select email from login_details where username = '{logged_in_username}'")
+        send_to_email = curs.fetchone()
+        send_to_email = str(send_to_email[0])
+        msg = "\r\n".join([
+                "From: system.growpal@gmail.com",
+                f"To: {send_to_email}",
+                "Subject: Order [NO REPLY]",
+                "",
+                f'''We have received your order for {item}. Please note than your order ID is: {order_id}. We hope you have a great day ahead!'''
+                ])
+        server.sendmail('system.growpal@gmail.com', send_to_email, msg)
         orders.loadData()
 
 # -------------------------------------------------------Orders------------------------------------------------------- #
