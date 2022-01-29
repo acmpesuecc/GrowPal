@@ -786,10 +786,10 @@ class creditCard(QMainWindow):
         msg = "\r\n".join([
                 "From: system.growpal@gmail.com",
                 f"To: {send_to_email}",
-                "Subject: Order [NO REPLY]",
+                f"Subject: Order {item} [NO REPLY]",
                 "",
                 f'''Dear Customer, 
-Than you for shopping with us. We have received your order for {item} with order ID: {order_id}.  We pledge to provide you with the best possible shopping experience. Thank you again for making it possible.
+Thank you for shopping with us. We have received your order for {item} with order ID: {order_id}.  We pledge to provide you with the best possible shopping experience. Thank you again for making it possible.
 
 Regards
 Team GrowPal  '''
@@ -838,10 +838,10 @@ class debitCard(QMainWindow):
         msg = "\r\n".join([
                 "From: system.growpal@gmail.com",
                 f"To: {send_to_email}",
-                "Subject: Order [NO REPLY]",
+                f"Subject: Order {item} [NO REPLY]",
                 "",
                 f'''Dear Customer, 
-Than you for shopping with us. We have received your order for {item} with order ID: {order_id}.
+Thank you for shopping with us. We have received your order for {item} with order ID: {order_id}.
 We pledge to provide you with the best possible shopping experience. Thank you again for making it possible.
 
 Regards
@@ -887,10 +887,10 @@ class upi(QMainWindow):
         msg = "\r\n".join([
                 "From: system.growpal@gmail.com",
                 f"To: {send_to_email}",
-                "Subject: Order [NO REPLY]",
+                f"Subject: Order {item} [NO REPLY]",
                 "",
                 f'''Dear Customer, 
-Than you for shopping with us. We have received your order for {item} with order ID: {order_id}.  We pledge to provide you with the best possible shopping experience. Thank you again for making it possible.
+Thank you for shopping with us. We have received your order for {item} with order ID: {order_id}.  We pledge to provide you with the best possible shopping experience. Thank you again for making it possible.
 
 Regards
 Team GrowPal  '''
@@ -930,10 +930,10 @@ class netBank(QMainWindow):
         msg = "\r\n".join([
                 "From: system.growpal@gmail.com",
                 f"To: {send_to_email}",
-                "Subject: Order [NO REPLY]",
+                f"Subject: Order {item} [NO REPLY]",
                 "",
                 f'''Dear Customer, 
-Than you for shopping with us. We have received your order for {item} with order ID: {order_id}.  We pledge to provide you with the best possible shopping experience. Thank you again for making it possible.
+Thank you for shopping with us. We have received your order for {item} with order ID: {order_id}.  We pledge to provide you with the best possible shopping experience. Thank you again for making it possible.
 
 Regards
 Team GrowPal  '''
