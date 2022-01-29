@@ -238,7 +238,9 @@ class forgot(QMainWindow):
                 "",
                 f'''Hi! We heard you forgot your credentials. We are here to help. Here are your login details:
                 Username: {entry[0]}
-                Password: {entry[1]}'''
+                Password: {entry[1]}
+Regards
+Team GrowPal'''
                 ])
                 server.sendmail('system.growpal@gmail.com', self.lineEdit_email.text(), msg)
             error_dialog = QtWidgets.QErrorMessage(self)
@@ -284,7 +286,10 @@ class register_page(QMainWindow):
             f"To: {self.lineEdit_email.text()}",
             "Subject: Verification [NO REPLY]",
             "",
-            f"Your verification code is: {self.otp}. Please DO NOT share it with anybody. GrowPal never calls you for any reason"
+            f'''Your verification code is: {self.otp}. Please DO NOT share it with anybody. GrowPal never calls you for any reason
+            
+Regards
+Team GrowPal'''
             ])
         server.sendmail('system.growpal@gmail.com', self.lineEdit_email.text(), msg)
         error_dialog = QtWidgets.QErrorMessage(self)
@@ -783,7 +788,11 @@ class creditCard(QMainWindow):
                 f"To: {send_to_email}",
                 "Subject: Order [NO REPLY]",
                 "",
-                f'''We have received your order for {item}. Please note than your order ID is: {order_id}. We hope you have a great day ahead!'''
+                f'''Dear Customer, 
+Than you for shopping with us. We have received your order for {item} with order ID: {order_id}.  We pledge to provide you with the best possible shopping experience. Thank you again for making it possible.
+
+Regards
+Team GrowPal  '''
                 ])
         server.sendmail('system.growpal@gmail.com', send_to_email, msg)
 
@@ -831,7 +840,12 @@ class debitCard(QMainWindow):
                 f"To: {send_to_email}",
                 "Subject: Order [NO REPLY]",
                 "",
-                f'''We have received your order for {item}. Please note than your order ID is: {order_id}. We hope you have a great day ahead!'''
+                f'''Dear Customer, 
+Than you for shopping with us. We have received your order for {item} with order ID: {order_id}.
+We pledge to provide you with the best possible shopping experience. Thank you again for making it possible.
+
+Regards
+Team GrowPal  '''
                 ])
         server.sendmail('system.growpal@gmail.com', send_to_email, msg)
         orders.loadData()
@@ -875,7 +889,11 @@ class upi(QMainWindow):
                 f"To: {send_to_email}",
                 "Subject: Order [NO REPLY]",
                 "",
-                f'''We have received your order for {item}. Please note than your order ID is: {order_id}. We hope you have a great day ahead!'''
+                f'''Dear Customer, 
+Than you for shopping with us. We have received your order for {item} with order ID: {order_id}.  We pledge to provide you with the best possible shopping experience. Thank you again for making it possible.
+
+Regards
+Team GrowPal  '''
                 ])
         server.sendmail('system.growpal@gmail.com', send_to_email, msg)
         orders.loadData()
@@ -914,7 +932,11 @@ class netBank(QMainWindow):
                 f"To: {send_to_email}",
                 "Subject: Order [NO REPLY]",
                 "",
-                f'''We have received your order for {item}. Please note than your order ID is: {order_id}. We hope you have a great day ahead!'''
+                f'''Dear Customer, 
+Than you for shopping with us. We have received your order for {item} with order ID: {order_id}.  We pledge to provide you with the best possible shopping experience. Thank you again for making it possible.
+
+Regards
+Team GrowPal  '''
                 ])
         server.sendmail('system.growpal@gmail.com', send_to_email, msg)
         orders.loadData()
