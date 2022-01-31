@@ -1,12 +1,16 @@
 # GrowPal
 This is a repository for managing code for the GrowPal project. Please open an issue if you find any!
 
-## Installation
+##.exe File For Windows
+Download .exe file from: https://u.pcloud.link/publink/show?code=XZlVjcXZQNTGA1pL75jRLDEtsIq9t5FJo2ry
+
+
+## Build From Source
 Make sure the required libraries are installed. 
 
 Run ```main.py``` to execute. Please contact ```+91 9663006833``` or ```raoanu2004@icloud.com``` if there is an error connecting to the server. 
 
-## Libraries required
+## Libraries Required
 Run in Command Prompt or an equivalent shell:
 ```
 pip install PyQt5 validate_email pandas mysql-connector-python imagekitio qdarkstyle dnspython
