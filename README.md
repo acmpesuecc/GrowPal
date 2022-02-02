@@ -2,6 +2,7 @@
 This is a repository for managing code for the GrowPal project. Please open an issue if you find any!
 
 ## .exe File For Windows
+### IN DEVELOPMENT. EXPECT BUGS AND INCOMPATIBILITY ISSUES. BUILD FROM SOURCE RECOMMENDED.
 Download .exe file from: https://u.pcloud.link/publink/show?code=XZlVjcXZQNTGA1pL75jRLDEtsIq9t5FJo2ry
 
 
