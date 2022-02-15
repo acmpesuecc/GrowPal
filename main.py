@@ -78,7 +78,7 @@ try:
     global server
     server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
     server.ehlo()
-    server.login('system.growpal@gmail.com', 'growpass!')
+    server.login('system.growpal@gmail.com', 'growpass!!')
 except:
     print('Something went wrong with mail server')
 
