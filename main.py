@@ -69,9 +69,13 @@ product_price_listed = ''
 global product_description_listed
 product_description_listed = ''
 global db
-try: db = mysql.connector.connect(host='localhost', user = 'growpal_local', passwd = 'local_password', database = 'growpal')
+try:
+    db = mysql.connector.connect(host='localhost', user = 'growpal_local', passwd = 'local_password', database = 'growpal')
+    print("Successfully Connected To Local SQL Server") 
 except:
-    try: db = mysql.connector.connect(host= 'archserver.ddns.net', user = 'growpal', passwd = 'growpal4life', database = 'growpal')
+    try: 
+        db = mysql.connector.connect(host= 'growpal.mysql.database.azure.com', user = 'growpal_admin@growpal', passwd = 'ComputerProjectPassword!', database = 'growpal')
+        print("Successfully Connected To Azure Online Server") 
     except: print("Error Connecting to SQL Server")
 
 try:
@@ -79,6 +83,7 @@ try:
     server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
     server.ehlo()
     server.login('system.growpal@gmail.com', 'growpass!!')
+    print("Successfully Connected To SMTP Gmail Server")
 except:
     print('Something went wrong with mail server')
 
