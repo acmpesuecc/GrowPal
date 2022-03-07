@@ -74,7 +74,7 @@ try:
     print("Successfully Connected To Local SQL Server") 
 except:
     try: 
-        db = mysql.connector.connect(host= 'growpal.mysql.database.azure.com', user = 'growpal_admin@growpal', passwd = 'ComputerProjectPassword!', database = 'growpal')
+        db = mysql.connector.connect(host= 'thegrowpalproject.mysql.database.azure.com', user = 'growpal_admin@thegrowpalproject', passwd = 'ComputerProjectPassword!', database = 'growpal')
         print("Successfully Connected To Azure Online Server") 
     except: print("Error Connecting to SQL Server")
 
