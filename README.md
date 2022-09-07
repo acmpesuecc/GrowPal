@@ -1,6 +1,8 @@
 # GrowPal
 This is a repository for managing code for the GrowPal project. Please open an issue if you find any!
 
+### THE AZURE SERVER SQL SERVER IS NO LONGER MAINTAINED. PLEASE USE THE initDatabase.sql FILE TO BUILD THE TABLES ON A LOCAL INSTANCE OF THE MYSQL SERVER.
+
 ## .exe File For Windows
 Coming soon. 
 
