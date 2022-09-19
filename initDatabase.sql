@@ -39,12 +39,6 @@ CREATE TABLE `credit_card_transactions` (
 -- Dumping data for table `credit_card_transactions`
 --
 
-LOCK TABLES `credit_card_transactions` WRITE;
-/*!40000 ALTER TABLE `credit_card_transactions` DISABLE KEYS */;
-INSERT INTO `credit_card_transactions` VALUES ('anuragrao','ASUS ZenBook Duo 14 (2021)','100000','123456789012345','123','WC601','https://ik.imagekit.io/bule8zjn18b/4.jpeg?ik-sdk-version=python-2.2.8',0,'True'),('anuragrao','ASUS ZenBook Duo 14 (2021)','100000','123456789012345','123','WC 601','https://ik.imagekit.io/bule8zjn18b/4.jpeg?ik-sdk-version=python-2.2.8',1,'True'),('anuragrao','ASUS ZenBook Duo 14 (2021)','100000','1234567890123456','123','WC 601','https://ik.imagekit.io/bule8zjn18b/4.jpeg?ik-sdk-version=python-2.2.8',2,'False');
-/*!40000 ALTER TABLE `credit_card_transactions` ENABLE KEYS */;
-UNLOCK TABLES;
-
 --
 -- Table structure for table `debit_card_transactions`
 --
@@ -68,12 +62,6 @@ CREATE TABLE `debit_card_transactions` (
 --
 -- Dumping data for table `debit_card_transactions`
 --
-
-LOCK TABLES `debit_card_transactions` WRITE;
-/*!40000 ALTER TABLE `debit_card_transactions` DISABLE KEYS */;
-/*!40000 ALTER TABLE `debit_card_transactions` ENABLE KEYS */;
-UNLOCK TABLES;
-
 --
 -- Table structure for table `listed_items`
 --
@@ -101,12 +89,6 @@ CREATE TABLE `listed_items` (
 -- Dumping data for table `listed_items`
 --
 
-LOCK TABLES `listed_items` WRITE;
-/*!40000 ALTER TABLE `listed_items` DISABLE KEYS */;
-INSERT INTO `listed_items` VALUES ('t-shirt','295','This T-shirt Is Stitched For Higher Durability Using The Best Technology In The Industry. Manufactured From Cotton Fabric, This T-shirt Is Very Smooth And Soft Making It Comfortable To Wear During All Seasons.','anuragrao','Anurag Rao','9663006833','raoanu2004@gmail.com','WC601','9663006833@ibl','https://ik.imagekit.io/bule8zjn18b/1.jpeg?ik-sdk-version=python-2.2.8','False',0),('Hoodie','1299','Grab these amazing Hoodies. Perfect for you or Someone you care about. 100% cotton.','anuragrao','Anurag Rao','9663006833','raoanu2004@gmail.com','WC601','9663006833@ibl','https://ik.imagekit.io/bule8zjn18b/2.jpeg?ik-sdk-version=python-2.2.8','False',1),('Table Lamp','599','Energy-Saving LED : Saves 90% Energy. Rechargeable. Adjustable angle. ','anuragrao','Anurag Rao','9663006833','raoanu2004@gmail.com','WC601','9663006833@ibl','https://ik.imagekit.io/bule8zjn18b/3.jpeg?ik-sdk-version=python-2.2.8','False',2),('ASUS ZenBook Duo 14 (2021)','100000','Intel Evo Core i7-1165G7 11th Gen 14 inches FHD Dual-Screen 16GB/1TB SSD/Iris Xe Graphics/Office 2019/Windows 10 Business Touch Laptop (Celestial Blue/1.57 Kg), UX482EA-HY777TS','Tanishq','Tanishq','9036567877','tanishqru47@gmail.com','112','1234','https://ik.imagekit.io/bule8zjn18b/4.jpeg?ik-sdk-version=python-2.2.8','False',3);
-/*!40000 ALTER TABLE `listed_items` ENABLE KEYS */;
-UNLOCK TABLES;
-
 --
 -- Table structure for table `login_details`
 --
@@ -126,12 +108,6 @@ CREATE TABLE `login_details` (
 --
 -- Dumping data for table `login_details`
 --
-
-LOCK TABLES `login_details` WRITE;
-/*!40000 ALTER TABLE `login_details` DISABLE KEYS */;
-INSERT INTO `login_details` VALUES ('anuragrao','growpal4life!','raoanu2004@gmail.com','9663006833'),('Ramya','growpal5life','ramyaraga1rammu@gmail.com','9606867811'),('Tamanna Singh','growpal4life','singhtamanna1904@gmail.com','9945692772'),('Tanishq','hello','tanishqru47@gmail.com','9036567877');
-/*!40000 ALTER TABLE `login_details` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `net_bank_transactions`
@@ -158,11 +134,6 @@ CREATE TABLE `net_bank_transactions` (
 -- Dumping data for table `net_bank_transactions`
 --
 
-LOCK TABLES `net_bank_transactions` WRITE;
-/*!40000 ALTER TABLE `net_bank_transactions` DISABLE KEYS */;
-/*!40000 ALTER TABLE `net_bank_transactions` ENABLE KEYS */;
-UNLOCK TABLES;
-
 --
 -- Table structure for table `numbers`
 --
@@ -182,7 +153,7 @@ CREATE TABLE `numbers` (
 
 LOCK TABLES `numbers` WRITE;
 /*!40000 ALTER TABLE `numbers` DISABLE KEYS */;
-INSERT INTO `numbers` VALUES (3,6);
+INSERT INTO `numbers` VALUES (0,0);
 /*!40000 ALTER TABLE `numbers` ENABLE KEYS */;
 UNLOCK TABLES;
 

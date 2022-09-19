@@ -39,6 +39,8 @@ import qdarkstyle
 import smtplib
 from email.mime.multipart import MIMEMultipart
 import random
+from dotenv import load_dotenv
+
 
 # -------------------------------------------------------Variables and Misc.------------------------------------------------------- #
 
@@ -69,20 +71,27 @@ product_price_listed = ''
 global product_description_listed
 product_description_listed = ''
 global db
+load_dotenv()
+
+growpal_email = os.getenv("growpal_email")
+imgkit_pub = os.getenv("imgkit_pub")
+imgkit_priv = os.getenv("imgkit_priv")
+sql = os.getenv("sql")
+
 try:
-    db = mysql.connector.connect(host='localhost', user = 'growpal_local', passwd = 'local_password', database = 'growpal')
+    db = mysql.connector.connect(host='localhost', user = 'root', passwd = 'PUT YOUR PASSWORD HERE', database = 'growpal')
     print("Successfully Connected To Local SQL Server") 
 except:
     try: 
-        db = mysql.connector.connect(host= 'thegrowpalproject.mysql.database.azure.com', user = 'growpal_admin@thegrowpalproject', passwd = 'ComputerProjectPassword!', database = 'growpal')
-        print("Successfully Connected To Azure Online Server") 
+        db = mysql.connector.connect(host= 'db4free.net', user = 'growpal', passwd = sql, database = 'growpal')
+        print("Successfully Connected To Online Server") 
     except: print("Error Connecting to SQL Server")
 
 try:
     global server
     server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
     server.ehlo()
-    server.login('system.growpal@gmail.com', 'iigdyvaqukozhczc')
+    server.login('system.growpal@gmail.com', growpal_email)
     print("Successfully Connected To SMTP Gmail Server")
 except:
     print('Something went wrong with mail server')
@@ -98,8 +107,8 @@ def getLoginDetails():
 getLoginDetails()
 
 imagekit = ImageKit(
-        private_key = 'private_UWuh0ACI8AKq5HVubqJ7K1gON6Q=',
-        public_key='public_9lTcdw6jQBz3nQTYfU1MXlsC/ZU=',
+        private_key = imgkit_priv,
+        public_key= imgkit_pub,
         url_endpoint = 'https://ik.imagekit.io/bule8zjn18b'
 )
 

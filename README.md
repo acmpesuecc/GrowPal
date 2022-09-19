@@ -14,7 +14,7 @@ Run ```main.py``` to execute. Please contact ```+91 9663006833``` or ```raoanu20
 ## Libraries Required
 Run in Command Prompt or an equivalent shell:
 ```
-pip install PyQt5 validate_email pandas mysql-connector-python imagekitio qdarkstyle dnspython
+pip install PyQt5 validate_email pandas mysql-connector-python imagekitio qdarkstyle dnspython python-dotenv
 ```
 
 
