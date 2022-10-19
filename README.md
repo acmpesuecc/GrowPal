@@ -12,6 +12,7 @@ This project is built on Python and the Qt framework. It is a Desktop Applicatio
 1. Fork this repository
 2. Clone it to your local machine
 3. Follow the installation steps highlighted below this section and finally run `main.py` to execute. The servers are online so make sure to maintain a stable internet connection while running!
+4. For contribution guidelines, go to [CONTRIBUTE.md](CONTRIBUTE.md)
 
 ## Maintainer In Charge
 Contact Anurag Rao 
