@@ -15,7 +15,7 @@ This project is built on Python and the Qt framework. It is a Desktop Applicatio
 4. For contribution guidelines, go to [CONTRIBUTE.md](CONTRIBUTE.md)
 
 ## Maintainer In Charge
-Contact Anurag Rao 
+Contact [Anurag Rao](https://github.com/anuragrao04)
 - email: raoanu2004@gmail.com
 - phone: 9663006833
 
