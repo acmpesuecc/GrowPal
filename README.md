@@ -14,9 +14,9 @@ This project is built on Python and the Qt framework. It is a Desktop Applicatio
 3. Follow the installation steps highlighted below this section and finally run `main.py` to execute. The servers are online so make sure to maintain a stable internet connection while running!
 
 ## Maintainer In Charge
-Contact Anyrag Rao 
-email: raoanu2004@gmail.com
-phone: 9663006833
+Contact Anurag Rao 
+- email: raoanu2004@gmail.com
+- phone: 9663006833
 
 # Installation
 
