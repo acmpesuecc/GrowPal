@@ -1,14 +1,29 @@
 # GrowPal
 This is a repository for managing code for the GrowPal project. Please open an issue if you find any!
 
+# !! HACKNIGHT SECTION !!
+## What the project does?
+This project aims to build a platform for small scale business owners in apartment societies to connect and sell their products. Business owners now just advertise their products on common WhatsApp groups which becomes spam after a while and the group is muted. This voids any kind of advertisement or online representation for these small scale sellers. You might have seen this happening to people in your apartment society who sell Tupperware bottles, cooking services, small accessories, etc. 
 
-## .exe File For Windows
-Coming soon. 
+## What the project is built on?
+This project is built on Python and the Qt framework. It is a Desktop Application. It was not intended for production when it was initially developed but was just a prototype to test things. 
+
+## How can you build the project locally and test?
+1. Fork this repository
+2. Clone it to your local machine
+3. Follow the installation steps highlighted below this section and finally run `main.py` to execute. The servers are online so make sure to maintain a stable internet connection while running!
+
+## Maintainer In Charge
+Contact Anyrag Rao 
+email: raoanu2004@gmail.com
+phone: 9663006833
+
+# Installation
 
 ## Build From Source
 Make sure the required libraries are installed. 
 
-Run ```main.py``` to execute. Please contact ```+91 9663006833``` or ```raoanu2004@icloud.com``` if there is an error connecting to the server. 
+Run ```main.py``` to execute. Please contact ```+91 9663006833``` or ```raoanu2004@gmail.com``` if there is an error connecting to the server. 
 
 ## Libraries Required
 Run in Command Prompt or an equivalent shell:
@@ -17,7 +32,7 @@ pip install PyQt5 validate_email pandas mysql-connector-python imagekitio qdarks
 ```
 
 
-## Font Configuration
+## Font Configuration (optional)
 Open the ```Roboto``` folder. This folder contains the font files required. 
 
 ### Windows 
@@ -42,21 +57,4 @@ Note that you can also double-click the individual font files to load them into 
 ### Linux
 Copy and paste all the font files to ```~/.fonts```. Please refer your distribution's wiki/forums for further information.
 
-
-## Progress
-- [x] Make UI pages - 90%
-
-- [x] Login page and logic for username and password - Done
-
-- [x] scroll widget for buy page - Done
-
-- [x] Sell Page - Done
-
-- [x] Upload Images - Done 
-
-- [x] screen for checkout and transaction - Done
-
-- [x] SQL integration - Done 
-
-- [x] Testing - in progress
 
