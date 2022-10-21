@@ -84,7 +84,7 @@ try:
 except:
     try: 
         db = mysql.connector.connect(host= 'db4free.net', user = 'growpal', passwd = sql, database = 'growpal')
-        print("Successfully Connected To Online Server") 
+        print("Successfully connected to online SQL server.") 
     except: print("Error Connecting to SQL Server")
 
 try:
