@@ -121,7 +121,7 @@ imagekit = ImageKit(
 class loginregisterpage(QMainWindow):
     def __init__(self):
         super(loginregisterpage, self).__init__()
-        loadUi("loginRegisterPage.ui", self)
+        loadUi("assets/loginRegisterPage.ui", self)
         self.setWindowTitle("GrowPal")
         self.login_button.clicked.connect(self.gotologin_page)
         self.register_button.clicked.connect(self.gotoregister_page)
@@ -137,7 +137,7 @@ class loginregisterpage(QMainWindow):
 class login_page(QMainWindow):
     def __init__(self):
         super(login_page, self).__init__()
-        loadUi("loginPage.ui", self)
+        loadUi("assets/loginPage.ui", self)
         self.pushButton_back.clicked.connect(self.back_button_pressed)
         self.pushbutton_login.clicked.connect(self.login_button_pressed)
         self.password_view.clicked.connect(self.pass_view_clicked)
@@ -148,7 +148,7 @@ class login_page(QMainWindow):
         global logged_in_password
         logged_in_username = ''
         logged_in_password = ''
-        self.icon = QIcon('visiblity.svg')
+        self.icon = QIcon('assets/visiblity.svg')
         self.password_view.setIcon(self.icon)
 
     def go_to_forgot(self):
@@ -158,13 +158,13 @@ class login_page(QMainWindow):
         if self.password_view.isChecked():
             self.lineEdit_password.setEchoMode(QLineEdit.Normal)
 
-            self.icon = QIcon('visiblity_off.svg')
+            self.icon = QIcon('assets/visiblity_off.svg')
             self.password_view.setIcon(self.icon)
 
         else:
             self.lineEdit_password.setEchoMode(QLineEdit.Password)
             
-            self.icon = QIcon('visiblity.svg')
+            self.icon = QIcon('assets/visiblity.svg')
             self.password_view.setIcon(self.icon)
 
 
@@ -226,7 +226,7 @@ class login_page(QMainWindow):
 class forgot(QMainWindow):
     def __init__(self):
         super(forgot, self).__init__()
-        loadUi("forgot.ui", self)
+        loadUi("assets/forgot.ui", self)
         self.pushButton_back.clicked.connect(self.back_button_pressed)
         self.pushbutton_send.clicked.connect(self.send_button_pressed)
         self.shortcut_send = QShortcut(QKeySequence('return'), self)
@@ -276,7 +276,7 @@ Team GrowPal'''
 class register_page(QMainWindow):
     def __init__(self):
         super(register_page, self).__init__()
-        loadUi("registerPage.ui", self)
+        loadUi("assets/registerPage.ui", self)
         self.pushButton_back.clicked.connect(self.back_button_clicked)
         self.pushbutton_register.clicked.connect(self.register_button_clicked)
         self.sp_view.clicked.connect(self.sp_view_clicked)
@@ -285,9 +285,9 @@ class register_page(QMainWindow):
         self.shortcut_register.activated.connect(self.register_button_clicked)
         self.pushButton_otp.clicked.connect(self.otp_button_clicked)
 
-        self.ispicon = QIcon('visiblity.svg')
+        self.ispicon = QIcon('assets/visiblity.svg')
         self.sp_view.setIcon(self.ispicon)
-        self.icpicon = QIcon('visiblity.svg')
+        self.icpicon = QIcon('assets/visiblity.svg')
         self.cp_view.setIcon(self.icpicon)
 
 
@@ -318,22 +318,22 @@ Team GrowPal'''
     def sp_view_clicked(self):
         if self.sp_view.isChecked():
             self.lineEdit_password.setEchoMode(QLineEdit.Normal)
-            self.iconsp = QIcon('visiblity_off.svg')
+            self.iconsp = QIcon('assets/visiblity_off.svg')
             self.sp_view.setIcon(self.iconsp)
         else:
             self.lineEdit_password.setEchoMode(QLineEdit.Password)
-            self.iconsp = QIcon('visiblity.svg')
+            self.iconsp = QIcon('assets/visiblity.svg')
             self.sp_view.setIcon(self.iconsp)
 
     def cp_view_clicked(self):
         if self.cp_view.isChecked():
             self.lineEdit_repeatpassword.setEchoMode(QLineEdit.Normal)
 
-            self.iconcp = QIcon('visiblity_off.svg')
+            self.iconcp = QIcon('assets/visiblity_off.svg')
             self.cp_view.setIcon(self.iconcp)
         else:
             self.lineEdit_repeatpassword.setEchoMode(QLineEdit.Password)
-            self.iconcp = QIcon('visiblity.svg')
+            self.iconcp = QIcon('assets/visiblity.svg')
             self.cp_view.setIcon(self.iconcp)
 
     def back_button_clicked(self):
@@ -429,7 +429,7 @@ class buy_page(QMainWindow):
 
     def __init__(self) -> None:
         super(buy_page, self).__init__()
-        loadUi("buy_page.ui", self)
+        loadUi("assets/buy_page.ui", self)
         self.pushButton_logout.clicked.connect(self.are_you_sure)
         self.pushButton_sell.clicked.connect(self.gotoSellPage)
         global price
@@ -605,7 +605,7 @@ class buy_page(QMainWindow):
 class sellPage(QMainWindow):
     def __init__(self) -> None:
         super(sellPage, self).__init__()
-        loadUi("sellPage.ui", self)
+        loadUi("assets/sellPage.ui", self)
         self.pushButton_back.clicked.connect(self.getback)
         self.pushButton_UploadImages.clicked.connect(self.upload)
         self.pushButton_Sell.clicked.connect(self.sell)
@@ -725,7 +725,7 @@ class sellPage(QMainWindow):
 class transactionPage(QMainWindow):
     def __init__(self) -> None:
         super(transactionPage, self).__init__()
-        loadUi("transaction.ui", self)
+        loadUi("assets/transaction.ui", self)
         global price
         global item
         self.pushButton_cc.clicked.connect(self.creditcard)
@@ -772,7 +772,7 @@ Amount: {price}''')
 class creditCard(QMainWindow):
     def __init__(self) -> None:
         super(creditCard, self).__init__()
-        loadUi("transaction_cc.ui", self)
+        loadUi("assets/transaction_cc.ui", self)
         self.pushButton_cancel.clicked.connect(transactionPage.go_back)
         self.pushButton_pay.clicked.connect(self.pay)
 
@@ -822,7 +822,7 @@ Team GrowPal  '''
 class debitCard(QMainWindow):
     def __init__(self) -> None:
         super(debitCard, self).__init__()
-        loadUi("transaction_dc.ui", self)
+        loadUi("assets/transaction_dc.ui", self)
         self.pushButton_cancel.clicked.connect(transactionPage.go_back)
         self.pushButton_pay.clicked.connect(self.pay)
 
@@ -873,7 +873,7 @@ Team GrowPal  '''
 class upi(QMainWindow):
     def __init__(self) -> None:
         super(upi, self).__init__()
-        loadUi("transaction_upi.ui", self)
+        loadUi("assets/transaction_upi.ui", self)
         self.pushButton_cancel.clicked.connect(transactionPage.go_back)
         self.pushButton_pay.clicked.connect(self.pay)
 
@@ -916,7 +916,7 @@ Team GrowPal  '''
 class netBank(QMainWindow):
     def __init__(self) -> None:
         super(netBank, self).__init__()
-        loadUi("transaction_netbank.ui", self)
+        loadUi("assets/transaction_netbank.ui", self)
         self.pushButton_cancel.clicked.connect(transactionPage.go_back)
         self.pushButton_pay.clicked.connect(self.pay)
 
@@ -960,7 +960,7 @@ Team GrowPal  '''
 class orders(QMainWindow):
     def __init__(self) -> None:
         super(orders, self).__init__()
-        loadUi("orders.ui", self)
+        loadUi("assets/orders.ui", self)
         self.tableWidget.setColumnHidden(0, True)
         self.tableWidget.setColumnWidth(1, 200)
         self.tableWidget.setColumnWidth(2, 200)
@@ -1069,7 +1069,7 @@ class Items(QMainWindow):
     def __init__(self) -> None:
         super(Items, self).__init__()
         
-        loadUi("sold_items.ui", self)
+        loadUi("assets/sold_items.ui", self)
         self.loadData()
         self.pushButton_back.clicked.connect(orders.go_back)
         self.tableWidget.setColumnHidden(0, True)
@@ -1149,7 +1149,7 @@ class Items(QMainWindow):
 class Edit_Items(QDialog):
     def __init__(self) -> None:
         super(Edit_Items, self).__init__()
-        loadUi("editPage.ui", self)
+        loadUi("assets/editPage.ui", self)
         self.pushButton_delete.clicked.connect(self.are_you_sure)
         self.pushButton_done.clicked.connect(self.done)
         self.update_data()
@@ -1200,14 +1200,6 @@ class Edit_Items(QDialog):
 
         else:
             pass
-
-
-
-
-
-
-
-
 
     def update_data(self):
         global product_name_listed
