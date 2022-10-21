@@ -9,5 +9,6 @@ The python file `main.py` is where the execution starts from. It contains classe
 # Issue/Bug guidelines
 Please start working on the issue only once the maintainer has assigned it to you. Working on it without information to the maintainer might make your work redundant and you will end up wasting your precious time at Hacknight! 
 
-# !Note: PyQt5 does not run natively on Apple Silicon. You have to emulate python using rosetta and then install PyQt5 through pip. The brew version of PyQt5 does not work! Approach maintainers if you are not sure. 
+# Note
+PyQt5 does not run natively on Apple Silicon. You have to emulate python using rosetta and then install PyQt5 through pip. The brew version of PyQt5 does not work! Approach maintainers if you are not sure. 
 
