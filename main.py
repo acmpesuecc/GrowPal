@@ -10,20 +10,25 @@
 # Please go through the README file before execution 
 #
 # -------------------------------------------------------Import statements------------------------------------------------------- #
+<<<<<<< HEAD
 from msilib.schema import Error
+=======
+from email.mime.text import MIMEText
+>>>>>>> c11741b9c18cfaa5f1c55af0dc6921e7c4a00df0
 import sys
 import os
+import requests
 # pip install PyQt5
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets
 from PyQt5 import *
-#from PyQt5 import QtGui
+from PyQt5 import QtGui
 from PyQt5.QtGui import QKeySequence
-#from PyQt5.QtWidgets import QShortcut, QDialog, QApplication, QMainWindow, QLineEdit, QWidget, QFileDialog, QLabel
+from PyQt5.QtWidgets import QShortcut, QDialog, QApplication, QMainWindow, QLineEdit, QWidget, QFileDialog, QLabel,QMessageBox
 from PyQt5.QtWidgets import *
-#from PyQt5.QtCore import QFile, QTextStream, QSize
+from PyQt5.QtCore import QFile, QTextStream, QSize
 from PyQt5.QtCore import *
-#from PyQt5.QtGui import QIcon, QPixmap
+from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtGui import *
 from dns.message import Message
 from validate_email import validate_email
@@ -41,6 +46,8 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 import random
 from dotenv import load_dotenv
+import re
+import html
 
 
 # -------------------------------------------------------Variables and Misc.------------------------------------------------------- #
@@ -85,7 +92,8 @@ try:
 except:
     try: 
         db = mysql.connector.connect(host= 'db4free.net', user = 'growpal', passwd = sql, database = 'growpal')
-        print("Successfully connected to online SQL server.") 
+        print("Successfully Connected To Online Server") 
+
     except: print("Error Connecting to SQL Server")
 
 try:
@@ -301,18 +309,313 @@ class register_page(QMainWindow):
 
 
     def otp_button_clicked(self):
+
+        
+
         self.otp = random.randint(100000, 999999)
-        msg = "\r\n".join([
-            "From: system.growpal@gmail.com",
-            f"To: {self.lineEdit_email.text()}",
-            "Subject: Verification [NO REPLY]",
-            "",
-            f'''Your verification code is: {self.otp}. Please DO NOT share it with anybody. GrowPal never calls you for any reason
+      
+        msg=MIMEMultipart('alternative')
+        msg['Subject']="Verification [NO REPLY]"
+        msg['From']="system.growpal@gmail.com"
+        msg['To']=self.lineEdit_email.text()
+#         h=f'''\
+#             <html>
+#     <head>
+#         <style>
+#             p{
+#                 "background-color":#54BAB9;
+#             }
+#         </style>
+#     </head>
+#     <body>
+#         <div >
+#             <p>Your verification code is: {self.otp}. Please DO NOT share it with anybody. GrowPal never calls you for any reason</p>
             
-Regards
-Team GrowPal'''
-            ])
-        server.sendmail('system.growpal@gmail.com', self.lineEdit_email.text(), msg)
+#         </div>
+#     </body>
+# </html>'''
+        h='''<!DOCTYPE html>
+
+<html lang="en" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+<title></title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!--[if mso]><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch><o:AllowPNG/></o:OfficeDocumentSettings></xml><![endif]-->
+<!--[if !mso]><!-->
+<link href="https://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet" type="text/css"/>
+<!--<![endif]-->
+<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		a[x-apple-data-detectors] {
+			color: inherit !important;
+			text-decoration: inherit !important;
+		}
+
+		#MessageViewBody a {
+			color: inherit;
+			text-decoration: none;
+		}
+
+		p {
+			line-height: inherit
+		}
+
+		.desktop_hide,
+		.desktop_hide table {
+			mso-hide: all;
+			display: none;
+			max-height: 0px;
+			overflow: hidden;
+		}
+
+		@media (max-width:700px) {
+
+			.desktop_hide table.icons-inner,
+			.social_block.desktop_hide .social-table {
+				display: inline-block !important;
+			}
+
+			.icons-inner {
+				text-align: center;
+			}
+
+			.icons-inner td {
+				margin: 0 auto;
+			}
+
+			.fullMobileWidth,
+			.image_block img.big,
+			.row-content {
+				width: 100% !important;
+			}
+
+			.mobile_hide {
+				display: none;
+			}
+
+			.stack .column {
+				width: 100%;
+				display: block;
+			}
+
+			.mobile_hide {
+				min-height: 0;
+				max-height: 0;
+				max-width: 0;
+				overflow: hidden;
+				font-size: 0px;
+			}
+
+			.desktop_hide,
+			.desktop_hide table {
+				display: table !important;
+				max-height: none !important;
+			}
+		}
+	</style>
+</head>
+<body style="background-color: #f3e2e2; margin: 0; padding: 0; -webkit-text-size-adjust: none; text-size-adjust: none;">
+<table border="0" cellpadding="0" cellspacing="0" class="nl-container" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #f3e2e2;" width="100%">
+<tbody>
+<tr>
+<td>
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #5b7b7a; background-position: center top;" width="100%">
+<tbody>
+<tr>
+<td>
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 680px;" width="680">
+<tbody>
+<tr>
+<td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 0px; padding-bottom: 0px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%">
+<table border="0" cellpadding="0" cellspacing="0" class="icons_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+<tr>
+<td class="pad" style="vertical-align: middle; color: #000000; font-family: inherit; font-size: 14px; text-align: center; padding-top: 25px;">
+<table align="center" cellpadding="0" cellspacing="0" class="alignment" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+<tr>
+
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" class="image_block block-3" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+<tr>
+<td class="pad" style="width:100%;padding-right:0px;padding-left:0px;">
+<div align="center" class="alignment" style="line-height:10px"></div>
+</td>
+</tr>
+</table>
+<table border="0" cellpadding="10" cellspacing="0" class="heading_block block-4" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+<tr>
+<td class="pad">
+<h1 style="margin: 0; color: #ffffff; direction: ltr; font-family: 'Abril Fatface', Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 51px; font-weight: normal; letter-spacing: normal; line-height: 120%; text-align: center; margin-top: 0; margin-bottom: 0;">Your verification code is:  '''+str(self.otp)+'''<br> Please DO NOT share it with anybody. GrowPal never calls you for any reason</h1>
+</td>
+</tr>
+</table>
+<table border="0" cellpadding="10" cellspacing="0" class="text_block block-5" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
+<tr>
+<td class="pad">
+<div style="font-family: sans-serif">
+<div class="" style="font-size: 14px; mso-line-height-alt: 16.8px; color: #d6d6d6; line-height: 1.2; font-family: Arial, Helvetica Neue, Helvetica, sans-serif;">
+
+</div>
+</div>
+</td>
+</tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" class="button_block block-6" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+<tr>
+<td class="pad" style="padding-bottom:90px;padding-left:10px;padding-right:10px;padding-top:10px;text-align:center;">
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+<tbody>
+<tr>
+<td>
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 680px;" width="680">
+<tbody>
+<tr>
+<td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 5px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%">
+<div class="spacer_block" style="height:45px;line-height:45px;font-size:1px;"> </div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-3" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+<tbody>
+<tr>
+<td>
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 680px;" width="680">
+<tbody>
+<tr>
+<td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 5px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%">
+<table border="0" cellpadding="0" cellspacing="0" class="heading_block block-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+<tr>
+<td class="pad" style="padding-bottom:5px;padding-left:10px;padding-right:10px;padding-top:10px;text-align:center;width:100%;">
+
+</td>
+</tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" class="heading_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+<tr>
+<td class="pad" style="padding-bottom:10px;padding-left:10px;text-align:center;width:100%;">
+<h1 style="margin: 0; color: #171719; direction: ltr; font-family: 'Abril Fatface', Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 40px; font-weight: normal; letter-spacing: normal; line-height: 120%; text-align: center; margin-top: 0; margin-bottom: 0;">Regards,thanks</h1>
+</td>
+</tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" class="text_block block-3" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
+<tr>
+<td class="pad" style="padding-bottom:15px;padding-left:10px;padding-right:10px;padding-top:10px;">
+<div style="font-family: sans-serif">
+<div class="" style="font-size: 14px; mso-line-height-alt: 21px; color: #393d47; line-height: 1.5; font-family: Arial, Helvetica Neue, Helvetica, sans-serif;">
+<p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 21px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu</p>
+</div>
+</div>
+</td>
+</tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" class="image_block block-4" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+<tr>
+<td class="pad" style="width:100%;padding-right:0px;padding-left:0px;">
+<div align="center" class="alignment" style="line-height:10px"></div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-4" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+<tbody>
+<tr>
+<td>
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 680px;" width="680">
+<tbody>
+<tr>
+<td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 5px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%">
+<div class="spacer_block" style="height:55px;line-height:55px;font-size:1px;"> </div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-5" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+<tbody>
+<tr>
+<td>
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 680px;" width="680">
+<tbody>
+<tr>
+<td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="50%">
+<table border="0" cellpadding="0" cellspacing="0" class="image_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+<tr>
+<td class="pad" style="width:100%;padding-right:0px;padding-left:0px;padding-top:5px;padding-bottom:5px;">
+<div align="center" class="alignment" style="line-height:10px"></div>
+</td>
+</tr>
+</table>
+</td>
+<td class="column column-2" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="50%">
+<table border="0" cellpadding="0" cellspacing="0" class="heading_block block-3" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+<tr>
+
+
+
+</body>
+</html>'''
+        m1=MIMEText(h,'html')
+        msg.attach(m1)
+
+        # msg = "\r\n".join([
+        #     "From: system.growpal@gmail.com",
+        #     f"To: {self.lineEdit_email.text()}",
+        #     "Subject: Verification [NO REPLY]",
+        #     "",m1
+#             
+# #            f'''Your verification code is: {self.otp}. Please DO NOT share it with anybody. GrowPal never calls you for any reason
+            
+# Regards
+# Team GrowPal'''
+     #       ])
+        server.sendmail('system.growpal@gmail.com', self.lineEdit_email.text(), msg.as_string())
         error_dialog = QtWidgets.QErrorMessage(self)
         error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
         error_dialog.setWindowTitle('OTP')
