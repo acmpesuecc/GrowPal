@@ -10,6 +10,7 @@
 # Please go through the README file before execution 
 #
 # -------------------------------------------------------Import statements------------------------------------------------------- #
+from msilib.schema import Error
 import sys
 import os
 # pip install PyQt5
@@ -177,7 +178,9 @@ class login_page(QMainWindow):
 
     def login_button_pressed(self):
         getLoginDetails()
-        if self.lineEdit_username.text() == "" or self.lineEdit_password.text() == "":
+        t=self.lineEdit_username.text();
+        m=self.lineEdit_password.text() == ""
+        if t == "" or m == "":
 
             error_dialog = QtWidgets.QErrorMessage(self)
             error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
@@ -241,7 +244,10 @@ class forgot(QMainWindow):
     def send_button_pressed(self):
 
         if self.lineEdit_email.text() in self.emails:
-            curs.execute(f"select username, password from login_details where email = '{self.lineEdit_email.text()}'")
+            valid = validate_email(self.lineEdit_email.text())
+            if valid:
+                curs.execute(f"select username, password from login_details where email = '{self.lineEdit_email.text()}'")
+            else: raise Exception("Invalid email")
             self.to_send = curs.fetchall()
             # If one email ID has multiple accounts.
             for entry in self.to_send:
@@ -256,6 +262,7 @@ class forgot(QMainWindow):
 Regards
 Team GrowPal'''
                 ])
+                
                 server.sendmail('system.growpal@gmail.com', self.lineEdit_email.text(), msg)
             error_dialog = QtWidgets.QErrorMessage(self)
             error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
@@ -382,9 +389,14 @@ Team GrowPal'''
 
 
 
+                        sep=[" ","-","."]  
+                        if sep not in self.lineEdit_username.text().split():
 
 
-                        curs.execute(f"insert into login_details values('{self.lineEdit_username.text()}', '{self.lineEdit_password.text()}', '{self.lineEdit_email.text()}', '{self.lineEdit_phnumber.text()}')")
+                            curs.execute(f"insert into login_details values('{self.lineEdit_username.text()}', '{self.lineEdit_password.text()}', '{self.lineEdit_email.text()}', '{self.lineEdit_phnumber.text()}')")
+                        else :
+                            raise Exception ("sql injection");
+
                         db.commit()
                         getLoginDetails()
                         self.lineEdit_username.setText('')
@@ -703,8 +715,8 @@ class sellPage(QMainWindow):
             curs.execute("select item_id_num from numbers")
             item_id = int(curs.fetchone()[0])
             item_id += 1
-            curs.execute(f"insert into listed_items values('{sellPage.given_prod_name}', '{sellPage.given_price}', '{sellPage.given_description}', '{logged_in_username}', '{sellPage.given_name}', '{sellPage.given_cont_num}', '{sellPage.given_email}','{sellPage.given_address}', '{sellPage.given_upi_id}', '{str(imagekit_url)}', 'False', {item_id});")      
-            curs.execute(f"update numbers set item_id_num = {item_id} where item_id_num = {item_id - 1}")
+            if(f"insert into listed_items values('{sellPage.given_prod_name}', '{sellPage.given_price}', '{sellPage.given_description}', '{logged_in_username}', '{sellPage.given_name}', '{sellPage.given_cont_num}', '{sellPage.given_email}','{sellPage.given_address}', '{sellPage.given_upi_id}', '{str(imagekit_url)}', 'False', {item_id});")      
+            curs.execute(f"update numbers set item_id_num = {item_id} where item_id_num = {item_id - 1}")}
             db.commit()
             error_dialog = QtWidgets.QErrorMessage(self)
             error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
