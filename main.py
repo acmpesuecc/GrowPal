@@ -10,11 +10,11 @@
 # Please go through the README file before execution 
 #
 # -------------------------------------------------------Import statements------------------------------------------------------- #
-<<<<<<< HEAD
+
 from msilib.schema import Error
-=======
+
 from email.mime.text import MIMEText
->>>>>>> c11741b9c18cfaa5f1c55af0dc6921e7c4a00df0
+
 import sys
 import os
 import requests
