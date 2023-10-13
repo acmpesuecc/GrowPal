@@ -254,7 +254,7 @@ class forgot(QMainWindow):
         if self.lineEdit_email.text() in self.emails:
             valid = validate_email(self.lineEdit_email.text())
             if valid:
-                curs.execute(f"select username, password from login_details where email = '{self.lineEdit_email.text()}'")
+                curs.execute(f"select username, password from login_details where email = '{sanitise(self.lineEdit_email.text())}'")
             else: raise Exception("Invalid email")
             self.to_send = curs.fetchall()
             # If one email ID has multiple accounts.
@@ -696,7 +696,7 @@ class register_page(QMainWindow):
                         if sep not in self.lineEdit_username.text().split():
 
 
-                            curs.execute(f"insert into login_details values('{self.lineEdit_username.text()}', '{self.lineEdit_password.text()}', '{self.lineEdit_email.text()}', '{self.lineEdit_phnumber.text()}')")
+                            curs.execute(f"insert into login_details values('{sanitise(self.lineEdit_username.text())}', '{sanitise(self.lineEdit_password.text())}', '{sanitise(self.lineEdit_email.text())}', '{sanitise(self.lineEdit_phnumber.text())}')")
                         else :
                             raise Exception ("sql injection");
 
