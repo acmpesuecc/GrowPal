@@ -1035,7 +1035,11 @@ class sellPage(QMainWindow):
 
 
 # -------------------------------------------------------Transaction Page------------------------------------------------------- #
-
+# Function to sanitize a string
+def sanitise(str):
+    str = re.sub(r'[^\w\s]','',str)
+    str = str.replace("'","''")
+    return str
 
 class transactionPage(QMainWindow):
     def __init__(self) -> None:
@@ -1101,7 +1105,7 @@ class creditCard(QMainWindow):
         curs.execute("select order_id_num from numbers")
         order_id = int(curs.fetchone()[0])
         order_id += 1
-        curs.execute(f"insert into credit_card_transactions values('{logged_in_username}','{item}', '{price}', '{self.lineEdit_cnum.text()}', '{self.lineEdit_cvv.text()}', '{self.lineEdit_del_add.text()}', '{picture}', {order_id}, 'False')")
+        curs.execute(f"insert into credit_card_transactions values('{sanitise(logged_in_username)}','{sanitise(item)}', '{sanitise(price)}', '{sanitise(self.lineEdit_cnum.text())}', '{sanitise(self.lineEdit_cvv.text())}', '{sanitise(self.lineEdit_del_add.text())}', '{sanitise(picture)}', {order_id}, 'False')")
         curs.execute(f'''update numbers set order_id_num = {order_id} where order_id_num = {order_id - 1}''')
         db.commit()
         error_dialog = QtWidgets.QErrorMessage(self)
@@ -1109,7 +1113,7 @@ class creditCard(QMainWindow):
         error_dialog.setWindowTitle('Order')
         error_dialog.showMessage('Your order has been placed.')
         transactionPage.go_back()
-        curs.execute(f"select email from login_details where username = '{logged_in_username}'")
+        curs.execute(f"select email from login_details where username = '{sanitise(logged_in_username)}'")
         send_to_email = curs.fetchone()
         send_to_email = str(send_to_email[0])
         msg = "\r\n".join([
