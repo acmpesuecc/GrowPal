@@ -49,7 +49,8 @@ from dotenv import load_dotenv
 import re
 import html
 import firebase_admin
-from firebase_admin import credentials
+from firebase_admin import credentials, storage
+from google.cloud import storage as gcs
 
 # Initialize Firebase with your project's credentials
 cred = credentials.Certificate("path/to/serviceAccountKey.json")
@@ -57,27 +58,21 @@ firebase_admin.initialize_app(cred, {
     'storageBucket': 'your-bucket-name.appspot.com'
 })
 
-from google.cloud import storage
-
 # Get a reference to the Firebase Storage bucket
 bucket = storage.bucket()
 
+# Get the file input from the user
+file_input = input("Enter the path to the image file: ")
+
 # Upload the selected image file
-blob = bucket.blob("images/image.jpg")
-blob.upload_from_filename("path/to/image.jpg")
-
-from google.cloud import storage
-
-# Get a reference to the image in Firebase Cloud Storage
-bucket = storage.bucket()
-blob = bucket.blob("images/image.jpg")
+blob = bucket.blob("images/" + file_input.split("/")[-1])
+blob.upload_from_filename(file_input)
 
 # Get the download URL
-url = blob.get_url()
+url = blob.public_url
 
 # Display the image
-print(f'<img src="{https://ik.imagekit.io/bule8zjn18b}">')
-
+print(f'<img src="{url}">')
 
 # -------------------------------------------------------Variables and Misc.------------------------------------------------------- #
 
