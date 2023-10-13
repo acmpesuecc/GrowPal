@@ -1018,8 +1018,8 @@ class sellPage(QMainWindow):
             curs.execute("select item_id_num from numbers")
             item_id = int(curs.fetchone()[0])
             item_id += 1
-            if(f"insert into listed_items values('{sellPage.given_prod_name}', '{sellPage.given_price}', '{sellPage.given_description}', '{logged_in_username}', '{sellPage.given_name}', '{sellPage.given_cont_num}', '{sellPage.given_email}','{sellPage.given_address}', '{sellPage.given_upi_id}', '{str(imagekit_url)}', 'False', {item_id});")      
-            curs.execute(f"update numbers set item_id_num = {item_id} where item_id_num = {item_id - 1}")}
+            if(f"insert into listed_items values('{sanitise(sellPage.given_prod_name)}', '{sanitise(sellPage.given_price)}', '{sanitise(sellPage.given_description)}', '{sanitise(logged_in_username)}', '{sanitise(sellPage.given_name)}', '{sanitise(sellPage.given_cont_num)}', '{sanitise(sellPage.given_email)}','{sanitise(sellPage.given_address)}', '{sanitise(sellPage.given_upi_id)}', '{sanitise(str(imagekit_url))}', 'False', {item_id});")
+            curs.execute(f"update numbers set item_id_num = {item_id} where item_id_num = {item_id - 1}")
             db.commit()
             error_dialog = QtWidgets.QErrorMessage(self)
             error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
@@ -1155,7 +1155,7 @@ class debitCard(QMainWindow):
         curs.execute("select order_id_num from numbers")
         order_id = int(curs.fetchone()[0])
         order_id += 1
-        curs.execute(f"insert into debit_card_transactions values('{logged_in_username}', '{item}', '{price}','{self.lineEdit_dnum.text()}', '{self.lineEdit_cvv.text()}', '{self.lineEdit_del_add.text()}', '{picture}',{order_id}, 'False')")
+        curs.execute(f"insert into debit_card_transactions values('{sanitise(logged_in_username)}', '{sanitise(item)}', '{sanitise(price)}','{sanitise(self.lineEdit_dnum.text())}', '{sanitise(self.lineEdit_cvv.text())}', '{sanitise(self.lineEdit_del_add.text())}', '{sanitise(picture)}',{order_id}, 'False')")
         curs.execute(f'''update numbers set order_id_num = {order_id} where order_id_num = {order_id - 1}''')
         db.commit()
         error_dialog = QtWidgets.QErrorMessage(self)
@@ -1165,7 +1165,7 @@ class debitCard(QMainWindow):
 
         transactionPage.go_back()
 
-        curs.execute(f"select email from login_details where username = '{logged_in_username}'")
+        curs.execute(f"select email from login_details where username = '{sanitise(logged_in_username)}'")
         send_to_email = curs.fetchone()
         send_to_email = str(send_to_email[0])
         msg = "\r\n".join([
@@ -1205,7 +1205,7 @@ class upi(QMainWindow):
         curs.execute("select order_id_num from numbers")
         order_id = int(curs.fetchone()[0])
         order_id += 1
-        curs.execute(f"insert into upi_transactions values('{logged_in_username}', '{item}', '{price}', '{self.lineEdit_upinum.text()}', '{self.lineEdit_del_add.text()}', '{picture}',{order_id}, 'False')")
+        curs.execute(f"insert into upi_transactions values('{sanitise(logged_in_username)}', '{sanitise(item)}', '{sanitise(price)}', '{sanitise(self.lineEdit_upinum.text())}', '{sanitise(self.lineEdit_del_add.text())}', '{sanitise(picture)}',{order_id}, 'False')")
         curs.execute(f'''update numbers set order_id_num = {order_id} where order_id_num = {order_id - 1}''')
         db.commit()
         error_dialog = QtWidgets.QErrorMessage(self)
@@ -1214,7 +1214,7 @@ class upi(QMainWindow):
         error_dialog.showMessage('Your order has been placed.')
 
         transactionPage.go_back()
-        curs.execute(f"select email from login_details where username = '{logged_in_username}'")
+        curs.execute(f"select email from login_details where username = '{sanitise(logged_in_username)}'")
         send_to_email = curs.fetchone()
         send_to_email = str(send_to_email[0])
         msg = "\r\n".join([
@@ -1248,7 +1248,7 @@ class netBank(QMainWindow):
         curs.execute("select order_id_num from numbers")
         order_id = int(curs.fetchone()[0])
         order_id += 1
-        curs.execute(f"insert into net_bank_transactions values('{logged_in_username}', '{item}', '{price}','{self.lineEdit_acnum.text()}', '{self.lineEdit_cifnum.text()}', '{self.lineEdit_branch_code.text()}', '{self.lineEdit_del_add.text()}', '{picture}', {order_id},'False')")
+        curs.execute(f"insert into net_bank_transactions values('{sanitise(logged_in_username)}', '{sanitise(item)}', '{sanitise(price)}','{sanitise(self.lineEdit_acnum.text())}', '{sanitise(self.lineEdit_cifnum.text())}', '{sanitise(self.lineEdit_branch_code.text())}', '{sanitise(self.lineEdit_del_add.text())}', '{sanitise(picture)}', {order_id},'False')")
         curs.execute(f'''update numbers set order_id_num = {order_id} where order_id_num = {order_id - 1}''')
         db.commit()
         error_dialog = QtWidgets.QErrorMessage(self)
@@ -1257,7 +1257,7 @@ class netBank(QMainWindow):
         error_dialog.showMessage('Your order has been placed.')
 
         transactionPage.go_back()
-        curs.execute(f"select email from login_details where username = '{logged_in_username}'")
+        curs.execute(f"select email from login_details where username = '{sanitise(logged_in_username)}'")
         send_to_email = curs.fetchone()
         send_to_email = str(send_to_email[0])
         msg = "\r\n".join([
@@ -1401,7 +1401,7 @@ class Items(QMainWindow):
 
     def loadData(self):
         global logged_in_username 
-        curs.execute(f"select product_image_address, product_name, product_price, product_description, item_id from listed_items where seller_username = '{logged_in_username}' and deleted = 'False';")
+        curs.execute(f"select product_image_address, product_name, product_price, product_description, item_id from listed_items where seller_username = '{sanitise(logged_in_username)}' and deleted = 'False';")
         listed_items = curs.fetchall()
     
         row = 0
