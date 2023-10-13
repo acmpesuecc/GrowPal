@@ -45,7 +45,31 @@ import random
 from dotenv import load_dotenv
 import re
 import html
+import firebase_admin
+from firebase_admin import credentials, storage
+from google.cloud import storage as gcs
 
+# Initialize Firebase with your project's credentials
+cred = credentials.Certificate("path/to/serviceAccountKey.json")
+firebase_admin.initialize_app(cred, {
+    'storageBucket': 'your-bucket-name.appspot.com'
+})
+
+# Get a reference to the Firebase Storage bucket
+bucket = storage.bucket()
+
+# Get the file input from the user
+file_input = input("Enter the path to the image file: ")
+
+# Upload the selected image file
+blob = bucket.blob("images/" + file_input.split("/")[-1])
+blob.upload_from_filename(file_input)
+
+# Get the download URL
+url = blob.public_url
+
+# Display the image
+print(f'<img src="{url}">')
 
 # -------------------------------------------------------Variables and Misc.------------------------------------------------------- #
 
@@ -1015,8 +1039,8 @@ class sellPage(QMainWindow):
             curs.execute("select item_id_num from numbers")
             item_id = int(curs.fetchone()[0])
             item_id += 1
-            if(f"insert into listed_items values('{sellPage.given_prod_name}', '{sellPage.given_price}', '{sellPage.given_description}', '{logged_in_username}', '{sellPage.given_name}', '{sellPage.given_cont_num}', '{sellPage.given_email}','{sellPage.given_address}', '{sellPage.given_upi_id}', '{str(imagekit_url)}', 'False', {item_id});")      
-            curs.execute(f"update numbers set item_id_num = {item_id} where item_id_num = {item_id - 1}")}
+            if f"insert into listed_items values('{sellPage.given_prod_name}', '{sellPage.given_price}', '{sellPage.given_description}', '{logged_in_username}', '{sellPage.given_name}', '{sellPage.given_cont_num}', '{sellPage.given_email}','{sellPage.given_address}', '{sellPage.given_upi_id}', '{str(imagekit_url)}', 'False', {item_id});
+            curs.execute(f"update numbers set item_id_num = {item_id} where item_id_num = {item_id - 1}")
             db.commit()
             error_dialog = QtWidgets.QErrorMessage(self)
             error_dialog.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
